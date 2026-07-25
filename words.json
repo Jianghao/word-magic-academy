@@ -1,0 +1,185 @@
+{
+  "_meta": {
+    "description": "Rainbow 的单词魔法学院 — 主词汇数据库",
+    "lastUpdated": "2026-07-25",
+    "totalWords": 12,
+    "memorySystem": "每个单词含3条记忆技巧: 🔤拆解拼写 + 🔊发音诀窍 + 📖词源故事",
+    "instructions": "添加新词库时，同步更新对应学习页面的 WORDS 数组、vocabulary.html 的 ALL_WORDS 数组、和此文件。"
+  },
+  "collections": [
+    {
+      "id": "months", "name": "月份单词", "emoji": "📅", "dateAdded": "2026-07-25",
+      "color": "#6B9AC4", "page": "months.html", "wordCount": 12,
+      "words": [
+        {
+          "id": "january", "word": "January", "phonetic": "/ˈdʒæn.ju.er.i/",
+          "chinese": "一月", "emoji": "❄️", "pos": "名词", "season": "winter",
+          "heroGradient": ["#C9E4F7", "#E8F2FA"],
+          "sentences": [
+            { "en": "<span class='hl'>January</span> is the first month of the year.", "zh": "一月是一年中的第一个月。" },
+            { "en": "It often snows in <span class='hl'>January</span>.", "zh": "一月经常下雪。" }
+          ],
+          "memory": [
+            { "icon": "🔤", "text": "<b>Jan</b>-u-<b>ary</b> → 4个音节：Jan(詹)+u(优)+ar(阿)+y(伊)。Jan像女孩名\"Jane\"，想象新年Jane收到礼物🎁" },
+            { "icon": "🔊", "text": "<b>/dʒæn/</b>像中文\"站\"的翘舌音，<b>-uary</b>固定读作\"you-airy\"。慢读三遍：Jan-u-ar-y！" },
+            { "icon": "📖", "text": "以罗马神<b>Janus</b>（雅努斯）命名。他有两张脸👀，一张回望过去，一张看向未来——就像一月既告别旧年又迎接新年！" }
+          ]
+        },
+        {
+          "id": "february", "word": "February", "phonetic": "/ˈfeb.ruː.er.i/",
+          "chinese": "二月", "emoji": "💝", "pos": "名词", "season": "winter",
+          "heroGradient": ["#F5D5E0", "#FBE8EF"],
+          "sentences": [
+            { "en": "<span class='hl'>February</span> is the shortest month.", "zh": "二月是最短的月份。" },
+            { "en": "Valentine's Day is on <span class='hl'>February</span> 14th.", "zh": "情人节在二月十四日。" }
+          ],
+          "memory": [
+            { "icon": "🔤", "text": "<b>Feb</b>-ru-<b>ary</b> → Feb像\"飞吧\"🕊️，r在b后面不要忘！二月很短，\"飞一样\"就过去了。" },
+            { "icon": "🔊", "text": "<b>/feb/</b>嘴巴轻轻咬下唇，\"飞吧\"。注意第一个r在Feb后面，第二个r在-ary前面——<b>两个r</b>！" },
+            { "icon": "📖", "text": "来自拉丁语<b>\"februa\"</b>（净化仪式）。古罗马人在二月举行大扫除和净化祭祀🧹。闰年时二月有29天——叫<b>Leap Day</b>🐸！" }
+          ]
+        },
+        {
+          "id": "march", "word": "March", "phonetic": "/mɑːrtʃ/",
+          "chinese": "三月", "emoji": "🌸", "pos": "名词", "season": "spring",
+          "heroGradient": ["#F5E8D5", "#FDF3E8"],
+          "sentences": [
+            { "en": "Spring begins in <span class='hl'>March</span>.", "zh": "春天从三月开始。" },
+            { "en": "The flowers start to bloom in <span class='hl'>March</span>.", "zh": "三月花儿开始绽放。" }
+          ],
+          "memory": [
+            { "icon": "🔤", "text": "<b>Mar+ch</b> → 只有5个字母！\"Mar\"像\"马儿\"🐴，ch是轻声。三月春风似马蹄轻快。" },
+            { "icon": "🔊", "text": "<b>/mɑːrtʃ/</b> → \"马儿吃\"——舌头最后顶到上颚发出\"ch\"音。和\"March\"(行军)发音一模一样！" },
+            { "icon": "📖", "text": "以罗马战神<b>Mars</b>⚔️命名！古罗马人认为三月天气转暖，是出门打仗的好季节。火星的英文也是Mars，因为火星是红色的战争之星！" }
+          ]
+        },
+        {
+          "id": "april", "word": "April", "phonetic": "/ˈeɪ.prəl/",
+          "chinese": "四月", "emoji": "🌧️", "pos": "名词", "season": "spring",
+          "heroGradient": ["#E8F0E8", "#F2F8F2"],
+          "sentences": [
+            { "en": "<span class='hl'>April</span> showers bring May flowers.", "zh": "四月雨水带来五月花朵。" },
+            { "en": "April Fools' Day is on <span class='hl'>April</span> 1st.", "zh": "愚人节在四月一日。" }
+          ],
+          "memory": [
+            { "icon": "🔤", "text": "<b>A+pril</b> → \"A\"级春天！<b>A</b>大写开头，\"pril\"像\"飘\"。四月飘着春雨🌧️。" },
+            { "icon": "🔊", "text": "<b>/ˈeɪ/</b> A发长音\"诶\"——嘴巴长大！不要读成短音\"啊\"。重音在第一个音节<b>Ā-pril</b>。" },
+            { "icon": "📖", "text": "来自拉丁语<b>\"aperire\"</b>（打开）——花朵在四月纷纷绽开🌸。英文谚语：<b>\"April showers bring May flowers\"</b>🌧️→🌺 四月的雨带来五月的花！" }
+          ]
+        },
+        {
+          "id": "may", "word": "May", "phonetic": "/meɪ/",
+          "chinese": "五月", "emoji": "🌺", "pos": "名词", "season": "spring",
+          "heroGradient": ["#FDE8F0", "#FFF2F7"],
+          "sentences": [
+            { "en": "<span class='hl'>May</span> is my favorite month.", "zh": "五月是我最喜欢的月份。" },
+            { "en": "Mother's Day is in <span class='hl'>May</span>.", "zh": "母亲节在五月。" }
+          ],
+          "memory": [
+            { "icon": "🔤", "text": "<b>May</b> → 只有3个字母！最简单好记的月份。M大写像两座山⛰️，五月正是爬山的好季节。" },
+            { "icon": "🔊", "text": "<b>/meɪ/</b> → 和中文\"美\"发音几乎一模一样！五月花开真<b>美</b>丽🌸。May=美，记住这个就不会忘！" },
+            { "icon": "📖", "text": "以希腊女神<b>Maia</b>🌟命名，她是春天和成长女神。五月是植物生长最快的月份——一天能长高好几厘米！母亲节👩‍👧也在五月。" }
+          ]
+        },
+        {
+          "id": "june", "word": "June", "phonetic": "/dʒuːn/",
+          "chinese": "六月", "emoji": "☀️", "pos": "名词", "season": "summer",
+          "heroGradient": ["#FDF0D5", "#FFF8E8"],
+          "sentences": [
+            { "en": "Summer starts in <span class='hl'>June</span>.", "zh": "夏天从六月开始。" },
+            { "en": "Children's Day is on <span class='hl'>June</span> 1st.", "zh": "儿童节在六月一日。" }
+          ],
+          "memory": [
+            { "icon": "🔤", "text": "<b>Ju+ne</b> → 只有4个字母！\"Ju\"像Jewel(珠宝💎)，\"ne\"像\"呢\"。六月像宝石一样闪闪发光。" },
+            { "icon": "🔊", "text": "<b>/dʒuːn/</b> → \"朱恩\"——Ju发\"朱\"，不是\"菊\"。长音uː嘴巴要撅起来。和\"June\"押韵的词：moon🌙, spoon🥄。" },
+            { "icon": "📖", "text": "以罗马女神<b>Juno</b>👸命名，她是婚姻和家庭女神。很多人喜欢在六月结婚——叫<b>\"June bride\"</b>👰！儿童节👧‍👦也在六月一日。" }
+          ]
+        },
+        {
+          "id": "july", "word": "July", "phonetic": "/dʒʊˈlaɪ/",
+          "chinese": "七月", "emoji": "🏖️", "pos": "名词", "season": "summer",
+          "heroGradient": ["#FDE0C8", "#FFF0E5"],
+          "sentences": [
+            { "en": "<span class='hl'>July</span> is very hot.", "zh": "七月非常炎热。" },
+            { "en": "We have summer vacation in <span class='hl'>July</span>.", "zh": "我们在七月放暑假。" }
+          ],
+          "memory": [
+            { "icon": "🔤", "text": "<b>Ju+ly</b> → 和June是\"Ju\"字辈兄弟！Ju像果汁🧃，ly像\"来\"。七月暑假来了！" },
+            { "icon": "🔊", "text": "<b>/dʒʊˈlaɪ/</b> → 重音在<b>第二个音节</b>\"来\"！Ju轻读，ly重读。和June的区别：June是长音/uː/，July是短音/ʊ/。" },
+            { "icon": "📖", "text": "以罗马最著名的皇帝——<b>凯撒大帝 Julius Caesar</b>👑命名。他是七月出生的，用自己的名字命名了这个月！所以七月有31天——皇帝的待遇！" }
+          ]
+        },
+        {
+          "id": "august", "word": "August", "phonetic": "/ɔːˈɡʌst/",
+          "chinese": "八月", "emoji": "🌻", "pos": "名词", "season": "summer",
+          "heroGradient": ["#FDF0B8", "#FFF9D8"],
+          "sentences": [
+            { "en": "<span class='hl'>August</span> is the last month of summer.", "zh": "八月是夏天的最后一个月。" },
+            { "en": "The sunflowers bloom in <span class='hl'>August</span>.", "zh": "向日葵在八月盛开。" }
+          ],
+          "memory": [
+            { "icon": "🔤", "text": "<b>Au+gust</b> → \"Au\"是黄金的化学符号🥇！\"gust\"像\"刮风\"💨。八月金黄灿烂。" },
+            { "icon": "🔊", "text": "<b>/ɔːˈɡʌst/</b> → \"哦-尬斯特\"。Au发长音/ɔː/像\"哦——\"。重音在第二个音节<b>gust</b>。" },
+            { "icon": "📖", "text": "以罗马皇帝<b>奥古斯都 Augustus</b>🏛️命名。他觉得自己的月份不能比凯撒的七月天数少，所以从二月拿走了一天，让八月也有<b>31天</b>！" }
+          ]
+        },
+        {
+          "id": "september", "word": "September", "phonetic": "/sepˈtem.bər/",
+          "chinese": "九月", "emoji": "🍂", "pos": "名词", "season": "autumn",
+          "heroGradient": ["#F5E0C8", "#FBF0E5"],
+          "sentences": [
+            { "en": "School starts in <span class='hl'>September</span>.", "zh": "学校在九月开学。" },
+            { "en": "The leaves begin to fall in <span class='hl'>September</span>.", "zh": "九月树叶开始飘落。" }
+          ],
+          "memory": [
+            { "icon": "🔤", "text": "<b>Sept(七)+ember</b> → Sept=7（如septangle七边形）。古罗马的七月，现在变成了九月。" },
+            { "icon": "🔊", "text": "<b>/sepˈtem/</b> → 重音在<b>tem</b>！Sept轻读，tem重读。注意p后面是t，不要漏掉。" },
+            { "icon": "📖", "text": "古罗马历只有10个月，后来加了January和February，September就从第7月变成了第9月！<b>数字前缀秘密</b>🔢：Sept=7, Oct=8, Nov=9, Dec=10——都往后移了两位！" }
+          ]
+        },
+        {
+          "id": "october", "word": "October", "phonetic": "/ɑːkˈtoʊ.bər/",
+          "chinese": "十月", "emoji": "🎃", "pos": "名词", "season": "autumn",
+          "heroGradient": ["#F0D8C0", "#F8ECE0"],
+          "sentences": [
+            { "en": "Halloween is on <span class='hl'>October</span> 31st.", "zh": "万圣节在十月三十一日。" },
+            { "en": "The pumpkins are ready in <span class='hl'>October</span>.", "zh": "南瓜在十月成熟了。" }
+          ],
+          "memory": [
+            { "icon": "🔤", "text": "<b>Oct(八)+ober</b> → 章鱼🐙octopus也是oct开头！章鱼有八条腿，oct=8。古罗马的八月变十月。" },
+            { "icon": "🔊", "text": "<b>/ɑːkˈtoʊ/</b> → \"阿克-头\"。O发/ɑː/（张嘴\"啊\"），不是/ɒ/。重音在<b>to</b>！" },
+            { "icon": "📖", "text": "<b>Oct=8</b>的秘密：章鱼<b>octo</b>pus有8条腿🐙，八角形<b>octa</b>gon有8条边。虽然October变成第10个月了，但名字里的\"八\"永远留下来了～" }
+          ]
+        },
+        {
+          "id": "november", "word": "November", "phonetic": "/noʊˈvem.bər/",
+          "chinese": "十一月", "emoji": "🦃", "pos": "名词", "season": "autumn",
+          "heroGradient": ["#E0D5C8", "#F0EAE2"],
+          "sentences": [
+            { "en": "Thanksgiving is in <span class='hl'>November</span>.", "zh": "感恩节在十一月。" },
+            { "en": "It gets colder in <span class='hl'>November</span>.", "zh": "十一月天气变冷了。" }
+          ],
+          "memory": [
+            { "icon": "🔤", "text": "<b>Nov(九)+ember</b> → Nov=9（如novena九天祈祷）。感恩节🦃就在这个温暖的月份。" },
+            { "icon": "🔊", "text": "<b>/noʊˈvem/</b> → \"nou-vem-ber\"。No发/nou/像\"no\"(不)，重音在<b>vem</b>。三个音节清晰。" },
+            { "icon": "📖", "text": "<b>Nov=9</b>古罗马的九月。美国人在十一月第四个星期四庆祝<b>感恩节</b>🦃，一家人围坐吃火鸡大餐。感恩节后就是<b>黑色星期五</b>大购物🛍️！" }
+          ]
+        },
+        {
+          "id": "december", "word": "December", "phonetic": "/dɪˈsem.bər/",
+          "chinese": "十二月", "emoji": "🎄", "pos": "名词", "season": "winter",
+          "heroGradient": ["#D5E0F0", "#E8EFF8"],
+          "sentences": [
+            { "en": "Christmas is on <span class='hl'>December</span> 25th.", "zh": "圣诞节在十二月二十五日。" },
+            { "en": "<span class='hl'>December</span> is the last month of the year.", "zh": "十二月是一年的最后一个月。" }
+          ],
+          "memory": [
+            { "icon": "🔤", "text": "<b>Dec(十)+ember</b> → Dec=10（如decimal十进制🔢、decade十年）。一年的\"第十个月\"变成了最后一个月。" },
+            { "icon": "🔊", "text": "<b>/dɪˈsem/</b> → \"迪-塞姆-伯\"。De发/dɪ/（短音\"迪\"），不是/de/！重音在<b>sem</b>。" },
+            { "icon": "📖", "text": "<b>Dec=10</b>的前缀家族：<b>dec</b>ade(十年)、<b>dec</b>imal(十进制)、<b>dec</b>athlon(十项全能)。十二月是全世界最欢乐的月份——🎅圣诞节、🎆新年倒数、🎁礼物！" }
+          ]
+        }
+      ]
+    }
+  ]
+}

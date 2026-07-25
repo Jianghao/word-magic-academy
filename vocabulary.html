@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📋 词汇表 — 单词魔法学院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#E8725A;--gold:#F4C542;--teal:#3DA5A5;--sky:#5B9EED;
+  --lavender:#9B7EC4;--blush:#F0D5D0;--cream:#FEF9F0;
+  --bg:#FFF8F0;--card:#FFFDF7;--text:#3D2C2C;--text-light:#7A6A6A;--text-muted:#B5A5A5;
+  --border:#F0E8E0;--border-light:#F8F2EC;
+  --mastered:#4ECB71;--learning-status:#F4C542;--new:#DDD;
+  --radius-xs:8px;--radius-sm:14px;--radius:20px;
+  --shadow-xs:0 2px 8px rgba(61,44,44,.05);--shadow:0 4px 24px rgba(61,44,44,.08);
+  --font-display:'ZCOOL KuaiLe','PingFang SC','Microsoft YaHei',cursive;
+  --font-body:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-word:'Georgia','Times New Roman',serif;
+  --fast:.18s ease;--normal:.3s ease;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.65}
+
+/* Background */
+.bg-layer{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bg-orb{position:absolute;border-radius:50%;opacity:.06;animation:orbFloat 22s ease-in-out infinite}
+.bg-orb.o1{width:380px;height:380px;background:radial-gradient(circle,var(--lavender),transparent);top:-5%;right:-5%}
+.bg-orb.o2{width:300px;height:300px;background:radial-gradient(circle,var(--teal),transparent);bottom:-5%;left:-5%;animation-delay:-8s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(20px,-25px) scale(1.06)}50%{transform:translate(-15px,15px) scale(.95)}75%{transform:translate(-25px,-8px) scale(1.03)}}
+
+/* Topbar */
+.vocab-topbar{
+  position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:10px;
+  padding:10px 24px;min-height:52px;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border-light);
+}
+.vocab-topbar .back-btn{
+  text-decoration:none;color:var(--text-light);font-size:1.05em;
+  padding:6px 10px;border-radius:var(--radius-xs);transition:all var(--fast);
+}
+.vocab-topbar .back-btn:hover{background:var(--cream);color:var(--coral)}
+.vocab-topbar .vt-title{font-family:var(--font-display);font-size:1.1em;margin-right:auto}
+/* Sort tabs */
+.sort-tabs{display:flex;gap:3px;background:var(--cream);border-radius:var(--radius-sm);padding:3px}
+.sort-tab{padding:6px 14px;border-radius:10px;cursor:pointer;font-size:.8em;font-weight:600;color:var(--text-light);transition:all var(--fast);border:none;background:none;font-family:var(--font-body)}
+.sort-tab:hover{color:var(--coral)}.sort-tab.active{background:#FFF;color:var(--coral);box-shadow:var(--shadow-xs)}
+
+/* Body */
+.vocab-body{max-width:900px;margin:0 auto;padding:24px 32px 60px;position:relative;z-index:1}
+.vocab-stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.stat-pill{display:flex;align-items:center;gap:6px;background:var(--card);border-radius:50px;padding:11px 20px;box-shadow:var(--shadow-xs);font-size:.9em;font-weight:600}
+.stat-pill .sp-val{color:var(--coral);font-family:var(--font-display);font-size:1.1em}
+
+/* Groups */
+.vocab-group{margin-bottom:20px;animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.vocab-group-title{font-family:var(--font-display);font-size:1.1em;font-weight:400;margin-bottom:6px;display:flex;align-items:center;gap:8px;padding:4px 0}
+.vocab-group-title .vg-badge{font-size:.72em;color:var(--text-muted);font-weight:400}
+
+/* Word rows */
+.vocab-rows{display:flex;flex-direction:column;gap:3px}
+.vocab-row{
+  display:flex;align-items:center;gap:10px;padding:10px 14px;
+  border-radius:var(--radius-sm);background:var(--card);
+  border:1px solid transparent;transition:all var(--fast);
+  cursor:pointer;box-shadow:var(--shadow-xs);text-decoration:none;color:var(--text);
+}
+.vocab-row:hover{border-color:var(--coral);transform:translateX(3px)}
+.vr-status{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.vr-status.mastered{background:var(--mastered)}
+.vr-status.learning{background:var(--learning-status)}
+.vr-status.new{background:var(--new)}
+.vr-emoji{font-size:1.2em;flex-shrink:0;width:30px;text-align:center}
+.vr-word{font-family:var(--font-word);font-size:.95em;font-weight:700;flex-shrink:0;min-width:85px}
+.vr-phonetic{font-size:.78em;color:var(--text-muted);flex-shrink:0;min-width:85px}
+.vr-cn{font-size:.88em;color:var(--text-light);flex:1;min-width:0}
+.vr-collection{font-size:.72em;padding:3px 10px;border-radius:10px;background:var(--cream);color:var(--text-muted);white-space:nowrap;flex-shrink:0}
+.vocab-empty{text-align:center;padding:60px 20px;color:var(--text-muted)}
+.vocab-empty .ve-icon{font-size:3em;display:block;margin-bottom:10px}
+
+@media(max-width:700px){
+  .vocab-body{padding:16px 14px 40px}
+  .vocab-row{gap:6px;padding:8px 10px;flex-wrap:wrap}
+  .vr-phonetic{display:none}
+  .vocab-topbar{padding:8px 14px}
+  .sort-tab{padding:5px 10px;font-size:.75em}
+}
+
+/* 4K / Large Screen */
+@media(min-width:1800px){
+  html{font-size:20px}
+  .vocab-body{max-width:1100px}
+}
+@media(min-width:2500px){
+  html{font-size:23px}
+  .vocab-body{max-width:1300px;padding:32px 48px 72px}
+}
+@media(min-width:3500px){
+  html{font-size:26px}
+  .vocab-body{max-width:1500px}
+}
+</style>
+</head>
+<body>
+<div class="bg-layer"><div class="bg-orb o1"></div><div class="bg-orb o2"></div></div>
+
+<div class="vocab-topbar">
+  <a href="index.html" class="back-btn">← 返回主页</a>
+  <span class="vt-title">📋 词汇表</span>
+  <div class="sort-tabs" id="sortTabs">
+    <button class="sort-tab active" data-sort="alpha" onclick="setSort('alpha')">🔤 A-Z</button>
+    <button class="sort-tab" data-sort="time" onclick="setSort('time')">📅 按时间</button>
+    <button class="sort-tab" data-sort="theme" onclick="setSort('theme')">🏷️ 按主题</button>
+  </div>
+</div>
+
+<div class="vocab-body" id="vocabBody"></div>
+
+<script src="shared.js"></script>
+<script>
+// Word index data (compact — display fields only)
+const ALL_WORDS = [
+  // Months collection
+  {id:'january',word:'January',phonetic:"/'dʒæn.ju.er.i/",chinese:'一月',emoji:'❄️',pos:'名词',cid:'months',cname:'月份单词',cemoji:'📅',cpage:'months.html',date:'2026-07-25'},
+  {id:'february',word:'February',phonetic:"/'feb.ruː.er.i/",chinese:'二月',emoji:'💝',pos:'名词',cid:'months',cname:'月份单词',cemoji:'📅',cpage:'months.html',date:'2026-07-25'},
+  {id:'march',word:'March',phonetic:"/mɑːrtʃ/",chinese:'三月',emoji:'🌸',pos:'名词',cid:'months',cname:'月份单词',cemoji:'📅',cpage:'months.html',date:'2026-07-25'},
+  {id:'april',word:'April',phonetic:"/'eɪ.prəl/",chinese:'四月',emoji:'🌧️',pos:'名词',cid:'months',cname:'月份单词',cemoji:'📅',cpage:'months.html',date:'2026-07-25'},
+  {id:'may',word:'May',phonetic:"/meɪ/",chinese:'五月',emoji:'🌺',pos:'名词',cid:'months',cname:'月份单词',cemoji:'📅',cpage:'months.html',date:'2026-07-25'},
+  {id:'june',word:'June',phonetic:"/dʒuːn/",chinese:'六月',emoji:'☀️',pos:'名词',cid:'months',cname:'月份单词',cemoji:'📅',cpage:'months.html',date:'2026-07-25'},
+  {id:'july',word:'July',phonetic:"/dʒʊ'laɪ/",chinese:'七月',emoji:'🏖️',pos:'名词',cid:'months',cname:'月份单词',cemoji:'📅',cpage:'months.html',date:'2026-07-25'},
+  {id:'august',word:'August',phonetic:"/ɔː'ɡʌst/",chinese:'八月',emoji:'🌻',pos:'名词',cid:'months',cname:'月份单词',cemoji:'📅',cpage:'months.html',date:'2026-07-25'},
+  {id:'september',word:'September',phonetic:"/sep'tem.bər/",chinese:'九月',emoji:'🍂',pos:'名词',cid:'months',cname:'月份单词',cemoji:'📅',cpage:'months.html',date:'2026-07-25'},
+  {id:'october',word:'October',phonetic:"/ɑːk'toʊ.bər/",chinese:'十月',emoji:'🎃',pos:'名词',cid:'months',cname:'月份单词',cemoji:'📅',cpage:'months.html',date:'2026-07-25'},
+  {id:'november',word:'November',phonetic:"/noʊ'vem.bər/",chinese:'十一月',emoji:'🦃',pos:'名词',cid:'months',cname:'月份单词',cemoji:'📅',cpage:'months.html',date:'2026-07-25'},
+  {id:'december',word:'December',phonetic:"/dɪ'sem.bər/",chinese:'十二月',emoji:'🎄',pos:'名词',cid:'months',cname:'月份单词',cemoji:'📅',cpage:'months.html',date:'2026-07-25'},
+];
+
+const state = loadState();
+let currentSort = 'alpha';
+
+function setSort(s) {
+  currentSort = s;
+  document.querySelectorAll('.sort-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.sort-tab[data-sort="${s}"]`)?.classList.add('active');
+  render();
+}
+
+function render() {
+  const body = document.getElementById('vocabBody');
+  const totalM = ALL_WORDS.filter(w => getWordStatus(state, w.id) === 'mastered').length;
+  const totalL = ALL_WORDS.filter(w => getWordStatus(state, w.id) === 'learning').length;
+  const totalN = ALL_WORDS.filter(w => getWordStatus(state, w.id) === 'new').length;
+
+  let stats = `<div class="vocab-stats">
+    <div class="stat-pill"><span>📋</span><span><span class="sp-val">${ALL_WORDS.length}</span> 个单词</span></div>
+    <div class="stat-pill"><span>✅</span><span><span class="sp-val">${totalM}</span> 已掌握</span></div>
+    <div class="stat-pill"><span>📖</span><span><span class="sp-val">${totalL}</span> 学习中</span></div>
+    <div class="stat-pill"><span>⚪</span><span><span class="sp-val">${totalN}</span> 未开始</span></div>
+  </div>`;
+
+  function rowHTML(w) {
+    const st = getWordStatus(state, w.id);
+    return `<a href="${w.cpage}#${w.id}" class="vocab-row">
+      <span class="vr-status ${st}"></span>
+      <span class="vr-emoji">${w.emoji}</span>
+      <span class="vr-word">${w.word}</span>
+      <span class="vr-phonetic">${w.phonetic}</span>
+      <span class="vr-cn">${w.pos} · ${w.chinese}</span>
+      <span class="vr-collection">${w.cemoji} ${w.cname}</span>
+    </a>`;
+  }
+
+  let html = stats;
+  if (currentSort === 'alpha') {
+    let currentLetter = '';
+    [...ALL_WORDS].sort((a, b) => a.word.localeCompare(b.word)).forEach(w => {
+      const letter = w.word.charAt(0).toUpperCase();
+      if (letter !== currentLetter) {
+        if (currentLetter) html += '</div></div>';
+        currentLetter = letter;
+        html += `<div class="vocab-group"><div class="vocab-group-title">🔤 ${currentLetter}</div><div class="vocab-rows">`;
+      }
+      html += rowHTML(w);
+    });
+    if (currentLetter) html += '</div></div>';
+  } else if (currentSort === 'time') {
+    const groups = {};
+    ALL_WORDS.forEach(w => {
+      const key = w.cid;
+      if (!groups[key]) groups[key] = { name: w.cname, emoji: w.cemoji, date: w.date, words: [] };
+      groups[key].words.push(w);
+    });
+    Object.values(groups).forEach(g => {
+      html += `<div class="vocab-group"><div class="vocab-group-title">${g.emoji} ${g.name}<span class="vg-badge">${g.words.length}词 · ${g.date}</span></div><div class="vocab-rows">${g.words.map(rowHTML).join('')}</div></div>`;
+    });
+  } else {
+    const groups = {};
+    ALL_WORDS.forEach(w => {
+      const key = w.cid;
+      if (!groups[key]) groups[key] = { name: w.cname, emoji: w.cemoji, date: w.date, words: [] };
+      groups[key].words.push(w);
+    });
+    Object.values(groups).forEach(g => {
+      const mCount = g.words.filter(w => getWordStatus(state, w.id) === 'mastered').length;
+      html += `<div class="vocab-group"><div class="vocab-group-title">${g.emoji} ${g.name}<span class="vg-badge">${mCount}/${g.words.length} 掌握 · ${g.date}</span></div><div class="vocab-rows">${g.words.map(rowHTML).join('')}</div></div>`;
+    });
+  }
+  body.innerHTML = html;
+}
+
+render();
+</script>
+</body>
+</html>

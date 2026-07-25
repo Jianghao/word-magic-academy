@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦉 单词魔法学院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#E8725A;--gold:#F4C542;--teal:#3DA5A5;--sky:#5B9EED;
+  --lavender:#9B7EC4;--sage:#7BAE7F;--blush:#F0D5D0;--cream:#FEF9F0;
+  --bg:#FFF8F0;--card:#FFFDF7;--text:#3D2C2C;--text-light:#7A6A6A;--text-muted:#B5A5A5;
+  --border:#F0E8E0;--mastered:#4ECB71;--learning-status:#F4C542;--new:#DDD;
+  --radius-sm:14px;--radius:20px;
+  --shadow-xs:0 2px 8px rgba(61,44,44,.05);--shadow:0 4px 24px rgba(61,44,44,.08);--shadow-lg:0 12px 48px rgba(61,44,44,.12);
+  --font-display:'ZCOOL KuaiLe','PingFang SC','Microsoft YaHei',cursive;
+  --font-body:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  --fast:.18s ease;--normal:.3s ease;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.65}
+
+/* Background */
+.bg-layer{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bg-orb{position:absolute;border-radius:50%;opacity:.07;animation:orbFloat 22s ease-in-out infinite}
+.bg-orb.o1{width:420px;height:420px;background:radial-gradient(circle,var(--coral),transparent);top:-8%;left:-6%}
+.bg-orb.o2{width:350px;height:350px;background:radial-gradient(circle,var(--sky),transparent);bottom:-8%;right:-5%;animation-delay:-8s}
+.bg-orb.o3{width:260px;height:260px;background:radial-gradient(circle,var(--lavender),transparent);top:55%;left:50%;animation-delay:-15s}
+.bg-orb.o4{width:200px;height:200px;background:radial-gradient(circle,var(--gold),transparent);top:20%;left:30%;animation-delay:-4s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(25px,-35px) scale(1.07)}50%{transform:translate(-18px,18px) scale(.94)}75%{transform:translate(-30px,-10px) scale(1.04)}}
+
+/* Dashboard */
+.dashboard{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:40px 32px 60px}
+.dash-header{text-align:center;margin-bottom:36px;animation:fadeIn .5s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.dash-header .dh-owl{font-size:3em;display:block;margin-bottom:8px;animation:owlBounce 2s ease-in-out infinite}
+@keyframes owlBounce{0%,100%{transform:translateY(0)}30%{transform:translateY(-8px)}50%{transform:translateY(0)}70%{transform:translateY(-4px)}}
+.dash-header h1{font-family:var(--font-display);font-size:2.2em;font-weight:400;line-height:1.3}
+.dash-header h1 .name{
+  background:linear-gradient(135deg,#E8725A,#F4A542,#E8919E,#9B7EC4,#5B9EED);
+  background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:rainbowShift 4s ease infinite;
+}
+@keyframes rainbowShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.dash-header .dh-sub{font-size:1.1em;color:var(--text-light);margin-top:4px}
+
+/* Stats */
+.dash-stats{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:36px;animation:fadeIn .5s ease .1s both}
+.stat-pill{display:flex;align-items:center;gap:8px;background:var(--card);border-radius:50px;padding:14px 24px;box-shadow:var(--shadow-xs);font-size:.95em;font-weight:600}
+.stat-pill .sp-val{color:var(--coral);font-family:var(--font-display);font-size:1.15em}
+
+/* Section title */
+.dash-section-title{font-family:var(--font-display);font-size:1.3em;font-weight:400;margin-bottom:18px;display:flex;align-items:center;gap:8px;animation:fadeIn .5s ease .15s both}
+
+/* Collection cards */
+.dash-collections{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;animation:fadeIn .5s ease .2s both}
+.collection-card{
+  background:var(--card);border-radius:var(--radius);padding:26px;
+  box-shadow:var(--shadow);cursor:pointer;transition:all var(--normal);
+  border:1.5px solid transparent;text-decoration:none;color:var(--text);display:block;
+}
+.collection-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--coral)}
+.cc-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.cc-icon{font-size:2em}.cc-name{font-family:var(--font-display);font-size:1.25em;font-weight:400}
+.cc-date{font-size:.82em;color:var(--text-muted);margin-bottom:14px}
+.cc-progress{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.cc-bar{flex:1;height:8px;background:var(--border);border-radius:10px;overflow:hidden}
+.cc-bar-fill{height:100%;background:var(--mastered);border-radius:10px;transition:width .5s ease}
+.cc-pct{font-family:var(--font-display);font-size:1em;color:var(--mastered);white-space:nowrap}
+.cc-action{display:block;text-align:center;margin-top:16px;padding:11px;background:var(--coral);color:#FFF;border-radius:var(--radius-sm);font-size:.92em;font-weight:600;transition:all var(--fast)}
+.cc-action:hover{background:#D0624A;box-shadow:0 4px 16px rgba(232,114,90,.3)}
+
+/* Bottom links */
+.dash-links{display:flex;gap:14px;justify-content:center;margin-top:28px;flex-wrap:wrap;animation:fadeIn .5s ease .25s both}
+.dash-link{
+  display:inline-flex;align-items:center;gap:6px;padding:12px 26px;
+  border-radius:50px;font-family:var(--font-body);font-size:.95em;font-weight:600;
+  text-decoration:none;transition:all var(--fast);
+  border:1.5px solid var(--coral);color:var(--coral);background:#FFF;
+}
+.dash-link:hover{background:rgba(232,114,90,.06);transform:translateY(-2px)}
+.dash-link.primary{background:var(--coral);color:#FFF;border-color:var(--coral)}
+.dash-link.primary:hover{background:#D0624A}
+
+@media(max-width:600px){
+  html{font-size:15px}
+  .dash-header h1{font-size:1.8em}
+  .dashboard{padding:24px 16px 40px}
+  .dash-collections{grid-template-columns:1fr}
+  .dash-stats{gap:8px}
+  .stat-pill{padding:10px 16px;font-size:.85em}
+}
+
+/* 4K / Large Screen */
+@media(min-width:1800px){
+  html{font-size:20px}
+  .dashboard{max-width:1100px}
+  .dash-collections{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+}
+@media(min-width:2500px){
+  html{font-size:23px}
+  .dashboard{max-width:1300px;padding:56px 40px 80px}
+  .dash-collections{grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:26px}
+}
+@media(min-width:3500px){
+  html{font-size:26px}
+  .dashboard{max-width:1500px}
+  .dash-collections{grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:30px}
+}
+</style>
+</head>
+<body>
+<div class="bg-layer">
+  <div class="bg-orb o1"></div><div class="bg-orb o2"></div>
+  <div class="bg-orb o3"></div><div class="bg-orb o4"></div>
+</div>
+
+<div class="dashboard">
+  <div class="dash-header">
+    <span class="dh-owl">🦉</span>
+    <h1>Hi, <span class="name">Rainbow</span>！<br>欢迎回到单词魔法学院 🌈</h1>
+    <div class="dh-sub" id="dashDate"></div>
+  </div>
+
+  <div class="dash-stats" id="dashStats"></div>
+
+  <div class="dash-section-title">📦 我的词库</div>
+  <div class="dash-collections" id="dashCollections"></div>
+
+  <div class="dash-links">
+    <a href="vocabulary.html" class="dash-link">📋 查看完整词汇表</a>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+const state = loadState();
+
+// Date
+const now = new Date();
+document.getElementById('dashDate').textContent = `今天是 ${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日`;
+
+// Stats
+const totalMastered = Object.values(state.words).filter(w => w.status === 'mastered').length;
+const totalWords = COLLECTIONS_META.reduce((s, c) => s + c.wordCount, 0);
+document.getElementById('dashStats').innerHTML = `
+  <div class="stat-pill"><span>📚</span><span><span class="sp-val">${COLLECTIONS_META.length}</span> 个词库</span></div>
+  <div class="stat-pill"><span>🔤</span><span><span class="sp-val">${totalWords}</span> 个单词</span></div>
+  <div class="stat-pill"><span>✅</span><span><span class="sp-val">${totalMastered}</span> 已掌握</span></div>
+  <div class="stat-pill"><span>🔥</span><span><span class="sp-val">${state.stats.streak}</span> 天连续</span></div>
+  <div class="stat-pill"><span>⭐</span><span><span class="sp-val">${state.stats.totalXP}</span> XP</span></div>
+`;
+
+// Collections
+document.getElementById('dashCollections').innerHTML = COLLECTIONS_META.map(c => {
+  const pct = Math.round((totalMastered / c.wordCount) * 100);
+  return `
+  <a href="${c.page}" class="collection-card">
+    <div class="cc-header"><span class="cc-icon">${c.emoji}</span><span class="cc-name">${c.name}</span></div>
+    <div class="cc-date">📅 ${c.dateAdded} 添加 · ${c.wordCount} 个单词</div>
+    <div class="cc-progress">
+      <div class="cc-bar"><div class="cc-bar-fill" style="width:${pct}%"></div></div>
+      <span class="cc-pct">${totalMastered}/${c.wordCount}</span>
+    </div>
+    <span class="cc-action">📖 开始学习 →</span>
+  </a>`;
+}).join('');
+
+// Achievements
+const earned = ACHIEVEMENTS.filter(a => state.achievements.includes(a.id));
+if (earned.length > 0) {
+  const b = earned.map(a => `<span title="${a.label}" style="font-size:1.5em">${a.emoji}</span>`).join('');
+  document.querySelector('.dash-collections').insertAdjacentHTML('beforebegin',
+    `<div class="dash-section-title">🏆 已获勋章 ${b}</div>`);
+}
+</script>
+</body>
+</html>
