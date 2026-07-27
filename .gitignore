@@ -9,5 +9,3 @@ Thumbs.db
 # Local config
 .claude/
 CLAUDE.md
-*.png
-!_gen_*.py
