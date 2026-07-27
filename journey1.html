@@ -400,12 +400,13 @@ function getSeasonColor(s) {
 function renderSidebar() {
   const wl = document.getElementById('wordList');
   const ft = (document.getElementById('searchBox')?.value || '').toLowerCase().trim();
-  const seasons = ['winter', 'spring', 'summer', 'autumn'];
-  const sLabels = { winter: '❄️ 冬季', spring: '🌸 春季', summer: '☀️ 夏季', autumn: '🍂 秋季' };
-  const sMonths = { winter: [11, 0, 1], spring: [2, 3, 4], summer: [5, 6, 7], autumn: [8, 9, 10] };
+  const categories = ["basics", "transport"];
+  const sLabels = {"basics": "📔 出行基础", "transport": "🚉 交通设施"};
+  const sMonths = categories.reduce((a, c) => { a[c] = []; return a; }, {});
+  WORDS.forEach((w, i) => { if (sMonths[w.category]) sMonths[w.category].push(i); });
   let html = '';
-  seasons.forEach(season => {
-    const seasonWords = sMonths[season].map(i => WORDS[i]).filter(w => w && (!ft || w.word.toLowerCase().includes(ft) || w.chinese.includes(ft)));
+  categories.forEach(cat => {
+    const catWordList = sMonths[cat].map(i => WORDS[i]).filter(w => w && (!ft || w.word.toLowerCase().includes(ft) || w.chinese.includes(ft)));
     if (!catWordList.length) return;
     html += `<div class="cat-group"><div class="cat-label"><span class="dot" style="background:${getSeasonColor(cat)}"></span>${sLabels[cat]}<span class="count">${catWordList.length}词</span></div>`;
     catWordList.forEach(w => {
@@ -418,6 +419,7 @@ function renderSidebar() {
   });
   if (!html) html = `<div style="text-align:center;padding:20px;color:var(--text-muted)">🔍 没找到</div>`;
   wl.innerHTML = html;
+
 }
 
 // ============================================================
