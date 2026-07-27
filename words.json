@@ -1,328 +1,1875 @@
 {
   "_meta": {
     "description": "Rainbow 的单词魔法学院 — 主词汇数据库",
-    "lastUpdated": "2026-07-27",
-    "totalWords": 22,
+    "lastUpdated": "2026-07-28",
+    "totalWords": 40,
     "memorySystem": "每个单词含3条记忆技巧: 🔤拆解拼写 + 🔊发音诀窍 + 📖词源故事",
     "instructions": "添加新词库时，同步更新对应学习页面的 WORDS 数组、vocabulary.html 的 ALL_WORDS 数组、和此文件。"
   },
   "collections": [
     {
-      "id": "months", "name": "月份单词", "emoji": "📅", "dateAdded": "2026-07-25",
-      "color": "#6B9AC4", "page": "months.html", "wordCount": 12,
+      "id": "months",
+      "name": "月份单词",
+      "emoji": "📅",
+      "dateAdded": "2026-07-25",
+      "color": "#6B9AC4",
+      "page": "months.html",
+      "wordCount": 12,
       "words": [
         {
-          "id": "january", "word": "January", "phonetic": "/ˈdʒæn.ju.er.i/",
-          "chinese": "一月", "emoji": "❄️", "pos": "名词", "season": "winter",
-          "heroGradient": ["#C9E4F7", "#E8F2FA"],
+          "id": "january",
+          "word": "January",
+          "phonetic": "/ˈdʒæn.ju.er.i/",
+          "chinese": "一月",
+          "emoji": "❄️",
+          "pos": "名词",
+          "season": "winter",
+          "heroGradient": [
+            "#C9E4F7",
+            "#E8F2FA"
+          ],
           "sentences": [
-            { "en": "<span class='hl'>January</span> is the first month of the year.", "zh": "一月是一年中的第一个月。" },
-            { "en": "It often snows in <span class='hl'>January</span>.", "zh": "一月经常下雪。" }
+            {
+              "en": "<span class='hl'>January</span> is the first month of the year.",
+              "zh": "一月是一年中的第一个月。"
+            },
+            {
+              "en": "It often snows in <span class='hl'>January</span>.",
+              "zh": "一月经常下雪。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>Jan</b>-u-<b>ary</b> → 4个音节：Jan(詹)+u(优)+ar(阿)+y(伊)。Jan像女孩名\"Jane\"，想象新年Jane收到礼物🎁" },
-            { "icon": "🔊", "text": "<b>/dʒæn/</b>像中文\"站\"的翘舌音，<b>-uary</b>固定读作\"you-airy\"。慢读三遍：Jan-u-ar-y！" },
-            { "icon": "📖", "text": "以罗马神<b>Janus</b>（雅努斯）命名。他有两张脸👀，一张回望过去，一张看向未来——就像一月既告别旧年又迎接新年！" }
+            {
+              "icon": "🔤",
+              "text": "<b>Jan</b>-u-<b>ary</b> → 4个音节：Jan(詹)+u(优)+ar(阿)+y(伊)。Jan像女孩名\"Jane\"，想象新年Jane收到礼物🎁"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/dʒæn/</b>像中文\"站\"的翘舌音，<b>-uary</b>固定读作\"you-airy\"。慢读三遍：Jan-u-ar-y！"
+            },
+            {
+              "icon": "📖",
+              "text": "以罗马神<b>Janus</b>（雅努斯）命名。他有两张脸👀，一张回望过去，一张看向未来——就像一月既告别旧年又迎接新年！"
+            }
           ]
         },
         {
-          "id": "february", "word": "February", "phonetic": "/ˈfeb.ruː.er.i/",
-          "chinese": "二月", "emoji": "💝", "pos": "名词", "season": "winter",
-          "heroGradient": ["#F5D5E0", "#FBE8EF"],
+          "id": "february",
+          "word": "February",
+          "phonetic": "/ˈfeb.ruː.er.i/",
+          "chinese": "二月",
+          "emoji": "💝",
+          "pos": "名词",
+          "season": "winter",
+          "heroGradient": [
+            "#F5D5E0",
+            "#FBE8EF"
+          ],
           "sentences": [
-            { "en": "<span class='hl'>February</span> is the shortest month.", "zh": "二月是最短的月份。" },
-            { "en": "Valentine's Day is on <span class='hl'>February</span> 14th.", "zh": "情人节在二月十四日。" }
+            {
+              "en": "<span class='hl'>February</span> is the shortest month.",
+              "zh": "二月是最短的月份。"
+            },
+            {
+              "en": "Valentine's Day is on <span class='hl'>February</span> 14th.",
+              "zh": "情人节在二月十四日。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>Feb</b>-ru-<b>ary</b> → Feb像\"飞吧\"🕊️，r在b后面不要忘！二月很短，\"飞一样\"就过去了。" },
-            { "icon": "🔊", "text": "<b>/feb/</b>嘴巴轻轻咬下唇，\"飞吧\"。注意第一个r在Feb后面，第二个r在-ary前面——<b>两个r</b>！" },
-            { "icon": "📖", "text": "来自拉丁语<b>\"februa\"</b>（净化仪式）。古罗马人在二月举行大扫除和净化祭祀🧹。闰年时二月有29天——叫<b>Leap Day</b>🐸！" }
+            {
+              "icon": "🔤",
+              "text": "<b>Feb</b>-ru-<b>ary</b> → Feb像\"飞吧\"🕊️，r在b后面不要忘！二月很短，\"飞一样\"就过去了。"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/feb/</b>嘴巴轻轻咬下唇，\"飞吧\"。注意第一个r在Feb后面，第二个r在-ary前面——<b>两个r</b>！"
+            },
+            {
+              "icon": "📖",
+              "text": "来自拉丁语<b>\"februa\"</b>（净化仪式）。古罗马人在二月举行大扫除和净化祭祀🧹。闰年时二月有29天——叫<b>Leap Day</b>🐸！"
+            }
           ]
         },
         {
-          "id": "march", "word": "March", "phonetic": "/mɑːrtʃ/",
-          "chinese": "三月", "emoji": "🌸", "pos": "名词", "season": "spring",
-          "heroGradient": ["#F5E8D5", "#FDF3E8"],
+          "id": "march",
+          "word": "March",
+          "phonetic": "/mɑːrtʃ/",
+          "chinese": "三月",
+          "emoji": "🌸",
+          "pos": "名词",
+          "season": "spring",
+          "heroGradient": [
+            "#F5E8D5",
+            "#FDF3E8"
+          ],
           "sentences": [
-            { "en": "Spring begins in <span class='hl'>March</span>.", "zh": "春天从三月开始。" },
-            { "en": "The flowers start to bloom in <span class='hl'>March</span>.", "zh": "三月花儿开始绽放。" }
+            {
+              "en": "Spring begins in <span class='hl'>March</span>.",
+              "zh": "春天从三月开始。"
+            },
+            {
+              "en": "The flowers start to bloom in <span class='hl'>March</span>.",
+              "zh": "三月花儿开始绽放。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>Mar+ch</b> → 只有5个字母！\"Mar\"像\"马儿\"🐴，ch是轻声。三月春风似马蹄轻快。" },
-            { "icon": "🔊", "text": "<b>/mɑːrtʃ/</b> → \"马儿吃\"——舌头最后顶到上颚发出\"ch\"音。和\"March\"(行军)发音一模一样！" },
-            { "icon": "📖", "text": "以罗马战神<b>Mars</b>⚔️命名！古罗马人认为三月天气转暖，是出门打仗的好季节。火星的英文也是Mars，因为火星是红色的战争之星！" }
+            {
+              "icon": "🔤",
+              "text": "<b>Mar+ch</b> → 只有5个字母！\"Mar\"像\"马儿\"🐴，ch是轻声。三月春风似马蹄轻快。"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/mɑːrtʃ/</b> → \"马儿吃\"——舌头最后顶到上颚发出\"ch\"音。和\"March\"(行军)发音一模一样！"
+            },
+            {
+              "icon": "📖",
+              "text": "以罗马战神<b>Mars</b>⚔️命名！古罗马人认为三月天气转暖，是出门打仗的好季节。火星的英文也是Mars，因为火星是红色的战争之星！"
+            }
           ]
         },
         {
-          "id": "april", "word": "April", "phonetic": "/ˈeɪ.prəl/",
-          "chinese": "四月", "emoji": "🌧️", "pos": "名词", "season": "spring",
-          "heroGradient": ["#E8F0E8", "#F2F8F2"],
+          "id": "april",
+          "word": "April",
+          "phonetic": "/ˈeɪ.prəl/",
+          "chinese": "四月",
+          "emoji": "🌧️",
+          "pos": "名词",
+          "season": "spring",
+          "heroGradient": [
+            "#E8F0E8",
+            "#F2F8F2"
+          ],
           "sentences": [
-            { "en": "<span class='hl'>April</span> showers bring May flowers.", "zh": "四月雨水带来五月花朵。" },
-            { "en": "April Fools' Day is on <span class='hl'>April</span> 1st.", "zh": "愚人节在四月一日。" }
+            {
+              "en": "<span class='hl'>April</span> showers bring May flowers.",
+              "zh": "四月雨水带来五月花朵。"
+            },
+            {
+              "en": "April Fools' Day is on <span class='hl'>April</span> 1st.",
+              "zh": "愚人节在四月一日。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>A+pril</b> → \"A\"级春天！<b>A</b>大写开头，\"pril\"像\"飘\"。四月飘着春雨🌧️。" },
-            { "icon": "🔊", "text": "<b>/ˈeɪ/</b> A发长音\"诶\"——嘴巴长大！不要读成短音\"啊\"。重音在第一个音节<b>Ā-pril</b>。" },
-            { "icon": "📖", "text": "来自拉丁语<b>\"aperire\"</b>（打开）——花朵在四月纷纷绽开🌸。英文谚语：<b>\"April showers bring May flowers\"</b>🌧️→🌺 四月的雨带来五月的花！" }
+            {
+              "icon": "🔤",
+              "text": "<b>A+pril</b> → \"A\"级春天！<b>A</b>大写开头，\"pril\"像\"飘\"。四月飘着春雨🌧️。"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈeɪ/</b> A发长音\"诶\"——嘴巴长大！不要读成短音\"啊\"。重音在第一个音节<b>Ā-pril</b>。"
+            },
+            {
+              "icon": "📖",
+              "text": "来自拉丁语<b>\"aperire\"</b>（打开）——花朵在四月纷纷绽开🌸。英文谚语：<b>\"April showers bring May flowers\"</b>🌧️→🌺 四月的雨带来五月的花！"
+            }
           ]
         },
         {
-          "id": "may", "word": "May", "phonetic": "/meɪ/",
-          "chinese": "五月", "emoji": "🌺", "pos": "名词", "season": "spring",
-          "heroGradient": ["#FDE8F0", "#FFF2F7"],
+          "id": "may",
+          "word": "May",
+          "phonetic": "/meɪ/",
+          "chinese": "五月",
+          "emoji": "🌺",
+          "pos": "名词",
+          "season": "spring",
+          "heroGradient": [
+            "#FDE8F0",
+            "#FFF2F7"
+          ],
           "sentences": [
-            { "en": "<span class='hl'>May</span> is my favorite month.", "zh": "五月是我最喜欢的月份。" },
-            { "en": "Mother's Day is in <span class='hl'>May</span>.", "zh": "母亲节在五月。" }
+            {
+              "en": "<span class='hl'>May</span> is my favorite month.",
+              "zh": "五月是我最喜欢的月份。"
+            },
+            {
+              "en": "Mother's Day is in <span class='hl'>May</span>.",
+              "zh": "母亲节在五月。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>May</b> → 只有3个字母！最简单好记的月份。M大写像两座山⛰️，五月正是爬山的好季节。" },
-            { "icon": "🔊", "text": "<b>/meɪ/</b> → 和中文\"美\"发音几乎一模一样！五月花开真<b>美</b>丽🌸。May=美，记住这个就不会忘！" },
-            { "icon": "📖", "text": "以希腊女神<b>Maia</b>🌟命名，她是春天和成长女神。五月是植物生长最快的月份——一天能长高好几厘米！母亲节👩‍👧也在五月。" }
+            {
+              "icon": "🔤",
+              "text": "<b>May</b> → 只有3个字母！最简单好记的月份。M大写像两座山⛰️，五月正是爬山的好季节。"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/meɪ/</b> → 和中文\"美\"发音几乎一模一样！五月花开真<b>美</b>丽🌸。May=美，记住这个就不会忘！"
+            },
+            {
+              "icon": "📖",
+              "text": "以希腊女神<b>Maia</b>🌟命名，她是春天和成长女神。五月是植物生长最快的月份——一天能长高好几厘米！母亲节👩‍👧也在五月。"
+            }
           ]
         },
         {
-          "id": "june", "word": "June", "phonetic": "/dʒuːn/",
-          "chinese": "六月", "emoji": "☀️", "pos": "名词", "season": "summer",
-          "heroGradient": ["#FDF0D5", "#FFF8E8"],
+          "id": "june",
+          "word": "June",
+          "phonetic": "/dʒuːn/",
+          "chinese": "六月",
+          "emoji": "☀️",
+          "pos": "名词",
+          "season": "summer",
+          "heroGradient": [
+            "#FDF0D5",
+            "#FFF8E8"
+          ],
           "sentences": [
-            { "en": "Summer starts in <span class='hl'>June</span>.", "zh": "夏天从六月开始。" },
-            { "en": "Children's Day is on <span class='hl'>June</span> 1st.", "zh": "儿童节在六月一日。" }
+            {
+              "en": "Summer starts in <span class='hl'>June</span>.",
+              "zh": "夏天从六月开始。"
+            },
+            {
+              "en": "Children's Day is on <span class='hl'>June</span> 1st.",
+              "zh": "儿童节在六月一日。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>Ju+ne</b> → 只有4个字母！\"Ju\"像Jewel(珠宝💎)，\"ne\"像\"呢\"。六月像宝石一样闪闪发光。" },
-            { "icon": "🔊", "text": "<b>/dʒuːn/</b> → \"朱恩\"——Ju发\"朱\"，不是\"菊\"。长音uː嘴巴要撅起来。和\"June\"押韵的词：moon🌙, spoon🥄。" },
-            { "icon": "📖", "text": "以罗马女神<b>Juno</b>👸命名，她是婚姻和家庭女神。很多人喜欢在六月结婚——叫<b>\"June bride\"</b>👰！儿童节👧‍👦也在六月一日。" }
+            {
+              "icon": "🔤",
+              "text": "<b>Ju+ne</b> → 只有4个字母！\"Ju\"像Jewel(珠宝💎)，\"ne\"像\"呢\"。六月像宝石一样闪闪发光。"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/dʒuːn/</b> → \"朱恩\"——Ju发\"朱\"，不是\"菊\"。长音uː嘴巴要撅起来。和\"June\"押韵的词：moon🌙, spoon🥄。"
+            },
+            {
+              "icon": "📖",
+              "text": "以罗马女神<b>Juno</b>👸命名，她是婚姻和家庭女神。很多人喜欢在六月结婚——叫<b>\"June bride\"</b>👰！儿童节👧‍👦也在六月一日。"
+            }
           ]
         },
         {
-          "id": "july", "word": "July", "phonetic": "/dʒʊˈlaɪ/",
-          "chinese": "七月", "emoji": "🏖️", "pos": "名词", "season": "summer",
-          "heroGradient": ["#FDE0C8", "#FFF0E5"],
+          "id": "july",
+          "word": "July",
+          "phonetic": "/dʒʊˈlaɪ/",
+          "chinese": "七月",
+          "emoji": "🏖️",
+          "pos": "名词",
+          "season": "summer",
+          "heroGradient": [
+            "#FDE0C8",
+            "#FFF0E5"
+          ],
           "sentences": [
-            { "en": "<span class='hl'>July</span> is very hot.", "zh": "七月非常炎热。" },
-            { "en": "We have summer vacation in <span class='hl'>July</span>.", "zh": "我们在七月放暑假。" }
+            {
+              "en": "<span class='hl'>July</span> is very hot.",
+              "zh": "七月非常炎热。"
+            },
+            {
+              "en": "We have summer vacation in <span class='hl'>July</span>.",
+              "zh": "我们在七月放暑假。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>Ju+ly</b> → 和June是\"Ju\"字辈兄弟！Ju像果汁🧃，ly像\"来\"。七月暑假来了！" },
-            { "icon": "🔊", "text": "<b>/dʒʊˈlaɪ/</b> → 重音在<b>第二个音节</b>\"来\"！Ju轻读，ly重读。和June的区别：June是长音/uː/，July是短音/ʊ/。" },
-            { "icon": "📖", "text": "以罗马最著名的皇帝——<b>凯撒大帝 Julius Caesar</b>👑命名。他是七月出生的，用自己的名字命名了这个月！所以七月有31天——皇帝的待遇！" }
+            {
+              "icon": "🔤",
+              "text": "<b>Ju+ly</b> → 和June是\"Ju\"字辈兄弟！Ju像果汁🧃，ly像\"来\"。七月暑假来了！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/dʒʊˈlaɪ/</b> → 重音在<b>第二个音节</b>\"来\"！Ju轻读，ly重读。和June的区别：June是长音/uː/，July是短音/ʊ/。"
+            },
+            {
+              "icon": "📖",
+              "text": "以罗马最著名的皇帝——<b>凯撒大帝 Julius Caesar</b>👑命名。他是七月出生的，用自己的名字命名了这个月！所以七月有31天——皇帝的待遇！"
+            }
           ]
         },
         {
-          "id": "august", "word": "August", "phonetic": "/ɔːˈɡʌst/",
-          "chinese": "八月", "emoji": "🌻", "pos": "名词", "season": "summer",
-          "heroGradient": ["#FDF0B8", "#FFF9D8"],
+          "id": "august",
+          "word": "August",
+          "phonetic": "/ɔːˈɡʌst/",
+          "chinese": "八月",
+          "emoji": "🌻",
+          "pos": "名词",
+          "season": "summer",
+          "heroGradient": [
+            "#FDF0B8",
+            "#FFF9D8"
+          ],
           "sentences": [
-            { "en": "<span class='hl'>August</span> is the last month of summer.", "zh": "八月是夏天的最后一个月。" },
-            { "en": "The sunflowers bloom in <span class='hl'>August</span>.", "zh": "向日葵在八月盛开。" }
+            {
+              "en": "<span class='hl'>August</span> is the last month of summer.",
+              "zh": "八月是夏天的最后一个月。"
+            },
+            {
+              "en": "The sunflowers bloom in <span class='hl'>August</span>.",
+              "zh": "向日葵在八月盛开。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>Au+gust</b> → \"Au\"是黄金的化学符号🥇！\"gust\"像\"刮风\"💨。八月金黄灿烂。" },
-            { "icon": "🔊", "text": "<b>/ɔːˈɡʌst/</b> → \"哦-尬斯特\"。Au发长音/ɔː/像\"哦——\"。重音在第二个音节<b>gust</b>。" },
-            { "icon": "📖", "text": "以罗马皇帝<b>奥古斯都 Augustus</b>🏛️命名。他觉得自己的月份不能比凯撒的七月天数少，所以从二月拿走了一天，让八月也有<b>31天</b>！" }
+            {
+              "icon": "🔤",
+              "text": "<b>Au+gust</b> → \"Au\"是黄金的化学符号🥇！\"gust\"像\"刮风\"💨。八月金黄灿烂。"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ɔːˈɡʌst/</b> → \"哦-尬斯特\"。Au发长音/ɔː/像\"哦——\"。重音在第二个音节<b>gust</b>。"
+            },
+            {
+              "icon": "📖",
+              "text": "以罗马皇帝<b>奥古斯都 Augustus</b>🏛️命名。他觉得自己的月份不能比凯撒的七月天数少，所以从二月拿走了一天，让八月也有<b>31天</b>！"
+            }
           ]
         },
         {
-          "id": "september", "word": "September", "phonetic": "/sepˈtem.bər/",
-          "chinese": "九月", "emoji": "🍂", "pos": "名词", "season": "autumn",
-          "heroGradient": ["#F5E0C8", "#FBF0E5"],
+          "id": "september",
+          "word": "September",
+          "phonetic": "/sepˈtem.bər/",
+          "chinese": "九月",
+          "emoji": "🍂",
+          "pos": "名词",
+          "season": "autumn",
+          "heroGradient": [
+            "#F5E0C8",
+            "#FBF0E5"
+          ],
           "sentences": [
-            { "en": "School starts in <span class='hl'>September</span>.", "zh": "学校在九月开学。" },
-            { "en": "The leaves begin to fall in <span class='hl'>September</span>.", "zh": "九月树叶开始飘落。" }
+            {
+              "en": "School starts in <span class='hl'>September</span>.",
+              "zh": "学校在九月开学。"
+            },
+            {
+              "en": "The leaves begin to fall in <span class='hl'>September</span>.",
+              "zh": "九月树叶开始飘落。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>Sept(七)+ember</b> → Sept=7（如septangle七边形）。古罗马的七月，现在变成了九月。" },
-            { "icon": "🔊", "text": "<b>/sepˈtem/</b> → 重音在<b>tem</b>！Sept轻读，tem重读。注意p后面是t，不要漏掉。" },
-            { "icon": "📖", "text": "古罗马历只有10个月，后来加了January和February，September就从第7月变成了第9月！<b>数字前缀秘密</b>🔢：Sept=7, Oct=8, Nov=9, Dec=10——都往后移了两位！" }
+            {
+              "icon": "🔤",
+              "text": "<b>Sept(七)+ember</b> → Sept=7（如septangle七边形）。古罗马的七月，现在变成了九月。"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/sepˈtem/</b> → 重音在<b>tem</b>！Sept轻读，tem重读。注意p后面是t，不要漏掉。"
+            },
+            {
+              "icon": "📖",
+              "text": "古罗马历只有10个月，后来加了January和February，September就从第7月变成了第9月！<b>数字前缀秘密</b>🔢：Sept=7, Oct=8, Nov=9, Dec=10——都往后移了两位！"
+            }
           ]
         },
         {
-          "id": "october", "word": "October", "phonetic": "/ɑːkˈtoʊ.bər/",
-          "chinese": "十月", "emoji": "🎃", "pos": "名词", "season": "autumn",
-          "heroGradient": ["#F0D8C0", "#F8ECE0"],
+          "id": "october",
+          "word": "October",
+          "phonetic": "/ɑːkˈtoʊ.bər/",
+          "chinese": "十月",
+          "emoji": "🎃",
+          "pos": "名词",
+          "season": "autumn",
+          "heroGradient": [
+            "#F0D8C0",
+            "#F8ECE0"
+          ],
           "sentences": [
-            { "en": "Halloween is on <span class='hl'>October</span> 31st.", "zh": "万圣节在十月三十一日。" },
-            { "en": "The pumpkins are ready in <span class='hl'>October</span>.", "zh": "南瓜在十月成熟了。" }
+            {
+              "en": "Halloween is on <span class='hl'>October</span> 31st.",
+              "zh": "万圣节在十月三十一日。"
+            },
+            {
+              "en": "The pumpkins are ready in <span class='hl'>October</span>.",
+              "zh": "南瓜在十月成熟了。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>Oct(八)+ober</b> → 章鱼🐙octopus也是oct开头！章鱼有八条腿，oct=8。古罗马的八月变十月。" },
-            { "icon": "🔊", "text": "<b>/ɑːkˈtoʊ/</b> → \"阿克-头\"。O发/ɑː/（张嘴\"啊\"），不是/ɒ/。重音在<b>to</b>！" },
-            { "icon": "📖", "text": "<b>Oct=8</b>的秘密：章鱼<b>octo</b>pus有8条腿🐙，八角形<b>octa</b>gon有8条边。虽然October变成第10个月了，但名字里的\"八\"永远留下来了～" }
+            {
+              "icon": "🔤",
+              "text": "<b>Oct(八)+ober</b> → 章鱼🐙octopus也是oct开头！章鱼有八条腿，oct=8。古罗马的八月变十月。"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ɑːkˈtoʊ/</b> → \"阿克-头\"。O发/ɑː/（张嘴\"啊\"），不是/ɒ/。重音在<b>to</b>！"
+            },
+            {
+              "icon": "📖",
+              "text": "<b>Oct=8</b>的秘密：章鱼<b>octo</b>pus有8条腿🐙，八角形<b>octa</b>gon有8条边。虽然October变成第10个月了，但名字里的\"八\"永远留下来了～"
+            }
           ]
         },
         {
-          "id": "november", "word": "November", "phonetic": "/noʊˈvem.bər/",
-          "chinese": "十一月", "emoji": "🦃", "pos": "名词", "season": "autumn",
-          "heroGradient": ["#E0D5C8", "#F0EAE2"],
+          "id": "november",
+          "word": "November",
+          "phonetic": "/noʊˈvem.bər/",
+          "chinese": "十一月",
+          "emoji": "🦃",
+          "pos": "名词",
+          "season": "autumn",
+          "heroGradient": [
+            "#E0D5C8",
+            "#F0EAE2"
+          ],
           "sentences": [
-            { "en": "Thanksgiving is in <span class='hl'>November</span>.", "zh": "感恩节在十一月。" },
-            { "en": "It gets colder in <span class='hl'>November</span>.", "zh": "十一月天气变冷了。" }
+            {
+              "en": "Thanksgiving is in <span class='hl'>November</span>.",
+              "zh": "感恩节在十一月。"
+            },
+            {
+              "en": "It gets colder in <span class='hl'>November</span>.",
+              "zh": "十一月天气变冷了。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>Nov(九)+ember</b> → Nov=9（如novena九天祈祷）。感恩节🦃就在这个温暖的月份。" },
-            { "icon": "🔊", "text": "<b>/noʊˈvem/</b> → \"nou-vem-ber\"。No发/nou/像\"no\"(不)，重音在<b>vem</b>。三个音节清晰。" },
-            { "icon": "📖", "text": "<b>Nov=9</b>古罗马的九月。美国人在十一月第四个星期四庆祝<b>感恩节</b>🦃，一家人围坐吃火鸡大餐。感恩节后就是<b>黑色星期五</b>大购物🛍️！" }
+            {
+              "icon": "🔤",
+              "text": "<b>Nov(九)+ember</b> → Nov=9（如novena九天祈祷）。感恩节🦃就在这个温暖的月份。"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/noʊˈvem/</b> → \"nou-vem-ber\"。No发/nou/像\"no\"(不)，重音在<b>vem</b>。三个音节清晰。"
+            },
+            {
+              "icon": "📖",
+              "text": "<b>Nov=9</b>古罗马的九月。美国人在十一月第四个星期四庆祝<b>感恩节</b>🦃，一家人围坐吃火鸡大餐。感恩节后就是<b>黑色星期五</b>大购物🛍️！"
+            }
           ]
         },
         {
-          "id": "december", "word": "December", "phonetic": "/dɪˈsem.bər/",
-          "chinese": "十二月", "emoji": "🎄", "pos": "名词", "season": "winter",
-          "heroGradient": ["#D5E0F0", "#E8EFF8"],
+          "id": "december",
+          "word": "December",
+          "phonetic": "/dɪˈsem.bər/",
+          "chinese": "十二月",
+          "emoji": "🎄",
+          "pos": "名词",
+          "season": "winter",
+          "heroGradient": [
+            "#D5E0F0",
+            "#E8EFF8"
+          ],
           "sentences": [
-            { "en": "Christmas is on <span class='hl'>December</span> 25th.", "zh": "圣诞节在十二月二十五日。" },
-            { "en": "<span class='hl'>December</span> is the last month of the year.", "zh": "十二月是一年的最后一个月。" }
+            {
+              "en": "Christmas is on <span class='hl'>December</span> 25th.",
+              "zh": "圣诞节在十二月二十五日。"
+            },
+            {
+              "en": "<span class='hl'>December</span> is the last month of the year.",
+              "zh": "十二月是一年的最后一个月。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>Dec(十)+ember</b> → Dec=10（如decimal十进制🔢、decade十年）。一年的\"第十个月\"变成了最后一个月。" },
-            { "icon": "🔊", "text": "<b>/dɪˈsem/</b> → \"迪-塞姆-伯\"。De发/dɪ/（短音\"迪\"），不是/de/！重音在<b>sem</b>。" },
-            { "icon": "📖", "text": "<b>Dec=10</b>的前缀家族：<b>dec</b>ade(十年)、<b>dec</b>imal(十进制)、<b>dec</b>athlon(十项全能)。十二月是全世界最欢乐的月份——🎅圣诞节、🎆新年倒数、🎁礼物！" }
+            {
+              "icon": "🔤",
+              "text": "<b>Dec(十)+ember</b> → Dec=10（如decimal十进制🔢、decade十年）。一年的\"第十个月\"变成了最后一个月。"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/dɪˈsem/</b> → \"迪-塞姆-伯\"。De发/dɪ/（短音\"迪\"），不是/de/！重音在<b>sem</b>。"
+            },
+            {
+              "icon": "📖",
+              "text": "<b>Dec=10</b>的前缀家族：<b>dec</b>ade(十年)、<b>dec</b>imal(十进制)、<b>dec</b>athlon(十项全能)。十二月是全世界最欢乐的月份——🎅圣诞节、🎆新年倒数、🎁礼物！"
+            }
           ]
         }
       ]
     },
     {
-      "id": "travel", "name": "出行与交通", "emoji": "🚗", "dateAdded": "2026-07-27",
-      "color": "#5B9EED", "page": "travel.html", "wordCount": 10,
+      "id": "travel",
+      "name": "出行与交通",
+      "emoji": "🚗",
+      "dateAdded": "2026-07-27",
+      "color": "#5B9EED",
+      "page": "travel.html",
+      "wordCount": 10,
       "words": [
         {
-          "id": "space", "word": "space", "phonetic": "/speɪs/",
-          "chinese": "太空；空间", "emoji": "🚀", "pos": "名词",
-          "heroGradient": ["#D5E0F0", "#E8EFF8"],
+          "id": "space",
+          "word": "space",
+          "phonetic": "/speɪs/",
+          "chinese": "太空；空间",
+          "emoji": "🚀",
+          "pos": "名词",
+          "heroGradient": [
+            "#D5E0F0",
+            "#E8EFF8"
+          ],
           "sentences": [
-            { "en": "There are many stars in <span class='hl'>space</span>.", "zh": "太空中有很多星星。" },
-            { "en": "Please give me some <span class='hl'>space</span> to sit down.", "zh": "请给我一点空间坐下。" }
+            {
+              "en": "There are many stars in <span class='hl'>space</span>.",
+              "zh": "太空中有很多星星。"
+            },
+            {
+              "en": "Please give me some <span class='hl'>space</span> to sit down.",
+              "zh": "请给我一点空间坐下。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>sp+ace</b> → \"sp\"像\"四破\"，\"ace\"是王牌♠️。太空广阔无垠，像一张王牌那么大！5个字母，ace结尾和face、place一样。" },
-            { "icon": "🔊", "text": "<b>/speɪs/</b> → \"斯贝斯\"。s后p要浊化读/b/！长音/eɪ/嘴巴张大。和face、race押韵。" },
-            { "icon": "📖", "text": "来自拉丁语<b>spatium</b>（空间）。宇航员叫<b>astronaut</b>——astro(星星)+naut(航行者)=在太空航行的人🚀！space既是\"太空\"也是\"空间\"" }
+            {
+              "icon": "🔤",
+              "text": "<b>sp+ace</b> → \"sp\"像\"四破\"，\"ace\"是王牌♠️。太空广阔无垠，像一张王牌那么大！5个字母，ace结尾和face、place一样。"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/speɪs/</b> → \"斯贝斯\"。s后p要浊化读/b/！长音/eɪ/嘴巴张大。和face、race押韵。"
+            },
+            {
+              "icon": "📖",
+              "text": "来自拉丁语<b>spatium</b>（空间）。宇航员叫<b>astronaut</b>——astro(星星)+naut(航行者)=在太空航行的人🚀！space既是\"太空\"也是\"空间\""
+            }
           ]
         },
         {
-          "id": "plant", "word": "plant", "phonetic": "/plænt/",
-          "chinese": "植物", "emoji": "🌱", "pos": "名词",
-          "heroGradient": ["#E0F0D8", "#EFF8EC"],
+          "id": "plant",
+          "word": "plant",
+          "phonetic": "/plænt/",
+          "chinese": "植物",
+          "emoji": "🌱",
+          "pos": "名词",
+          "heroGradient": [
+            "#E0F0D8",
+            "#EFF8EC"
+          ],
           "sentences": [
-            { "en": "I water the <span class='hl'>plant</span> every day.", "zh": "我每天给植物浇水。" },
-            { "en": "<span class='hl'>Plants</span> need sunlight and water to grow.", "zh": "植物需要阳光和水才能生长。" }
+            {
+              "en": "I water the <span class='hl'>plant</span> every day.",
+              "zh": "我每天给植物浇水。"
+            },
+            {
+              "en": "<span class='hl'>Plants</span> need sunlight and water to grow.",
+              "zh": "植物需要阳光和水才能生长。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>pl+ant</b> → \"pl\"像\"漂亮\"🌸，\"ant\"是小蚂蚁🐜。漂亮蚂蚁在植物上爬！planet(星球)也是pl开头——植物和星球都是生命🌍" },
-            { "icon": "🔊", "text": "<b>/plænt/</b> → \"普兰特\"。æ像\"哎\"短音，嘴巴微张。p后面是l，不要读成pant！" },
-            { "icon": "📖", "text": "来自拉丁语<b>planta</b>(嫩芽🌱)。<b>planet</b>(星球)和plant是亲戚！古代人认为星球是有生命的。plant也可以当动词\"种植\"——\"I plant a tree\"🌳" }
+            {
+              "icon": "🔤",
+              "text": "<b>pl+ant</b> → \"pl\"像\"漂亮\"🌸，\"ant\"是小蚂蚁🐜。漂亮蚂蚁在植物上爬！planet(星球)也是pl开头——植物和星球都是生命🌍"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/plænt/</b> → \"普兰特\"。æ像\"哎\"短音，嘴巴微张。p后面是l，不要读成pant！"
+            },
+            {
+              "icon": "📖",
+              "text": "来自拉丁语<b>planta</b>(嫩芽🌱)。<b>planet</b>(星球)和plant是亲戚！古代人认为星球是有生命的。plant也可以当动词\"种植\"——\"I plant a tree\"🌳"
+            }
           ]
         },
         {
-          "id": "wood", "word": "wood", "phonetic": "/wʊd/",
-          "chinese": "木头；树林", "emoji": "🪵", "pos": "名词",
-          "heroGradient": ["#E8D5C0", "#F5EAE0"],
+          "id": "wood",
+          "word": "wood",
+          "phonetic": "/wʊd/",
+          "chinese": "木头；树林",
+          "emoji": "🪵",
+          "pos": "名词",
+          "heroGradient": [
+            "#E8D5C0",
+            "#F5EAE0"
+          ],
           "sentences": [
-            { "en": "The table is made of <span class='hl'>wood</span>.", "zh": "这张桌子是木头做的。" },
-            { "en": "Let's go for a walk in the <span class='hl'>woods</span>.", "zh": "我们去树林里散步吧。" }
+            {
+              "en": "The table is made of <span class='hl'>wood</span>.",
+              "zh": "这张桌子是木头做的。"
+            },
+            {
+              "en": "Let's go for a walk in the <span class='hl'>woods</span>.",
+              "zh": "我们去树林里散步吧。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>w+o+o+d</b> → 只有4个字母！两个o并排像两棵树🌳🌳。w是树根，d是树冠。wool(羊毛)也两个o——羊在树林里🐑" },
-            { "icon": "🔊", "text": "<b>/wʊd/</b> → \"悟德\"。ʊ短元音像\"呜\"。和<b>would</b>(愿意)发音一模一样！I would like some wood." },
-            { "icon": "📖", "text": "古英语<b>wudu</b>。还记得三只小猪吗🐷？一只盖了<b>wood house</b>木屋！wood加s变成<b>woods</b>(树林)——小红帽走进woods🌲。wood还指\"木制\"材料" }
+            {
+              "icon": "🔤",
+              "text": "<b>w+o+o+d</b> → 只有4个字母！两个o并排像两棵树🌳🌳。w是树根，d是树冠。wool(羊毛)也两个o——羊在树林里🐑"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/wʊd/</b> → \"悟德\"。ʊ短元音像\"呜\"。和<b>would</b>(愿意)发音一模一样！I would like some wood."
+            },
+            {
+              "icon": "📖",
+              "text": "古英语<b>wudu</b>。还记得三只小猪吗🐷？一只盖了<b>wood house</b>木屋！wood加s变成<b>woods</b>(树林)——小红帽走进woods🌲。wood还指\"木制\"材料"
+            }
           ]
         },
         {
-          "id": "outdoor", "word": "outdoor", "phonetic": "/ˈaʊt.dɔːr/",
-          "chinese": "户外的", "emoji": "🏕️", "pos": "形容词",
-          "heroGradient": ["#D5F0D5", "#E8F8E8"],
+          "id": "outdoor",
+          "word": "outdoor",
+          "phonetic": "/ˈaʊt.dɔːr/",
+          "chinese": "户外的",
+          "emoji": "🏕️",
+          "pos": "形容词",
+          "heroGradient": [
+            "#D5F0D5",
+            "#E8F8E8"
+          ],
           "sentences": [
-            { "en": "I love <span class='hl'>outdoor</span> activities like hiking.", "zh": "我喜欢像徒步这样的户外活动。" },
-            { "en": "Let's play some <span class='hl'>outdoor</span> games!", "zh": "我们来玩一些户外游戏吧！" }
+            {
+              "en": "I love <span class='hl'>outdoor</span> activities like hiking.",
+              "zh": "我喜欢像徒步这样的户外活动。"
+            },
+            {
+              "en": "Let's play some <span class='hl'>outdoor</span> games!",
+              "zh": "我们来玩一些户外游戏吧！"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>out+door</b> → \"out\"(外面)+ \"door\"(门)=门外=户外！一个拼起来的词，像两个好朋友牵手🤝" },
-            { "icon": "🔊", "text": "<b>/ˈaʊt.dɔːr/</b> → \"奥特-舵\"。重音在<b>out</b>！door读/dɔːr/，or发长音像\"哦——\"" },
-            { "icon": "📖", "text": "out(外面)+door(门)。反义词是<b>indoor</b>(室内的)🏠。\"outdoor activities\"是最常用的搭配。英国人最爱户外运动——不管刮风下雨都要去公园⛅" }
+            {
+              "icon": "🔤",
+              "text": "<b>out+door</b> → \"out\"(外面)+ \"door\"(门)=门外=户外！一个拼起来的词，像两个好朋友牵手🤝"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈaʊt.dɔːr/</b> → \"奥特-舵\"。重音在<b>out</b>！door读/dɔːr/，or发长音像\"哦——\""
+            },
+            {
+              "icon": "📖",
+              "text": "out(外面)+door(门)。反义词是<b>indoor</b>(室内的)🏠。\"outdoor activities\"是最常用的搭配。英国人最爱户外运动——不管刮风下雨都要去公园⛅"
+            }
           ]
         },
         {
-          "id": "airport", "word": "airport", "phonetic": "/ˈer.pɔːrt/",
-          "chinese": "机场", "emoji": "✈️", "pos": "名词",
-          "heroGradient": ["#D5E8F8", "#E8F2FA"],
+          "id": "airport",
+          "word": "airport",
+          "phonetic": "/ˈer.pɔːrt/",
+          "chinese": "机场",
+          "emoji": "✈️",
+          "pos": "名词",
+          "heroGradient": [
+            "#D5E8F8",
+            "#E8F2FA"
+          ],
           "sentences": [
-            { "en": "We arrived at the <span class='hl'>airport</span> two hours early.", "zh": "我们提前两小时到达了机场。" },
-            { "en": "The <span class='hl'>airport</span> is far from the city center.", "zh": "机场离市中心很远。" }
+            {
+              "en": "We arrived at the <span class='hl'>airport</span> two hours early.",
+              "zh": "我们提前两小时到达了机场。"
+            },
+            {
+              "en": "The <span class='hl'>airport</span> is far from the city center.",
+              "zh": "机场离市中心很远。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>air+port</b> → \"air\"(天空/飞机)+ \"port\"(港口)=飞机的港口=机场！air是天空✈️，port是船停靠的地方⚓" },
-            { "icon": "🔊", "text": "<b>/ˈer.pɔːrt/</b> → \"爱尔-破特\"。重音在air！port中or发/ɔːr/长音。注意air不是are！" },
-            { "icon": "📖", "text": "<b>air</b>(空气/航空)+<b>port</b>(来自拉丁语portus=港口)。飞机停泊的港口=机场！和airport类似的词：seaport海港🚢、passport护照📔" }
+            {
+              "icon": "🔤",
+              "text": "<b>air+port</b> → \"air\"(天空/飞机)+ \"port\"(港口)=飞机的港口=机场！air是天空✈️，port是船停靠的地方⚓"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈer.pɔːrt/</b> → \"爱尔-破特\"。重音在air！port中or发/ɔːr/长音。注意air不是are！"
+            },
+            {
+              "icon": "📖",
+              "text": "<b>air</b>(空气/航空)+<b>port</b>(来自拉丁语portus=港口)。飞机停泊的港口=机场！和airport类似的词：seaport海港🚢、passport护照📔"
+            }
           ]
         },
         {
-          "id": "plane", "word": "plane", "phonetic": "/pleɪn/",
-          "chinese": "飞机", "emoji": "🛩️", "pos": "名词",
-          "heroGradient": ["#F0E8F8", "#F8F2FC"],
+          "id": "plane",
+          "word": "plane",
+          "phonetic": "/pleɪn/",
+          "chinese": "飞机",
+          "emoji": "🛩️",
+          "pos": "名词",
+          "heroGradient": [
+            "#F0E8F8",
+            "#F8F2FC"
+          ],
           "sentences": [
-            { "en": "The <span class='hl'>plane</span> took off on time.", "zh": "飞机准时起飞了。" },
-            { "en": "We went to Shanghai by <span class='hl'>plane</span>.", "zh": "我们坐飞机去了上海。" }
+            {
+              "en": "The <span class='hl'>plane</span> took off on time.",
+              "zh": "飞机准时起飞了。"
+            },
+            {
+              "en": "We went to Shanghai by <span class='hl'>plane</span>.",
+              "zh": "我们坐飞机去了上海。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>pl+ane</b> → 只有5个字母！\"pl\"像\"飘\"，\"ane\"和lane(小路)、cane(拐杖)同族。飞机飘在天空的跑道上✈️" },
-            { "icon": "🔊", "text": "<b>/pleɪn/</b> → \"普雷恩\"。长音/eɪ/嘴巴张大！和<b>plain</b>(平原)发音一模一样——飞机在平原上起飞🛫" },
-            { "icon": "📖", "text": "<b>airplane</b>的缩写。莱特兄弟1903年发明了第一架飞机✈️——只飞了12秒！plane也是数学的\"平面\"——一张纸是一个plane📄" }
+            {
+              "icon": "🔤",
+              "text": "<b>pl+ane</b> → 只有5个字母！\"pl\"像\"飘\"，\"ane\"和lane(小路)、cane(拐杖)同族。飞机飘在天空的跑道上✈️"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/pleɪn/</b> → \"普雷恩\"。长音/eɪ/嘴巴张大！和<b>plain</b>(平原)发音一模一样——飞机在平原上起飞🛫"
+            },
+            {
+              "icon": "📖",
+              "text": "<b>airplane</b>的缩写。莱特兄弟1903年发明了第一架飞机✈️——只飞了12秒！plane也是数学的\"平面\"——一张纸是一个plane📄"
+            }
           ]
         },
         {
-          "id": "ambulance", "word": "ambulance", "phonetic": "/ˈæm.bjə.ləns/",
-          "chinese": "救护车", "emoji": "🚑", "pos": "名词",
-          "heroGradient": ["#FDE0E0", "#FFF0F0"],
+          "id": "ambulance",
+          "word": "ambulance",
+          "phonetic": "/ˈæm.bjə.ləns/",
+          "chinese": "救护车",
+          "emoji": "🚑",
+          "pos": "名词",
+          "heroGradient": [
+            "#FDE0E0",
+            "#FFF0F0"
+          ],
           "sentences": [
-            { "en": "The <span class='hl'>ambulance</span> rushed to the hospital.", "zh": "救护车飞快地开往医院。" },
-            { "en": "Call an <span class='hl'>ambulance</span>! Someone is hurt!", "zh": "快叫救护车！有人受伤了！" }
+            {
+              "en": "The <span class='hl'>ambulance</span> rushed to the hospital.",
+              "zh": "救护车飞快地开往医院。"
+            },
+            {
+              "en": "Call an <span class='hl'>ambulance</span>! Someone is hurt!",
+              "zh": "快叫救护车！有人受伤了！"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>am+bu+lance</b> → 3个音节！\"am\"是\"我是\"，\"bu\"像\"不\"，\"lance\"弹跳——我不是蹦蹦跳跳，我是救护车🚑！" },
-            { "icon": "🔊", "text": "<b>/ˈæm.bjə.ləns/</b> → \"安姆-别-冷斯\"。重音在<b>am</b>！bu读/bjə/很轻很快，lance的a发/ə/弱读。" },
-            { "icon": "📖", "text": "来自法语<b>hôpital ambulant</b>(移动医院)。拿破仑军队首创——用马车运伤员🏥。最早ambulance就是会跑的医院！急救电话：中国120，美国911，英国999" }
+            {
+              "icon": "🔤",
+              "text": "<b>am+bu+lance</b> → 3个音节！\"am\"是\"我是\"，\"bu\"像\"不\"，\"lance\"弹跳——我不是蹦蹦跳跳，我是救护车🚑！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈæm.bjə.ləns/</b> → \"安姆-别-冷斯\"。重音在<b>am</b>！bu读/bjə/很轻很快，lance的a发/ə/弱读。"
+            },
+            {
+              "icon": "📖",
+              "text": "来自法语<b>hôpital ambulant</b>(移动医院)。拿破仑军队首创——用马车运伤员🏥。最早ambulance就是会跑的医院！急救电话：中国120，美国911，英国999"
+            }
           ]
         },
         {
-          "id": "brake", "word": "brake", "phonetic": "/breɪk/",
-          "chinese": "刹车；制动器", "emoji": "🛑", "pos": "名词；动词",
-          "heroGradient": ["#FDE8E0", "#FFF5F0"],
+          "id": "brake",
+          "word": "brake",
+          "phonetic": "/breɪk/",
+          "chinese": "刹车；制动器",
+          "emoji": "🛑",
+          "pos": "名词；动词",
+          "heroGradient": [
+            "#FDE8E0",
+            "#FFF5F0"
+          ],
           "sentences": [
-            { "en": "Press the <span class='hl'>brake</span> to stop the car.", "zh": "踩刹车让车停下来。" },
-            { "en": "The driver <span class='hl'>braked</span> suddenly at the red light.", "zh": "司机在红灯前突然刹车。" }
+            {
+              "en": "Press the <span class='hl'>brake</span> to stop the car.",
+              "zh": "踩刹车让车停下来。"
+            },
+            {
+              "en": "The driver <span class='hl'>braked</span> suddenly at the red light.",
+              "zh": "司机在红灯前突然刹车。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>br+ake</b> → 只有5个字母！\"br\"像\"不让\"🖐️，\"ake\"像ache(痛)——不让车\"痛\"，快踩刹车！" },
-            { "icon": "🔊", "text": "<b>/breɪk/</b> → 和<b>break</b>(打破)发音一模一样！但拼写不同——brake是刹车🛑，break是打碎💥。别搞混哦！" },
-            { "icon": "📖", "text": "来自古德语<b>brecan</b>(打破→停下)。自行车用<b>hand brake</b>手刹🤚，汽车用<b>foot brake</b>脚刹🦶。\"hit the brakes!\"=紧急刹车！" }
+            {
+              "icon": "🔤",
+              "text": "<b>br+ake</b> → 只有5个字母！\"br\"像\"不让\"🖐️，\"ake\"像ache(痛)——不让车\"痛\"，快踩刹车！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/breɪk/</b> → 和<b>break</b>(打破)发音一模一样！但拼写不同——brake是刹车🛑，break是打碎💥。别搞混哦！"
+            },
+            {
+              "icon": "📖",
+              "text": "来自古德语<b>brecan</b>(打破→停下)。自行车用<b>hand brake</b>手刹🤚，汽车用<b>foot brake</b>脚刹🦶。\"hit the brakes!\"=紧急刹车！"
+            }
           ]
         },
         {
-          "id": "flight", "word": "flight", "phonetic": "/flaɪt/",
-          "chinese": "航班；飞行", "emoji": "✈️", "pos": "名词",
-          "heroGradient": ["#D5E8F8", "#EDF5FC"],
+          "id": "flight",
+          "word": "flight",
+          "phonetic": "/flaɪt/",
+          "chinese": "航班；飞行",
+          "emoji": "✈️",
+          "pos": "名词",
+          "heroGradient": [
+            "#D5E8F8",
+            "#EDF5FC"
+          ],
           "sentences": [
-            { "en": "Our <span class='hl'>flight</span> to London is at 3:00 PM.", "zh": "我们去伦敦的航班是下午三点。" },
-            { "en": "The bird's <span class='hl'>flight</span> was beautiful to watch.", "zh": "鸟儿的飞行姿态美极了。" }
+            {
+              "en": "Our <span class='hl'>flight</span> to London is at 3:00 PM.",
+              "zh": "我们去伦敦的航班是下午三点。"
+            },
+            {
+              "en": "The bird's <span class='hl'>flight</span> was beautiful to watch.",
+              "zh": "鸟儿的飞行姿态美极了。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>fl+ight</b> → \"fl\"=fly(飞)，\"ight\"是名词后缀。飞的行为=航班✈️！light, night, right都是ight家族" },
-            { "icon": "🔊", "text": "<b>/flaɪt/</b> → \"弗莱特\"。<b>gh不发音</b>！和light(光)、night(夜晚)、right(右边)读音模式一样，记住一群！" },
-            { "icon": "📖", "text": "来自fly(飞)。记住这群<b>ight家族</b>：light(光💡)、night(夜🌙)、right(对✓)、flight(飞✈️)、bright(亮🌟)——gh都不发音！\"flight attendant\"=空乘人员🧑‍✈️" }
+            {
+              "icon": "🔤",
+              "text": "<b>fl+ight</b> → \"fl\"=fly(飞)，\"ight\"是名词后缀。飞的行为=航班✈️！light, night, right都是ight家族"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/flaɪt/</b> → \"弗莱特\"。<b>gh不发音</b>！和light(光)、night(夜晚)、right(右边)读音模式一样，记住一群！"
+            },
+            {
+              "icon": "📖",
+              "text": "来自fly(飞)。记住这群<b>ight家族</b>：light(光💡)、night(夜🌙)、right(对✓)、flight(飞✈️)、bright(亮🌟)——gh都不发音！\"flight attendant\"=空乘人员🧑‍✈️"
+            }
           ]
         },
         {
-          "id": "garage", "word": "garage", "phonetic": "/ɡəˈrɑːʒ/",
-          "chinese": "车库", "emoji": "🏠", "pos": "名词",
-          "heroGradient": ["#E8E0D8", "#F5F0EB"],
+          "id": "garage",
+          "word": "garage",
+          "phonetic": "/ɡəˈrɑːʒ/",
+          "chinese": "车库",
+          "emoji": "🏠",
+          "pos": "名词",
+          "heroGradient": [
+            "#E8E0D8",
+            "#F5F0EB"
+          ],
           "sentences": [
-            { "en": "Dad parks the car in the <span class='hl'>garage</span>.", "zh": "爸爸把车停在车库里。" },
-            { "en": "The <span class='hl'>garage</span> door needs to be fixed.", "zh": "车库门需要修一下。" }
+            {
+              "en": "Dad parks the car in the <span class='hl'>garage</span>.",
+              "zh": "爸爸把车停在车库里。"
+            },
+            {
+              "en": "The <span class='hl'>garage</span> door needs to be fixed.",
+              "zh": "车库门需要修一下。"
+            }
           ],
           "memory": [
-            { "icon": "🔤", "text": "<b>ga+ra+ge</b> → 3个音节，法语借词！\"ga\"嘎，\"ra\"让，\"ge\"日——法国的车库带浪漫口音🇫🇷" },
-            { "icon": "🔊", "text": "<b>/ɡəˈrɑːʒ/</b> → \"格-让日\"。重音在<b>ra</b>！ge读/ʒ/像中文\"日\"。法语词发音特殊——gar<b>age</b>不是gar<b>age</b>🎵" },
-            { "icon": "📖", "text": "来自法语<b>garer</b>(停放)。1910年代汽车普及才有的词！法语尾音/ʒ/保留了法国味道🥐。massage💆、corsage🌺也是age结尾的法语词" }
+            {
+              "icon": "🔤",
+              "text": "<b>ga+ra+ge</b> → 3个音节，法语借词！\"ga\"嘎，\"ra\"让，\"ge\"日——法国的车库带浪漫口音🇫🇷"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ɡəˈrɑːʒ/</b> → \"格-让日\"。重音在<b>ra</b>！ge读/ʒ/像中文\"日\"。法语词发音特殊——gar<b>age</b>不是gar<b>age</b>🎵"
+            },
+            {
+              "icon": "📖",
+              "text": "来自法语<b>garer</b>(停放)。1910年代汽车普及才有的词！法语尾音/ʒ/保留了法国味道🥐。massage💆、corsage🌺也是age结尾的法语词"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "journey1",
+      "name": "出行之旅 ①",
+      "emoji": "🧳",
+      "dateAdded": "2026-07-28",
+      "color": "#5B9EED",
+      "page": "journey1.html",
+      "wordCount": 8,
+      "words": [
+        {
+          "id": "passport",
+          "word": "passport",
+          "phonetic": "/ˈpæs.pɔːrt/",
+          "chinese": "护照",
+          "emoji": "📔",
+          "pos": "名词",
+          "heroGradient": [
+            "#D5E0F0",
+            "#E8EFF8"
+          ],
+          "sentences": [
+            {
+              "en": "You need a <span class='hl'>passport</span> to travel abroad.",
+              "zh": "出国旅行需要护照。"
+            },
+            {
+              "en": "My <span class='hl'>passport</span> is in my bag.",
+              "zh": "我的护照在包里。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>pass+port</b> → \"pass\"(通过)+\"port\"(港口)=通行港口=护照📔！有了它才能通过边境口岸"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈpæs.pɔːrt/</b> → \"帕斯-破特\"。重音在<b>pass</b>！port中or发/ɔːr/长音"
+            },
+            {
+              "icon": "📖",
+              "text": "<b>pass</b>(通过)+<b>port</b>(港口→拉丁语portus)。中世纪进入港口需通行证——后来变成护照📔！port家族：airport✈️、seaport⚓、export🚢"
+            }
+          ]
+        },
+        {
+          "id": "left",
+          "word": "left",
+          "phonetic": "/left/",
+          "chinese": "左边",
+          "emoji": "👈",
+          "pos": "形容词；名词",
+          "heroGradient": [
+            "#F0E8D8",
+            "#F8F4EC"
+          ],
+          "sentences": [
+            {
+              "en": "Turn <span class='hl'>left</span> at the corner.",
+              "zh": "在拐角处左转。"
+            },
+            {
+              "en": "The bank is on your <span class='hl'>left</span>.",
+              "zh": "银行在你的左边。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>l+e+f+t</b> → 只有4个字母！L像一个人的侧影👤——左手边就是left"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/left/</b> → \"来夫特\"。短音/e/干脆利落。别和<b>lift</b>(电梯)搞混——lift有i"
+            },
+            {
+              "icon": "📖",
+              "text": "古英语<b>lyft</b>(弱的)。大多数人左手力气小——所以left=\"弱\"的那边🤚。left也作<b>leave</b>的过去式——\"I left home\"(我离开家)"
+            }
+          ]
+        },
+        {
+          "id": "mirror",
+          "word": "mirror",
+          "phonetic": "/ˈmɪr.ər/",
+          "chinese": "镜子",
+          "emoji": "🪞",
+          "pos": "名词",
+          "heroGradient": [
+            "#E8E8F0",
+            "#F4F4F8"
+          ],
+          "sentences": [
+            {
+              "en": "Look in the <span class='hl'>mirror</span> before you go.",
+              "zh": "出门前照照镜子。"
+            },
+            {
+              "en": "The car has two side <span class='hl'>mirrors</span>.",
+              "zh": "汽车有两个侧视镜。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>mir+ror</b> → \"mir\"中间的i是你自己👤，两边r是镜框🪞。mirror就是看自己的框！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈmɪr.ər/</b> → \"米弱-弱\"。重音在mir，ror发/ər/弱读很快"
+            },
+            {
+              "icon": "📖",
+              "text": "来自拉丁语<b>mirari</b>(惊讶😮)。照镜子看到自己会惊讶吗？汽车后视镜叫<b>rear-view mirror</b>🚗。\"Mirror mirror on the wall\"——白雪公主的名句👸"
+            }
+          ]
+        },
+        {
+          "id": "travel_agent",
+          "word": "travel agent",
+          "phonetic": "/ˈtræv.əl ˌeɪ.dʒənt/",
+          "chinese": "旅行社；旅行代办人",
+          "emoji": "🏢",
+          "pos": "名词",
+          "heroGradient": [
+            "#E8F0E8",
+            "#F4F8F4"
+          ],
+          "sentences": [
+            {
+              "en": "We booked the trip at a <span class='hl'>travel agent</span>.",
+              "zh": "我们在旅行社订了行程。"
+            },
+            {
+              "en": "The <span class='hl'>travel agent</span> found us a good hotel.",
+              "zh": "旅行社帮我们找了一家好酒店。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>travel+agent</b> → \"travel\"(旅行)+\"agent\"(代理人)=帮你安排旅行的人=旅行社🏢！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈtræv.əl ˌeɪ.dʒənt/</b> → \"揣-沃 诶-真特\"。travel重在前，agent重在后"
+            },
+            {
+              "icon": "📖",
+              "text": "travel来自古法语<b>travailler</b>(辛苦工作)——古代旅行是件辛苦事😅。agent来自拉丁语<b>agere</b>(做)。travel agent就是\"帮做旅行安排的人\""
+            }
+          ]
+        },
+        {
+          "id": "platform",
+          "word": "platform",
+          "phonetic": "/ˈplæt.fɔːrm/",
+          "chinese": "站台；平台",
+          "emoji": "🚉",
+          "pos": "名词",
+          "heroGradient": [
+            "#D8E8F0",
+            "#ECF2F8"
+          ],
+          "sentences": [
+            {
+              "en": "The train arrives at <span class='hl'>platform</span> 3.",
+              "zh": "火车停靠在3号站台。"
+            },
+            {
+              "en": "Wait for me on the <span class='hl'>platform</span>.",
+              "zh": "在站台上等我。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>plat+form</b> → \"plat\"=flat(平的)，\"form\"=形状。一块平平的地方=站台！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈplæt.fɔːrm/</b> → \"普拉特-佛姆\"。重音在<b>plat</b>！plat中a发/æ/短音"
+            },
+            {
+              "icon": "📖",
+              "text": "<b>plat</b>=平的(如plate盘子🍽️)+<b>form</b>=形状。platform从\"平的地方\"引申为：火车站台🚉、演讲讲台🎤、甚至\"网络平台\"💻"
+            }
+          ]
+        },
+        {
+          "id": "railway",
+          "word": "railway",
+          "phonetic": "/ˈreɪl.weɪ/",
+          "chinese": "铁路",
+          "emoji": "🛤️",
+          "pos": "名词",
+          "heroGradient": [
+            "#E8D8C8",
+            "#F5EDE2"
+          ],
+          "sentences": [
+            {
+              "en": "The <span class='hl'>railway</span> was built in 1900.",
+              "zh": "这条铁路建于1900年。"
+            },
+            {
+              "en": "We traveled by <span class='hl'>railway</span> across the country.",
+              "zh": "我们乘火车穿越全国。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>rail+way</b> → \"rail\"(铁轨🛤️)+\"way\"(路)。铁轨铺的路=铁路！英国的铁路网是全球最早的"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈreɪl.weɪ/</b> → \"瑞欧-微\"。重音在<b>rail</b>！ai发/eɪ/长音。way和day、say押韵"
+            },
+            {
+              "icon": "📖",
+              "text": "英国1825年第一条公共铁路🚂。rail(横杆→铁轨)+way(路)。railroad是美式说法。underground railway=地铁🚇。railway station=火车站"
+            }
+          ]
+        },
+        {
+          "id": "engineer",
+          "word": "engineer",
+          "phonetic": "/ˌen.dʒɪˈnɪr/",
+          "chinese": "工程师",
+          "emoji": "👷",
+          "pos": "名词",
+          "heroGradient": [
+            "#E0E0F0",
+            "#F0F0F8"
+          ],
+          "sentences": [
+            {
+              "en": "My dad is an <span class='hl'>engineer</span>.",
+              "zh": "我爸爸是工程师。"
+            },
+            {
+              "en": "<span class='hl'>Engineers</span> build bridges and roads.",
+              "zh": "工程师建造桥梁和道路。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>engine+eer</b> → engine(引擎)+\"eer\"(表示人)。和引擎打交道的人=工程师👷！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˌen.dʒɪˈnɪr/</b> → \"恩-吉-尼尔\"。重音在<b>neer</b>！g读/dʒ/，和engine一样"
+            },
+            {
+              "icon": "📖",
+              "text": "<b>engine</b>(引擎)+<b>eer</b>(表示人的后缀，如volunteer志愿者)。最早的工程师造蒸汽机。train engineer=火车司机🚂。software engineer=软件工程师💻"
+            }
+          ]
+        },
+        {
+          "id": "underground",
+          "word": "underground",
+          "phonetic": "/ˌʌn.dərˈɡraʊnd/",
+          "chinese": "地铁；地下的",
+          "emoji": "🚇",
+          "pos": "名词；形容词",
+          "heroGradient": [
+            "#D5D8E8",
+            "#EAECF5"
+          ],
+          "sentences": [
+            {
+              "en": "We took the <span class='hl'>underground</span> to the museum.",
+              "zh": "我们坐地铁去了博物馆。"
+            },
+            {
+              "en": "The <span class='hl'>underground</span> station is very busy.",
+              "zh": "地铁站非常繁忙。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>under+ground</b> → \"under\"(在下面)+\"ground\"(地面)=在地底下=地铁🚇！一个字面意思超清楚的词"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˌʌn.dərˈɡraʊnd/</b> → \"安-得-格让德\"。重音在<b>ground</b>！under轻读"
+            },
+            {
+              "icon": "📖",
+              "text": "英国叫<b>underground</b>🚇，美国叫<b>subway</b>。伦敦地铁1863年开通——世界第一条！伦敦人亲切地叫它\"the Tube\"(管子)，因为隧道像管子🫘"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "journey2",
+      "name": "出行之旅 ②",
+      "emoji": "🎫",
+      "dateAdded": "2026-07-29",
+      "color": "#E8725A",
+      "page": "journey2.html",
+      "wordCount": 10,
+      "words": [
+        {
+          "id": "ticket",
+          "word": "ticket",
+          "phonetic": "/ˈtɪk.ɪt/",
+          "chinese": "票；入场券",
+          "emoji": "🎫",
+          "pos": "名词",
+          "heroGradient": [
+            "#FDE8E0",
+            "#FFF5F0"
+          ],
+          "sentences": [
+            {
+              "en": "I have a train <span class='hl'>ticket</span> to London.",
+              "zh": "我有一张去伦敦的火车票。"
+            },
+            {
+              "en": "How much is the <span class='hl'>ticket</span>?",
+              "zh": "票多少钱？"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>tick+et</b> → \"tick\"像钟表滴答⏰，\"et\"是小东西。一张小小的票——拿在手里等出发！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈtɪk.ɪt/</b> → \"提-ki特\"。重音在tick。两个i都发/ɪ/短音，清脆利落"
+            },
+            {
+              "icon": "📖",
+              "text": "来自法语<b>etiquette</b>(小标签)。ticket office=售票处🎟️。return ticket=往返票。\"That's the ticket!\"=太棒了！(英国俚语)"
+            }
+          ]
+        },
+        {
+          "id": "tour",
+          "word": "tour",
+          "phonetic": "/tʊr/",
+          "chinese": "旅行；游览",
+          "emoji": "🗺️",
+          "pos": "名词；动词",
+          "heroGradient": [
+            "#E8F0D8",
+            "#F4F8EC"
+          ],
+          "sentences": [
+            {
+              "en": "We went on a <span class='hl'>tour</span> of the city.",
+              "zh": "我们参加了城市游览。"
+            },
+            {
+              "en": "The guide will <span class='hl'>tour</span> us around the museum.",
+              "zh": "导游会带我们参观博物馆。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>t+o+u+r</b> → 只有4个字母！tour=围绕一圈的游玩。tourist是tour加ist=游客📸"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/tʊr/</b> → \"图尔\"。ou发/ʊr/——和tourist的tour一样。注意不要读成/tɔːr/"
+            },
+            {
+              "icon": "📖",
+              "text": "来自拉丁语<b>tornare</b>(转圈)——tour就是绕一圈回来🔄。法国环法自行车赛叫<b>Tour de France</b>🚴！tour guide=导游，tour bus=观光巴士"
+            }
+          ]
+        },
+        {
+          "id": "tour_guide",
+          "word": "tour guide",
+          "phonetic": "/tʊr ɡaɪd/",
+          "chinese": "导游",
+          "emoji": "🧑‍🏫",
+          "pos": "名词",
+          "heroGradient": [
+            "#F0E8D8",
+            "#F8F4EC"
+          ],
+          "sentences": [
+            {
+              "en": "The <span class='hl'>tour guide</span> showed us the castle.",
+              "zh": "导游带我们参观了城堡。"
+            },
+            {
+              "en": "She works as a <span class='hl'>tour guide</span> in Paris.",
+              "zh": "她在巴黎当导游。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>tour+guide</b> → \"tour\"(游览)+\"guide\"(引导者)。带你游览的人=导游🧑‍🏫！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/tʊr ɡaɪd/</b> → \"图尔 盖德\"。gui读/ɡaɪ/——guide中u不发音！"
+            },
+            {
+              "icon": "📖",
+              "text": "guide来自古法语<b>guier</b>(引导)。好的导游让旅行更有趣🏰。guide book=旅行指南📖。Girl Guides=女童子军——和Boy Scouts对应"
+            }
+          ]
+        },
+        {
+          "id": "tourist",
+          "word": "tourist",
+          "phonetic": "/ˈtʊr.ɪst/",
+          "chinese": "游客",
+          "emoji": "📸",
+          "pos": "名词",
+          "heroGradient": [
+            "#F0E0F0",
+            "#F8F0F8"
+          ],
+          "sentences": [
+            {
+              "en": "Many <span class='hl'>tourists</span> visit the Great Wall.",
+              "zh": "很多游客参观长城。"
+            },
+            {
+              "en": "I am a <span class='hl'>tourist</span> in this city.",
+              "zh": "我在这个城市是个游客。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>tour+ist</b> → \"tour\"(旅行)+\"ist\"(表示人)。去旅行的人=游客📸！scientist科学家也是ist"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈtʊr.ɪst/</b> → \"图-瑞斯特\"。重音在tour。tour读/tʊr/和tour一样"
+            },
+            {
+              "icon": "📖",
+              "text": "<b>ist家族</b>：scientist👩‍🔬、artist🎨、pianist🎹、tourist📸——都是\"做某事的人\"。tourist attraction=旅游景点🏯。tourist trap=宰客景点💸"
+            }
+          ]
+        },
+        {
+          "id": "canal",
+          "word": "canal",
+          "phonetic": "/kəˈnæl/",
+          "chinese": "运河",
+          "emoji": "🚢",
+          "pos": "名词",
+          "heroGradient": [
+            "#D8E8F8",
+            "#ECF2FC"
+          ],
+          "sentences": [
+            {
+              "en": "Boats travel along the <span class='hl'>canal</span>.",
+              "zh": "船只在运河上航行。"
+            },
+            {
+              "en": "The <span class='hl'>canal</span> connects two big cities.",
+              "zh": "这条运河连接了两座大城市。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>ca+nal</b> → \"ca\"像\"开\"，\"nal\"像channel(水道)。人工开挖的水道=运河🚢"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/kəˈnæl/</b> → \"可-奈尔\"。重音在<b>nal</b>！c读/k/不是/s/。a发/æ/短音"
+            },
+            {
+              "icon": "📖",
+              "text": "来自拉丁语<b>canalis</b>(水道)。中国大运河<b>Grand Canal</b>世界最长！威尼斯有150条运河🛶。巴拿马运河Panama Canal连接两大洋🌊。"
+            }
+          ]
+        },
+        {
+          "id": "delay",
+          "word": "delay",
+          "phonetic": "/dɪˈleɪ/",
+          "chinese": "延误；推迟",
+          "emoji": "⏰",
+          "pos": "名词；动词",
+          "heroGradient": [
+            "#FDE8E8",
+            "#FFF5F5"
+          ],
+          "sentences": [
+            {
+              "en": "There was a <span class='hl'>delay</span> at the airport.",
+              "zh": "机场发生了延误。"
+            },
+            {
+              "en": "The train was <span class='hl'>delayed</span> by snow.",
+              "zh": "火车因大雪晚点了。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>de+lay</b> → \"de\"(离开/放下)+\"lay\"(放)=放一边去=推迟⏰！delay就是事情被\"放\"到后面"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/dɪˈleɪ/</b> → \"迪-雷\"。重音在<b>lay</b>！de弱读/dɪ/。和play、stay押韵"
+            },
+            {
+              "icon": "📖",
+              "text": "de(离开)+古法语<b>laier</b>(留下)。机场常听到\"The flight is delayed.\"✈️。delay的反义词是<b>on time</b>(准时)✅。\"Sorry for the delay\"=抱歉来晚了"
+            }
+          ]
+        },
+        {
+          "id": "engine",
+          "word": "engine",
+          "phonetic": "/ˈen.dʒɪn/",
+          "chinese": "引擎；发动机",
+          "emoji": "🔧",
+          "pos": "名词",
+          "heroGradient": [
+            "#E8E0D8",
+            "#F5F0EB"
+          ],
+          "sentences": [
+            {
+              "en": "The car <span class='hl'>engine</span> makes a loud noise.",
+              "zh": "汽车引擎发出很大的噪音。"
+            },
+            {
+              "en": "Steam <span class='hl'>engines</span> powered old trains.",
+              "zh": "蒸汽机为老式火车提供动力。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>en+gine</b> → \"en\"在里面，\"gine\"像\"金\"——引擎是车里面的\"金子\"，最重要的部分🔧"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈen.dʒɪn/</b> → \"恩-金\"。重音在<b>en</b>！g读/dʒ/，ine读/ɪn/短音"
+            },
+            {
+              "icon": "📖",
+              "text": "来自拉丁语<b>ingenium</b>(聪明才智)。最初指任何精巧机器。search engine=搜索引擎🔍。engine driver=火车司机🚂。fire engine=消防车🚒"
+            }
+          ]
+        },
+        {
+          "id": "mechanic",
+          "word": "mechanic",
+          "phonetic": "/məˈkæn.ɪk/",
+          "chinese": "机械师；技工",
+          "emoji": "🔧",
+          "pos": "名词",
+          "heroGradient": [
+            "#E8E8E0",
+            "#F5F5F0"
+          ],
+          "sentences": [
+            {
+              "en": "The <span class='hl'>mechanic</span> fixed my car.",
+              "zh": "机械师修好了我的车。"
+            },
+            {
+              "en": "He works as a <span class='hl'>mechanic</span> at a garage.",
+              "zh": "他在车库当机械师。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>me+chan+ic</b> → machine(机器)+ic(人)=修理机器的人=机械师🔧！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/məˈkæn.ɪk/</b> → \"莫-看-尼克\"。重音在<b>chan</b>！ch读/k/——和school里的ch一样"
+            },
+            {
+              "icon": "📖",
+              "text": "来自希腊语<b>mekhane</b>(机器)。machine(机器)、mechanical(机械的)都是同家族。car mechanic=汽车修理工🔧。Mechanic也指\"技工\""
+            }
+          ]
+        },
+        {
+          "id": "petrol",
+          "word": "petrol",
+          "phonetic": "/ˈpe.trəl/",
+          "chinese": "汽油",
+          "emoji": "⛽",
+          "pos": "名词",
+          "heroGradient": [
+            "#FDE8D0",
+            "#FFF5E8"
+          ],
+          "sentences": [
+            {
+              "en": "We need to fill up with <span class='hl'>petrol</span>.",
+              "zh": "我们需要加油了。"
+            },
+            {
+              "en": "<span class='hl'>Petrol</span> prices are going up.",
+              "zh": "汽油价格在上涨。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>pet+rol</b> → \"pet\"=石油(petro)，\"rol\"=roll(滚动)。石油让车轮滚动⛽！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈpe.trəl/</b> → \"派-戳\"。重音在<b>pet</b>！t在r前略变。英国人说petrol"
+            },
+            {
+              "icon": "📖",
+              "text": "来自<b>petroleum</b>(石油)=petro(石头)+leum(油)——石头里冒出来的油🪨。UK：petrol⛽，US：gas。petrol station=加油站"
+            }
+          ]
+        },
+        {
+          "id": "petrol_station",
+          "word": "petrol station",
+          "phonetic": "/ˈpe.trəl ˌsteɪ.ʃən/",
+          "chinese": "加油站",
+          "emoji": "⛽",
+          "pos": "名词",
+          "heroGradient": [
+            "#FDF0D0",
+            "#FFF9E8"
+          ],
+          "sentences": [
+            {
+              "en": "Let's stop at the <span class='hl'>petrol station</span>.",
+              "zh": "我们在加油站停一下吧。"
+            },
+            {
+              "en": "There is a <span class='hl'>petrol station</span> near the motorway.",
+              "zh": "高速公路附近有一个加油站。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>petrol+station</b> → \"petrol\"(汽油)+\"station\"(站点)。给汽车加汽油的地方⛽"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈpe.trəl ˌsteɪ.ʃən/</b> → \"派-戳 斯得-深\"。两个词分开读，各保持自己重音"
+            },
+            {
+              "icon": "📖",
+              "text": "UK：<b>petrol station</b>⛽，US：<b>gas station</b>。最早的加油站是药店——汽油当药品卖💊。现在很多加油站还有便利店🏪"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "journey3",
+      "name": "出行之旅 ③",
+      "emoji": "🛞",
+      "dateAdded": "2026-07-30",
+      "color": "#7BAE7F",
+      "page": "journey3.html",
+      "wordCount": 10,
+      "words": [
+        {
+          "id": "pilot",
+          "word": "pilot",
+          "phonetic": "/ˈpaɪ.lət/",
+          "chinese": "飞行员；领航员",
+          "emoji": "👨‍✈️",
+          "pos": "名词",
+          "heroGradient": [
+            "#D5E0F0",
+            "#E8EFF8"
+          ],
+          "sentences": [
+            {
+              "en": "The <span class='hl'>pilot</span> landed the plane safely.",
+              "zh": "飞行员安全降落了飞机。"
+            },
+            {
+              "en": "She wants to be a <span class='hl'>pilot</span> when she grows up.",
+              "zh": "她长大后想当飞行员。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>pi+lot</b> → \"pi\"派，\"lot\"骆驼🐪——飞行员驾着\"骆驼\"飞上蓝天！和pirate(海盗)开头一样pi"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈpaɪ.lət/</b> → \"派-乐特\"。重音在<b>pi</b>！i发长音/aɪ/。pi和pie(派)发音一样🥧"
+            },
+            {
+              "icon": "📖",
+              "text": "来自希腊语<b>pedon</b>(舵⚓)。最初指船上的舵手，后来变成开飞机的人✈️。auto<b>pilot</b>=自动驾驶🤖。TV pilot=电视剧试播集📺"
+            }
+          ]
+        },
+        {
+          "id": "mile",
+          "word": "mile",
+          "phonetic": "/maɪl/",
+          "chinese": "英里",
+          "emoji": "📏",
+          "pos": "名词",
+          "heroGradient": [
+            "#E8F0D8",
+            "#F4F8EC"
+          ],
+          "sentences": [
+            {
+              "en": "We walked five <span class='hl'>miles</span> today.",
+              "zh": "我们今天走了五英里。"
+            },
+            {
+              "en": "The airport is 20 <span class='hl'>miles</span> away.",
+              "zh": "机场在20英里外。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>mi+le</b> → 只有4个字母！\"mi\"像\"迈\"——迈一步就是走向英里的开始🚶"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/maɪl/</b> → \"麦尔\"。i发长音/aɪ/。mile和smile(微笑😊)押韵——走一英里要微笑"
+            },
+            {
+              "icon": "📖",
+              "text": "来自拉丁语<b>mille</b>(一千)。古罗马一英里=士兵走1000步👣。1 mile≈1.6 km。mile和kilometer对比：美国用mile🇺🇸，中国用公里🇨🇳"
+            }
+          ]
+        },
+        {
+          "id": "wheel",
+          "word": "wheel",
+          "phonetic": "/wiːl/",
+          "chinese": "车轮；方向盘",
+          "emoji": "🛞",
+          "pos": "名词",
+          "heroGradient": [
+            "#E8E0D8",
+            "#F5F0EB"
+          ],
+          "sentences": [
+            {
+              "en": "The car has four <span class='hl'>wheels</span>.",
+              "zh": "汽车有四个轮子。"
+            },
+            {
+              "en": "He held the <span class='hl'>wheel</span> tightly.",
+              "zh": "他紧紧地握着方向盘。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>wh+ee+l</b> → wh像风吹🌬️，ee两个e像两个车轮🛞🛞，l是车轴——轮子转起来了"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/wiːl/</b> → \"威欧\"。wh读/w/不读/hw/！ee发长音/iː/。wheel和feel押韵"
+            },
+            {
+              "icon": "📖",
+              "text": "古英语<b>hweol</b>。人类最伟大发明之一——5000年前就有轮子！steering wheel=方向盘🎡。Ferris wheel=摩天轮🎡。reinvent the wheel=重复造轮子(做无用功)"
+            }
+          ]
+        },
+        {
+          "id": "passenger",
+          "word": "passenger",
+          "phonetic": "/ˈpæs.ən.dʒər/",
+          "chinese": "乘客",
+          "emoji": "🧳",
+          "pos": "名词",
+          "heroGradient": [
+            "#F0E8F0",
+            "#F8F4F8"
+          ],
+          "sentences": [
+            {
+              "en": "The bus holds 50 <span class='hl'>passengers</span>.",
+              "zh": "这辆公共汽车可载50名乘客。"
+            },
+            {
+              "en": "<span class='hl'>Passengers</span> should fasten their seat belts.",
+              "zh": "乘客应系好安全带。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>pass+en+ger</b> → \"pass\"(通过)+\"enger\"(表示人)。路过的人=乘客🧳。不是开车的人"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈpæs.ən.dʒər/</b> → \"派-森-杰\"。重音在<b>pas</b>！sen弱读/ən/很快"
+            },
+            {
+              "icon": "📖",
+              "text": "来自<b>passage</b>(通行)。passenger坐车/飞机/船但不驾驶。passenger seat=副驾驶座🚗。和\"passage\"(通道)、\"pass\"(通过)同根"
+            }
+          ]
+        },
+        {
+          "id": "driving_licence",
+          "word": "driving licence",
+          "phonetic": "/ˈdraɪ.vɪŋ ˌlaɪ.səns/",
+          "chinese": "驾照",
+          "emoji": "🪪",
+          "pos": "名词",
+          "heroGradient": [
+            "#F0E8D8",
+            "#F8F4EC"
+          ],
+          "sentences": [
+            {
+              "en": "I got my <span class='hl'>driving licence</span> last year.",
+              "zh": "我去年拿到了驾照。"
+            },
+            {
+              "en": "You need a <span class='hl'>driving licence</span> to drive a car.",
+              "zh": "开车需要有驾照。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>driving+licence</b> → \"driving\"(开车)+\"licence\"(许可证)。开车许可证=驾照🪪"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈdraɪ.vɪŋ ˌlaɪ.səns/</b> → \"拽-ving 来-森斯\"。driving重在前，licence重在后"
+            },
+            {
+              "icon": "📖",
+              "text": "licence来自拉丁语<b>licentia</b>(许可)。UK：driving licence，US：driver's license🚗。年满18岁可考驾照。无证驾驶=driving without a licence⚠️"
+            }
+          ]
+        },
+        {
+          "id": "motorway",
+          "word": "motorway",
+          "phonetic": "/ˈmoʊ.tər.weɪ/",
+          "chinese": "高速公路",
+          "emoji": "🛣️",
+          "pos": "名词",
+          "heroGradient": [
+            "#D8E0E8",
+            "#ECF0F4"
+          ],
+          "sentences": [
+            {
+              "en": "We drove on the <span class='hl'>motorway</span> to get there fast.",
+              "zh": "我们走高速公路快速到达。"
+            },
+            {
+              "en": "The <span class='hl'>motorway</span> has six lanes.",
+              "zh": "这条高速公路有六车道。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>motor+way</b> → \"motor\"(汽车🏎️)+\"way\"(路)。汽车专用路=高速公路🛣️！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈmoʊ.tər.weɪ/</b> → \"摩-特-微\"。重音在<b>mo</b>！way和day、say押韵"
+            },
+            {
+              "icon": "📖",
+              "text": "UK：<b>motorway</b>🛣️，US：<b>freeway/highway</b>。M1是英国第一条高速公路(1959年)。德国Autobahn部分路段不限速🇩🇪🏎️"
+            }
+          ]
+        },
+        {
+          "id": "crossroads",
+          "word": "crossroads",
+          "phonetic": "/ˈkrɔːs.roʊdz/",
+          "chinese": "十字路口",
+          "emoji": "🚦",
+          "pos": "名词",
+          "heroGradient": [
+            "#FDE8E0",
+            "#FFF5F0"
+          ],
+          "sentences": [
+            {
+              "en": "Turn left at the <span class='hl'>crossroads</span>.",
+              "zh": "在十字路口左转。"
+            },
+            {
+              "en": "There is a traffic light at the <span class='hl'>crossroads</span>.",
+              "zh": "十字路口有一个红绿灯。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>cross+roads</b> → \"cross\"(十字✚)+\"roads\"(路)。两条路交叉的地方=十字路口🚦"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈkrɔːs.roʊdz/</b> → \"克罗斯-肉兹\"。重音在cross。roads的oa发/oʊ/长音"
+            },
+            {
+              "icon": "📖",
+              "text": "cross(交叉)+roads(路)。四条路汇聚一点。<b>at the crossroads</b>也是比喻——\"人生的十字路口\"要做重要决定⏳。美国也常说<b>intersection</b>"
+            }
+          ]
+        },
+        {
+          "id": "roundabout",
+          "word": "roundabout",
+          "phonetic": "/ˈraʊnd.ə.baʊt/",
+          "chinese": "环岛；环形交叉口",
+          "emoji": "🔄",
+          "pos": "名词",
+          "heroGradient": [
+            "#E8F0D8",
+            "#F4F8EC"
+          ],
+          "sentences": [
+            {
+              "en": "Take the third exit at the <span class='hl'>roundabout</span>.",
+              "zh": "在环岛从第三个出口出去。"
+            },
+            {
+              "en": "The <span class='hl'>roundabout</span> helps traffic flow smoothly.",
+              "zh": "环岛帮助交通更顺畅。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>round+about</b> → \"round\"(圆的)+\"about\"(周围)。围着圆圈转=环岛🔄！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/ˈraʊnd.ə.baʊt/</b> → \"让-得-包特\"。重音在round。about中a弱读/ə/"
+            },
+            {
+              "icon": "📖",
+              "text": "英国到处都是roundabout——有的有5、6个出口😱！US：traffic circle。第一个roundabout在英国Letchworth(1909年)。魔法旋转木马也叫roundabout🎠"
+            }
+          ]
+        },
+        {
+          "id": "park",
+          "word": "park",
+          "phonetic": "/pɑːrk/",
+          "chinese": "停车；公园",
+          "emoji": "🅿️",
+          "pos": "动词；名词",
+          "heroGradient": [
+            "#E0F0D8",
+            "#EFF8EC"
+          ],
+          "sentences": [
+            {
+              "en": "Can you <span class='hl'>park</span> the car here?",
+              "zh": "可以在这里停车吗？"
+            },
+            {
+              "en": "Let's go for a walk in the <span class='hl'>park</span>.",
+              "zh": "我们去公园散步吧。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>p+ar+k</b> → 只有4个字母！park是\"公园\"🌳也是\"停车\"🅿️——公园旁边好停车！"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/pɑːrk/</b> → \"帕克\"。ar发/ɑːr/长音。park和dark(黑暗)、bark(狗叫)押韵"
+            },
+            {
+              "icon": "📖",
+              "text": "来自古法语<b>parc</b>(围起来的场地)。最早指围起来的猎场，后来变公园。<b>No parking</b>=禁止停车⚠️。<b>National Park</b>=国家公园🏞️。parking lot=停车场"
+            }
+          ]
+        },
+        {
+          "id": "coach",
+          "word": "coach",
+          "phonetic": "/koʊtʃ/",
+          "chinese": "长途客车；教练",
+          "emoji": "🚌",
+          "pos": "名词",
+          "heroGradient": [
+            "#FDF0D0",
+            "#FFF9E8"
+          ],
+          "sentences": [
+            {
+              "en": "We took a <span class='hl'>coach</span> to the next city.",
+              "zh": "我们坐长途客车去下一个城市。"
+            },
+            {
+              "en": "The <span class='hl'>coach</span> seats are very comfortable.",
+              "zh": "长途客车的座位很舒服。"
+            }
+          ],
+          "memory": [
+            {
+              "icon": "🔤",
+              "text": "<b>c+oa+ch</b> → \"co\"一起，\"ach\"像\"啊车\"——大家一起坐长途车🚌！5个字母好记"
+            },
+            {
+              "icon": "🔊",
+              "text": "<b>/koʊtʃ/</b> → \"扣吃\"。oa发/oʊ/长音！ch读/tʃ/。和roach(蟑螂)、poach(水煮)押韵"
+            },
+            {
+              "icon": "📖",
+              "text": "来自匈牙利小镇<b>Kocs</b>——第一辆长途马车诞生地！coach也指\"教练\"——教练带你到目的地🎯。coach class=经济舱。life coach=人生教练"
+            }
           ]
         }
       ]

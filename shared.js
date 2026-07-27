@@ -105,7 +105,10 @@ const ACHIEVEMENTS = [
 // ============================================================
 const COLLECTIONS_META = [
   { id: 'months', name: '月份单词', emoji: '📅', desc: 'January ~ December，12个月份', dateAdded: '2026-07-25', color: '#6B9AC4', page: 'months.html', wordCount: 12 },
-  { id: 'travel', name: '出行与交通', emoji: '🚗', desc: '10个出行与交通单词：机场、飞机、救护车等', dateAdded: '2026-07-27', color: '#5B9EED', page: 'travel.html', wordCount: 10 }
+  { id: 'travel', name: '出行与交通', emoji: '🚗', desc: '10个出行与交通单词：机场、飞机、救护车等', dateAdded: '2026-07-27', color: '#5B9EED', page: 'travel.html', wordCount: 10 },
+  { id: 'journey1', name: '出行之旅 ①', emoji: '🧳', desc: 'Journey Part 1 — 8个基础出行单词：护照、站台、铁路等', dateAdded: '2026-07-28', color: '#5B9EED', page: 'journey1.html', wordCount: 8 },
+  { id: 'journey2', name: '出行之旅 ②', emoji: '🎫', desc: 'Journey Part 2 — 10个旅游服务单词：票、导游、运河等', dateAdded: '2026-07-29', color: '#E8725A', page: 'journey2.html', wordCount: 10 },
+  { id: 'journey3', name: '出行之旅 ③', emoji: '🛞', desc: 'Journey Part 3 — 10个驾驶道路单词：驾照、高速、环岛等', dateAdded: '2026-07-30', color: '#7BAE7F', page: 'journey3.html', wordCount: 10 }
 ];
 
 // ============================================================
