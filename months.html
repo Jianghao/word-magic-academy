@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📅 月份单词 — 单词魔法学院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#E8725A;--gold:#F4C542;--teal:#3DA5A5;--sky:#5B9EED;
+  --lavender:#9B7EC4;--sage:#7BAE7F;--blush:#F0D5D0;--cream:#FEF9F0;
+  --cat-winter:#6B9AC4;--cat-spring:#7BAE7F;--cat-summer:#E8725A;--cat-autumn:#D4914A;
+  --bg:#FFF8F0;--card:#FFFDF7;--card-hover:#FFF9F2;
+  --text:#3D2C2C;--text-light:#7A6A6A;--text-muted:#B5A5A5;
+  --border:#F0E8E0;--border-light:#F8F2EC;
+  --mastered:#4ECB71;--learning-status:#F4C542;--new:#DDD;
+  --correct:#4ECB71;--wrong:#E8725A;
+  --radius-xs:8px;--radius-sm:14px;--radius:20px;
+  --shadow-xs:0 2px 8px rgba(61,44,44,.05);--shadow:0 4px 24px rgba(61,44,44,.08);--shadow-lg:0 12px 48px rgba(61,44,44,.12);
+  --sidebar-w:260px;
+  --font-display:'ZCOOL KuaiLe','PingFang SC','Microsoft YaHei',cursive;
+  --font-body:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-word:'Georgia','Times New Roman',serif;
+  --fast:.18s ease;--normal:.3s ease;--slow:.5s cubic-bezier(.25,.46,.45,.94);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);height:100vh;overflow:hidden;line-height:1.65}
+
+/* Layout */
+.app-layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;height:100vh;overflow:hidden}
+
+/* Topbar */
+.topbar{
+  grid-column:1/-1;position:sticky;top:0;z-index:90;
+  display:flex;align-items:center;gap:10px;padding:10px 20px;min-height:52px;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border-light);
+}
+.topbar a.back-btn{
+  text-decoration:none;color:var(--text-light);font-size:1.05em;
+  padding:6px 10px;border-radius:var(--radius-xs);transition:all var(--fast);
+}
+.topbar a.back-btn:hover{background:var(--cream);color:var(--coral)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;font-size:1.3em;padding:4px 8px;color:var(--text)}
+.topbar .tb-title{font-family:var(--font-display);font-size:1.05em;margin-right:auto;white-space:nowrap}
+.auto-read-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:50px;border:1.5px solid var(--border);background:var(--card);cursor:pointer;font-size:.8em;font-weight:600;color:var(--text-light);transition:all var(--fast);font-family:var(--font-body);white-space:nowrap}
+.auto-read-btn:hover{border-color:var(--teal);color:var(--teal)}
+.auto-read-btn.on{background:var(--teal);color:#FFF;border-color:var(--teal)}
+@media(max-width:700px){.auto-read-btn{padding:5px 10px;font-size:.75em}}
+.mode-tabs{display:flex;gap:3px;background:var(--cream);border-radius:var(--radius-sm);padding:3px}
+.mode-tab{padding:7px 15px;border-radius:11px;cursor:pointer;font-size:.82em;font-weight:600;color:var(--text-light);transition:all var(--fast);border:none;background:none;font-family:var(--font-body)}
+.mode-tab:hover{color:var(--coral)}.mode-tab.active{background:#FFF;color:var(--coral);box-shadow:var(--shadow-xs)}
+
+/* Sidebar */
+.sidebar{background:rgba(255,255,255,.85);backdrop-filter:blur(18px);border-right:1px solid var(--border);display:flex;flex-direction:column;height:calc(100vh - 52px);position:sticky;top:52px;overflow:hidden;z-index:80}
+.sidebar-header{padding:16px 18px 10px;flex-shrink:0}
+.search-box{width:100%;padding:8px 12px 8px 34px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.85em;font-family:var(--font-body);background:var(--cream);color:var(--text);outline:none;transition:border var(--fast)}
+.search-box:focus{border-color:var(--coral);box-shadow:0 0 0 3px rgba(232,114,90,.08)}
+.search-box::placeholder{color:var(--text-muted)}
+.word-list{flex:1;overflow-y:auto;padding:4px 10px 10px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.word-list::-webkit-scrollbar{width:4px}.word-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px}
+.cat-group{margin-bottom:4px}
+.cat-label{font-family:var(--font-display);font-size:.8em;font-weight:400;padding:8px 10px 4px;display:flex;align-items:center;gap:5px;color:var(--text-light)}
+.cat-label .dot{width:7px;height:7px;border-radius:50%}.cat-label .count{font-size:.78em;color:var(--text-muted);margin-left:auto}
+.word-card{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--radius-sm);cursor:pointer;transition:all var(--fast);margin-bottom:2px;border:1.5px solid transparent}
+.word-card:hover{background:var(--card-hover);transform:translateX(3px)}
+.word-card.active{background:#FFF;border-color:var(--coral);box-shadow:var(--shadow-xs)}
+.wc-emoji{font-size:1.3em;flex-shrink:0;width:30px;text-align:center}
+.wc-info{flex:1;min-width:0}
+.wc-word{font-family:var(--font-word);font-size:.88em;font-weight:700;line-height:1.3}
+.wc-cn{font-size:.75em;color:var(--text-light);line-height:1.3}
+.wc-status{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.wc-status.mastered{background:var(--mastered);box-shadow:0 0 5px rgba(78,203,113,.3)}
+.wc-status.learning{background:var(--learning-status);box-shadow:0 0 5px rgba(244,197,66,.3)}
+.wc-status.new{background:var(--new)}
+.sidebar-footer{padding:8px 18px;border-top:1px solid var(--border-light);display:flex;align-items:center;gap:5px;flex-shrink:0;font-size:.72em;color:var(--text-muted)}
+.sidebar-footer .sf-dot{width:6px;height:6px;border-radius:50%}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:70}
+
+/* Main Content */
+.main{display:flex;flex-direction:column;height:calc(100vh - 52px);overflow:hidden}
+.content-body{flex:1;display:flex;align-items:center;justify-content:center;padding:clamp(6px,1.5vh,16px) 32px;overflow:hidden}
+
+/* ---- BROWSE ---- */
+.browse-slide{
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(16px,2.5vw,36px);width:100%;max-width:100%;
+  animation:fadeIn .35s ease;height:100%;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* Left panel: word details */
+.browse-left{flex:0 0 55%;min-width:0;display:flex;flex-direction:column;gap:clamp(6px,1vh,12px);overflow-y:auto;max-height:100%}
+
+/* Right panel: AI poster */
+.browse-right{flex:0 0 45%;display:flex;align-items:center;justify-content:center;max-height:100%}
+.poster-card{max-width:100%;max-height:100%;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);background:var(--card);border:2px solid var(--border)}
+.poster-card img{width:100%;height:auto;max-height:calc(100vh - 100px);object-fit:contain;display:block}
+
+/* Word title */
+.word-title-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.wt-emoji{font-size:clamp(1.8em,3.5vw,2.6em)}
+.wt-word{font-family:var(--font-word);font-size:clamp(2.2em,5vw,3.6em);font-weight:700;letter-spacing:.02em}
+.word-meta{display:flex;align-items:center;gap:12px;font-size:clamp(1em,1.5vw,1.25em);color:var(--text-light);flex-wrap:wrap;margin-bottom:2px}
+.pronounce-btn{display:inline-flex;align-items:center;justify-content:center;width:2em;height:2em;padding:0;border-radius:50%;background:var(--coral);color:#FFF;border:none;cursor:pointer;font-family:var(--font-body);font-size:.85em;transition:all var(--fast)}
+.pronounce-btn:hover{background:#D0624A;transform:scale(1.04)}.pronounce-btn.playing{background:var(--teal)}
+
+/* Syllable breakdown */
+.syllable-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:4px 0;font-size:clamp(.95em,1.5vw,1.15em)}
+.syl-chip{padding:3px 8px;border-radius:6px;font-family:var(--font-word);font-size:1em;font-weight:600;color:#FFF;position:relative;cursor:default}
+.syl-chip:hover .syl-hint{display:block}
+.syl-hint{display:none;position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--text);color:#FFF;padding:3px 8px;border-radius:5px;font-size:.7em;font-weight:400;font-family:var(--font-body);pointer-events:none;z-index:5}
+.syl-sep{display:flex;align-items:center;font-size:.75em;color:var(--text-muted);font-weight:700}
+
+/* Sentences */
+.slide-sentence{padding:clamp(8px,1.5vh,14px) 20px;border-radius:var(--radius-sm);background:var(--card);border-left:4px solid var(--coral);box-shadow:var(--shadow-xs);text-align:left;display:flex;flex-direction:column;gap:clamp(2px,0.5vh,6px)}
+.sen-en{font-family:var(--font-word);font-size:clamp(1em,1.6vw,1.2em);color:var(--text);line-height:1.7}
+.sen-en .hl{color:var(--coral);font-weight:700;background:rgba(232,114,90,.08);padding:1px 4px;border-radius:3px}
+.sen-zh{font-size:1em;color:var(--text-light);margin-top:4px}
+.sen-divider{height:1px;background:var(--border);margin:2px 0}
+
+/* Memory */
+.slide-memory{background:linear-gradient(135deg,#FFF9E6,#FFFDF7);border:1.5px dashed var(--gold);border-radius:var(--radius-sm);padding:clamp(8px,1.5vh,14px) 20px;text-align:left}
+.slide-memory .sm-header{font-family:var(--font-display);font-size:.95em;font-weight:400;color:var(--gold);margin-bottom:6px;display:flex;align-items:center;gap:4px}
+.slide-memory .sm-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.slide-memory .sm-section{margin-bottom:8px}
+.slide-memory .sm-section:last-child{margin-bottom:0}
+.slide-memory .sm-label{font-size:.78em;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;padding-bottom:3px;border-bottom:1px dashed var(--gold);opacity:.8}
+.slide-memory .sm-text{font-size:clamp(.95em,1.3vw,1.05em);color:var(--text);line-height:1.7}
+.slide-memory .sm-item{display:flex;gap:6px;align-items:baseline;font-size:clamp(.95em,1.3vw,1.05em);color:var(--text);line-height:1.7;margin-top:3px}
+/* Extra: collocations, related, pitfall */
+.slide-extra{display:flex;gap:8px;align-items:baseline;padding:4px 0;font-size:clamp(.88em,1.2vw,.98em);line-height:1.6}
+.slide-extra .se-label{flex-shrink:0;font-size:.82em;font-weight:700;color:var(--coral);white-space:nowrap}
+.slide-extra .se-text{color:var(--text-light)}
+.slide-memory .smi-icon{font-size:1.1em;flex-shrink:0}
+.slide-memory .smi-text{font-size:inherit;color:var(--text);line-height:1.5}
+
+/* Actions */
+.slide-actions{display:flex;gap:8px;flex-wrap:wrap;padding-top:2px}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:11px 20px;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.95em;font-weight:600;cursor:pointer;border:none;transition:all var(--fast)}
+.btn-primary{background:var(--coral);color:#FFF}.btn-primary:hover{background:#D0624A;transform:translateY(-2px);box-shadow:0 6px 18px rgba(232,114,90,.3)}
+.btn-secondary{background:#FFF;color:var(--coral);border:1.5px solid var(--coral)}.btn-secondary:hover{background:rgba(232,114,90,.05);transform:translateY(-2px)}
+.btn-mastered{background:var(--mastered);color:#FFF}.btn-mastered:hover{background:#3CB860;transform:translateY(-2px);box-shadow:0 6px 18px rgba(78,203,113,.3)}
+.btn:active{transform:scale(.96)}.btn:disabled{opacity:.4;pointer-events:none}
+
+/* ---- FLASHCARD ---- */
+.flashcard-view{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:14px;padding:20px;animation:fadeIn .35s ease}
+.flip-container{width:clamp(200px,26vw,300px);aspect-ratio:3/4;perspective:1000px;cursor:pointer}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+.flip-container.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.flip-front{background:linear-gradient(135deg,#FFFDF7,#FFF8F0);border:2px solid var(--border);box-shadow:var(--shadow-lg)}
+.ff-emoji{font-size:4em;margin-bottom:12px}.ff-word{font-family:var(--font-word);font-size:2em;font-weight:700}
+.ff-hint{font-size:.8em;color:var(--text-muted);margin-top:8px}
+.flip-back{transform:rotateY(180deg);background:linear-gradient(135deg,#FFFDF7,#FFF9E6);border:2px solid var(--gold);box-shadow:var(--shadow-lg);padding:24px;text-align:center;gap:8px}
+.fb-emoji{font-size:2.5em}.fb-cn{font-family:var(--font-display);font-size:1.6em;color:var(--coral)}
+.fb-word{font-family:var(--font-word);font-size:1em;color:var(--text-light)}
+.fb-sentence{font-size:.85em;color:var(--text);line-height:1.5;margin-top:4px}
+.fb-sentence .hl{color:var(--coral);font-weight:700}
+.fc-actions{display:flex;gap:12px}
+.fc-btn{width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;font-size:1.2em;color:#FFF;transition:all var(--fast)}
+.fc-btn.forgot{background:var(--coral)}.fc-btn.remember{background:var(--mastered)}.fc-btn.skip{background:var(--text-muted)}
+.fc-btn:hover{transform:scale(1.1)}.fc-progress{font-size:.85em;color:var(--text-light)}
+
+/* ---- QUIZ ---- */
+.quiz-view{display:flex;align-items:center;justify-content:center;height:100%;padding:20px;animation:fadeIn .35s ease}
+.quiz-card{max-width:560px;width:100%;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:32px 28px;text-align:center}
+.q-progress{font-size:.82em;color:var(--text-muted);margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:8px}
+.q-progress-bar{flex:1;max-width:180px;height:5px;background:var(--border);border-radius:10px;overflow:hidden}
+.q-progress-bar-fill{height:100%;background:var(--coral);border-radius:10px;transition:width var(--normal)}
+.q-emoji{font-size:2.8em;margin-bottom:10px}.q-prompt{font-family:var(--font-display);font-size:1.6em;margin-bottom:8px}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.quiz-option{padding:14px 18px;border-radius:var(--radius-sm);border:2px solid var(--border);background:var(--card);cursor:pointer;font-family:var(--font-word);font-size:1.15em;font-weight:600;transition:all var(--fast)}
+.quiz-option:hover{border-color:var(--sky);background:#F5F9FF;transform:translateY(-2px)}
+.quiz-option.correct{border-color:var(--correct);background:#E8F9EE;color:var(--correct)}
+.quiz-option.wrong{border-color:var(--wrong);background:#FEF0ED;color:var(--wrong)}
+.quiz-score{text-align:center;padding:20px 0;font-family:var(--font-display);font-size:1.6em}
+.qs-big{font-size:2.2em;color:var(--coral)}
+
+/* ---- SPELL ---- */
+.spell-view{display:flex;align-items:center;justify-content:center;height:100%;padding:20px;animation:fadeIn .35s ease}
+.spell-card{max-width:500px;width:100%;text-align:center;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:30px 26px}
+.sp-emoji{font-size:2.5em;margin-bottom:6px}.sp-prompt{font-family:var(--font-display);font-size:1.4em;margin-bottom:4px}
+.sp-hint{font-size:.82em;color:var(--text-muted);margin-bottom:18px}
+.spell-input{width:100%;max-width:280px;padding:12px 16px;font-family:var(--font-word);font-size:1.8em;font-weight:600;text-align:center;letter-spacing:.06em;border:2px solid var(--border);border-radius:var(--radius-sm);background:var(--cream);color:var(--text);outline:none;transition:border var(--fast)}
+.spell-input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(91,158,237,.08)}
+.spell-input.correct{border-color:var(--correct);background:#E8F9EE}
+.spell-input.wrong{border-color:var(--wrong);background:#FEF0ED}
+.spell-feedback{margin-top:10px;font-size:.88em;font-weight:600;min-height:22px}
+
+/* Responsive */
+@media(max-width:900px){
+  .app-layout{grid-template-columns:0px 1fr}
+  .sidebar{position:fixed;left:0;top:52px;z-index:200;transform:translateX(-100%);transition:transform var(--slow);box-shadow:var(--shadow-lg);width:var(--sidebar-w);pointer-events:none}
+  .sidebar.open{transform:translateX(0);pointer-events:auto}
+  .sidebar-overlay.show{display:block}.menu-toggle{display:inline-flex}
+  .content-body{padding:18px}
+}
+/* Responsive: stack vertically on medium screens */
+@media(max-width:1199px){
+  .browse-slide{flex-direction:column;align-items:center;gap:16px}
+  .browse-left{flex:1 1 auto;width:100%}
+  .browse-right{flex:0 0 auto;width:100%;max-width:420px}
+}
+@media(max-width:900px){
+  .browse-right{display:none}
+}
+@media(max-width:600px){
+  html{font-size:15px}
+  .content-body{padding:10px}
+  .browse-slide{gap:10px}
+  .slide-sentence{padding:14px 16px}
+  .slide-memory{padding:14px 16px}
+  .slide-memory .sm-grid{display:flex;flex-direction:column;gap:6px}
+  .quiz-options{grid-template-columns:1fr}
+  .topbar{padding:8px 12px;gap:6px}
+  .mode-tab{padding:5px 10px;font-size:.76em}
+  .flip-container{width:180px}
+  .slide-actions .btn{padding:10px 16px;font-size:.88em}
+}
+
+/* ============================================================
+   4K / Large Screen Optimization
+   ============================================================ */
+@media(min-width:1800px){
+  html{font-size:20px}
+  :root{--sidebar-w:300px}
+  .quiz-card{max-width:640px}
+  .spell-card{max-width:580px}
+  .content-body{padding:32px 48px}
+}
+@media(min-width:2500px){
+  html{font-size:22px}
+  :root{--sidebar-w:320px}
+  .quiz-card{max-width:700px}
+  .spell-card{max-width:640px}
+  .content-body{padding:40px 64px}
+}
+@media(min-width:3500px){
+  html{font-size:25px}
+  :root{--sidebar-w:360px}
+  .content-body{padding:48px 80px}
+}
+</style>
+</head>
+<body>
+
+<div class="app-layout">
+  <!-- Topbar -->
+  <div class="topbar">
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="index.html" class="back-btn">← 返回主页</a>
+    <span class="tb-title">📅 月份单词</span>
+    <button class="auto-read-btn on" id="autoReadBtn" onclick="toggleAutoRead()" title="切换自动朗读">🔊 自动朗读</button>
+    <div class="mode-tabs">
+      <button class="mode-tab active" data-mode="browse" onclick="switchMode('browse')">📖 浏览</button>
+      <button class="mode-tab" data-mode="flashcard" onclick="switchMode('flashcard')">🃏 闪卡</button>
+      <button class="mode-tab" data-mode="quiz" onclick="switchMode('quiz')">📝 测验</button>
+      <button class="mode-tab" data-mode="spell" onclick="switchMode('spell')">✍️ 拼写</button>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header"><input class="search-box" id="searchBox" type="text" placeholder="搜索单词..." oninput="renderSidebar()"></div>
+    <nav class="word-list" id="wordList"></nav>
+    <div class="sidebar-footer">
+      <span class="sf-dot" style="background:var(--mastered)"></span>已掌握
+      <span class="sf-dot" style="background:var(--learning-status);margin-left:8px"></span>学习中
+      <span class="sf-dot" style="background:var(--new);margin-left:8px"></span>未开始
+    </div>
+  </aside>
+  <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <!-- Main -->
+  <main class="main"><div class="content-body" id="contentBody"></div></main>
+</div>
+
+<script src="shared.js"></script>
+<script>
+// ============================================================
+// WORD DATA — 12 Months (improved memory system)
+// ============================================================
+const WORDS = [
+  {
+    id:'january',word:'January',phonetic:"/'dʒæn.ju.er.i/",chinese:'一月',emoji:'❄️',pos:'名词',season:'winter',syllables:[{text:"Jan",hint:"Janus神"},{text:"u",hint:""},{text:"ar",hint:""},{text:"y",hint:""}],
+    heroGradient:['#C9E4F7','#E8F2FA'],
+    sentences:[
+      {en:"<span class='hl'>January</span> is the first month of the year.",zh:"一月是一年中的第一个月。"},
+      {en:"It often snows in <span class='hl'>January</span>.",zh:"一月经常下雪。"}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>Jan</b>-u-<b>ary</b> → 4个音节：Jan(詹)+u(优)+ar(阿)+y(伊)。Jan像女孩名"Jane"，想象新年Jane收到礼物🎁'},
+      {icon:'🔊',text:'<b>/dʒæn/</b>像中文"站"的翘舌音，<b>-uary</b>固定读作"you-airy"。慢读三遍：Jan-u-ar-y！'},
+      {icon:'📖',text:'以罗马神<b>Janus</b>（雅努斯）命名。他有两张脸👀，一张回望过去，一张看向未来——就像一月既告别旧年又迎接新年！'}
+    ]
+  },
+  {
+    id:'february',word:'February',phonetic:"/'feb.ruː.er.i/",chinese:'二月',emoji:'💝',pos:'名词',season:'winter',syllables:[{text:"Feb",hint:"februa净化"},{text:"ru",hint:""},{text:"ar",hint:""},{text:"y",hint:""}],
+    heroGradient:['#F5D5E0','#FBE8EF'],
+    sentences:[
+      {en:"<span class='hl'>February</span> is the shortest month.",zh:"二月是最短的月份。"},
+      {en:"Valentine's Day is on <span class='hl'>February</span> 14th.",zh:"情人节在二月十四日。"}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>Feb</b>-ru-<b>ary</b> → Feb像"飞吧"🕊️，r在b后面不要忘！二月很短，"飞一样"就过去了。'},
+      {icon:'🔊',text:'<b>/feb/</b>嘴巴轻轻咬下唇，"飞吧"。注意第一个r在Feb后面，第二个r在-ary前面——<b>两个r</b>！'},
+      {icon:'📖',text:'来自拉丁语<b>"februa"</b>（净化仪式）。古罗马人在二月举行大扫除和净化祭祀🧹。闰年时二月有29天——叫<b>Leap Day</b>🐸！'}
+    ]
+  },
+  {
+    id:'march',word:'March',phonetic:'/mɑːrtʃ/',chinese:'三月',emoji:'🌸',pos:'名词',season:'spring',syllables:[{text:"March",hint:"Mars战神"}],
+    heroGradient:['#F5E8D5','#FDF3E8'],
+    sentences:[
+      {en:"Spring begins in <span class='hl'>March</span>.",zh:"春天从三月开始。"},
+      {en:"The flowers start to bloom in <span class='hl'>March</span>.",zh:"三月花儿开始绽放。"}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>Mar+ch</b> → 只有5个字母！"Mar"像"马儿"🐴，ch是轻声。三月春风似马蹄轻快。'},
+      {icon:'🔊',text:'<b>/mɑːrtʃ/</b> → "马儿吃"——舌头最后顶到上颚发出"ch"音。和"March"(行军)发音一模一样！'},
+      {icon:'📖',text:'以罗马战神<b>Mars</b>⚔️命名！古罗马人认为三月天气转暖，是出门打仗的好季节。火星的英文也是Mars，因为火星是红色的战争之星！'}
+    ]
+  },
+  {
+    id:'april',word:'April',phonetic:"/'eɪ.prəl/",chinese:'四月',emoji:'🌧️',pos:'名词',season:'spring',syllables:[{text:"A",hint:"长音/ei/"},{text:"pril",hint:""}],
+    heroGradient:['#E8F0E8','#F2F8F2'],
+    sentences:[
+      {en:"<span class='hl'>April</span> showers bring May flowers.",zh:"四月雨水带来五月花朵。"},
+      {en:"April Fools' Day is on <span class='hl'>April</span> 1st.",zh:"愚人节在四月一日。"}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>A+pril</b> → "A"级春天！<b>A</b>大写开头，"pril"像"飘"。四月飘着春雨🌧️。'},
+      {icon:'🔊',text:'<b>/ˈeɪ/</b> A发长音"诶"——嘴巴长大！不要读成短音"啊"。重音在第一个音节<b>Ā-pril</b>。'},
+      {icon:'📖',text:'来自拉丁语<b>"aperire"</b>（打开）——花朵在四月纷纷绽开🌸。英文谚语：<b>"April showers bring May flowers"</b>🌧️→🌺 四月的雨带来五月的花！'}
+    ]
+  },
+  {
+    id:'may',word:'May',phonetic:'/meɪ/',chinese:'五月',emoji:'🌺',pos:'名词',season:'spring',syllables:[{text:"May",hint:"Maia女神"}],
+    heroGradient:['#FDE8F0','#FFF2F7'],
+    sentences:[
+      {en:"<span class='hl'>May</span> is my favorite month.",zh:"五月是我最喜欢的月份。"},
+      {en:"Mother's Day is in <span class='hl'>May</span>.",zh:"母亲节在五月。"}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>May</b> → 只有3个字母！最简单好记的月份。M大写像两座山⛰️，五月正是爬山的好季节。'},
+      {icon:'🔊',text:'<b>/meɪ/</b> → 和中文"美"发音几乎一模一样！五月花开真<b>美</b>丽🌸。May=美，记住这个就不会忘！'},
+      {icon:'📖',text:'以希腊女神<b>Maia</b>🌟命名，她是春天和成长女神。五月是植物生长最快的月份——一天能长高好几厘米！母亲节👩‍👧也在五月。'}
+    ]
+  },
+  {
+    id:'june',word:'June',phonetic:'/dʒuːn/',chinese:'六月',emoji:'☀️',pos:'名词',season:'summer',syllables:[{text:"June",hint:"Juno女神"}],
+    heroGradient:['#FDF0D5','#FFF8E8'],
+    sentences:[
+      {en:"Summer starts in <span class='hl'>June</span>.",zh:"夏天从六月开始。"},
+      {en:"Children's Day is on <span class='hl'>June</span> 1st.",zh:"儿童节在六月一日。"}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>Ju+ne</b> → 只有4个字母！"Ju"像Jewel(珠宝💎)，"ne"像"呢"。六月像宝石一样闪闪发光。'},
+      {icon:'🔊',text:'<b>/dʒuːn/</b> → "朱恩"——Ju发"朱"，不是"菊"。长音uː嘴巴要撅起来。和"June"(六月)押韵的词：moon🌙, spoon🥄。'},
+      {icon:'📖',text:'以罗马女神<b>Juno</b>👸命名，她是婚姻和家庭女神。很多人喜欢在六月结婚——叫<b>"June bride"</b>👰！儿童节👧‍👦也在六月一日。'}
+    ]
+  },
+  {
+    id:'july',word:'July',phonetic:"/dʒʊ'laɪ/",chinese:'七月',emoji:'🏖️',pos:'名词',season:'summer',syllables:[{text:"Ju",hint:"凯撒名"},{text:"ly",hint:"重音在这"}],
+    heroGradient:['#FDE0C8','#FFF0E5'],
+    sentences:[
+      {en:"<span class='hl'>July</span> is very hot.",zh:"七月非常炎热。"},
+      {en:"We have summer vacation in <span class='hl'>July</span>.",zh:"我们在七月放暑假。"}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>Ju+ly</b> → 和June是"Ju"字辈兄弟！Ju像果汁🧃，ly像"来"。七月暑假来了！'},
+      {icon:'🔊',text:'<b>/dʒʊˈlaɪ/</b> → 重音在<b>第二个音节</b>"来"！Ju轻读，ly重读。和June的区别：June是长音/uː/，July是短音/ʊ/。'},
+      {icon:'📖',text:'以罗马最著名的皇帝——<b>凯撒大帝 Julius Caesar</b>👑命名。他是七月出生的，用自己的名字命名了这个月！所以七月有31天——皇帝的待遇！'}
+    ]
+  },
+  {
+    id:'august',word:'August',phonetic:"/ɔː'ɡʌst/",chinese:'八月',emoji:'🌻',pos:'名词',season:'summer',syllables:[{text:"Au",hint:"金元素符号"},{text:"gust",hint:"重音在这"}],
+    heroGradient:['#FDF0B8','#FFF9D8'],
+    sentences:[
+      {en:"<span class='hl'>August</span> is the last month of summer.",zh:"八月是夏天的最后一个月。"},
+      {en:"The sunflowers bloom in <span class='hl'>August</span>.",zh:"向日葵在八月盛开。"}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>Au+gust</b> → "Au"是黄金的化学符号🥇！"gust"像"刮风"💨。八月金黄灿烂。'},
+      {icon:'🔊',text:'<b>/ɔːˈɡʌst/</b> → "哦-尬斯特"。Au发长音/ɔː/像"哦——"。重音在第二个音节<b>gust</b>。'},
+      {icon:'📖',text:'以罗马皇帝<b>奥古斯都 Augustus</b>🏛️命名。他觉得自己的月份不能比凯撒的七月天数少，所以从二月拿走了一天，让八月也有<b>31天</b>！这就是为什么七月和八月连着31天。'}
+    ]
+  },
+  {
+    id:'september',word:'September',phonetic:"/sep'tem.bər/",chinese:'九月',emoji:'🍂',pos:'名词',season:'autumn',syllables:[{text:"Sep",hint:"Sept=7"},{text:"tem",hint:"重音在这"},{text:"ber",hint:"月份后缀"}],
+    heroGradient:['#F5E0C8','#FBF0E5'],
+    sentences:[
+      {en:"School starts in <span class='hl'>September</span>.",zh:"学校在九月开学。"},
+      {en:"The leaves begin to fall in <span class='hl'>September</span>.",zh:"九月树叶开始飘落。"}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>Sept(七)+ember</b> → Sept=7（如septangle七边形）。古罗马的七月，现在变成了九月。'},
+      {icon:'🔊',text:'<b>/sepˈtem/</b> → 重音在<b>tem</b>！Sept轻读，tem重读。注意p后面是t，不要漏掉。'},
+      {icon:'📖',text:'古罗马历只有10个月，后来加了January和February，September就从第7月变成了第9月！<b>数字前缀秘密</b>🔢：Sept=7, Oct=8, Nov=9, Dec=10——都往后移了两位！'}
+    ]
+  },
+  {
+    id:'october',word:'October',phonetic:"/ɑːk'toʊ.bər/",chinese:'十月',emoji:'🎃',pos:'名词',season:'autumn',syllables:[{text:"Oc",hint:"Oct=8"},{text:"to",hint:"重音在这"},{text:"ber",hint:"月份后缀"}],
+    heroGradient:['#F0D8C0','#F8ECE0'],
+    sentences:[
+      {en:"Halloween is on <span class='hl'>October</span> 31st.",zh:"万圣节在十月三十一日。"},
+      {en:"The pumpkins are ready in <span class='hl'>October</span>.",zh:"南瓜在十月成熟了。"}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>Oct(八)+ober</b> → 章鱼🐙octopus也是oct开头！章鱼有八条腿，oct=8。古罗马的八月变十月。'},
+      {icon:'🔊',text:'<b>/ɑːkˈtoʊ/</b> → "阿克-头"。O发/ɑː/（张嘴"啊"），不是/ɒ/。重音在<b>to</b>！'},
+      {icon:'📖',text:'<b>Oct=8</b>的秘密：章鱼<b>octo</b>pus有8条腿🐙，八角形<b>octa</b>gon有8条边。虽然October变成第10个月了，但名字里的"八"永远留下来了～万圣节🎃就在十月最后一天！'}
+    ]
+  },
+  {
+    id:'november',word:'November',phonetic:"/noʊ'vem.bər/",chinese:'十一月',emoji:'🦃',pos:'名词',season:'autumn',syllables:[{text:"No",hint:"Nov=9"},{text:"vem",hint:"重音在这"},{text:"ber",hint:"月份后缀"}],
+    heroGradient:['#E0D5C8','#F0EAE2'],
+    sentences:[
+      {en:"Thanksgiving is in <span class='hl'>November</span>.",zh:"感恩节在十一月。"},
+      {en:"It gets colder in <span class='hl'>November</span>.",zh:"十一月天气变冷了。"}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>Nov(九)+ember</b> → Nov=9（如novena九天祈祷）。感恩节🦃就在这个温暖的月份。'},
+      {icon:'🔊',text:'<b>/noʊˈvem/</b> → "nou-vem-ber"。No发/nou/像"no"(不)，重音在<b>vem</b>。三个音节清晰。'},
+      {icon:'📖',text:'<b>Nov=9</b>古罗马的九月。美国人在十一月第四个星期四庆祝<b>感恩节</b>🦃，一家人围坐吃火鸡大餐。感恩节后就是<b>黑色星期五</b>大购物🛍️！'}
+    ]
+  },
+  {
+    id:'december',word:'December',phonetic:"/dɪ'sem.bər/",chinese:'十二月',emoji:'🎄',pos:'名词',season:'winter',syllables:[{text:"De",hint:"Dec=10"},{text:"cem",hint:"重音在这"},{text:"ber",hint:"月份后缀"}],
+    heroGradient:['#D5E0F0','#E8EFF8'],
+    sentences:[
+      {en:"Christmas is on <span class='hl'>December</span> 25th.",zh:"圣诞节在十二月二十五日。"},
+      {en:"<span class='hl'>December</span> is the last month of the year.",zh:"十二月是一年的最后一个月。"}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>Dec(十)+ember</b> → Dec=10（如decimal十进制🔢、decade十年）。一年的"第十个月"变成了最后一个月。'},
+      {icon:'🔊',text:'<b>/dɪˈsem/</b> → "迪-塞姆-伯"。De发/dɪ/（短音"迪"），不是/de/！重音在<b>sem</b>。'},
+      {icon:'📖',text:'<b>Dec=10</b>的前缀家族：<b>dec</b>ade(十年)、<b>dec</b>imal(十进制)、<b>dec</b>athlon(十项全能)。十二月是全世界最欢乐的月份——🎅圣诞节、🎆新年倒数、🎁礼物！'}
+    ]
+  }
+
+];
+
+// ============================================================
+// STATE
+// ============================================================
+const state = loadState();
+WORDS.forEach(w => { if (!state.words[w.id]) state.words[w.id] = { status: 'new', xp: 0 }; });
+saveState(state);
+
+// UI State
+let currentIdx = 0, currentMode = 'browse';
+let quizState = null, spellState = null, flashcardState = { flipped: false, queue: [], qIdx: 0 };
+
+// Auto-read toggle (default: on)
+let autoRead = true;
+(function(){
+  try { var v = localStorage.getItem('word_academy_autoread'); if (v !== null) autoRead = v === 'true'; } catch(e) {}
+})();
+function toggleAutoRead() {
+  autoRead = !autoRead;
+  localStorage.setItem('word_academy_autoread', autoRead);
+  var btn = document.getElementById('autoReadBtn');
+  if (btn) {
+    btn.textContent = autoRead ? '🔊 自动朗读' : '🔇 朗读已关';
+    btn.classList.toggle('on', autoRead);
+  }
+  if (autoRead && currentMode === 'browse') { var w = WORDS[currentIdx]; if (w) pronounce(w.word); }
+}
+// Set initial button state
+setTimeout(function(){
+  var btn = document.getElementById('autoReadBtn');
+  if (btn && !autoRead) { btn.textContent = '🔇 朗读已关'; btn.classList.remove('on'); }
+}, 0);
+
+// ============================================================
+// EXTRA FIELDS (collocations, related, pitfall)
+// ============================================================
+const EXTRA = {
+  january:   {collocations:["in January","January 1st","last January"],related:"month, year, winter, New Year",pitfall:"Jan<b>u</b>ary - 不要漏掉中间的 u！四拍一个不能少"},
+  february:  {collocations:["in February","February 14th","this February"],related:"Valentine, month, winter, leap year",pitfall:"Feb<b>r</b>uary - r 紧跟在 b 后面！很多人拼成 Febuary 漏掉 r"},
+  march:     {collocations:["in March","March winds","early March"],related:"spring, month, kite, wind",pitfall:"March 结尾是 <b>ch</b> 不是 sh！读作 /tʃ/"},
+  april:     {collocations:["in April","April Fool","April showers"],related:"spring, rain, month, Easter",pitfall:"A<b>pril</b> - pril 不是 ple！A 发长音 /eɪ/"},
+  may:       {collocations:["in May","May Day","late May"],related:"spring, flower, month, Mothers Day",pitfall:"May 只有 <b>3 个字母</b> - 最简单的月份！别写成 Mai"},
+  june:      {collocations:["in June","early June","June bride"],related:"summer, month, Childrens Day, beach",pitfall:"Jun<b>e</b> - 结尾有 e！不是 Jun。Ju 读作 /dʒuː/"},
+  july:      {collocations:["in July","July 4th","mid-July"],related:"summer, month, vacation, ice cream",pitfall:"Ju<b>ly</b> - 重音在 ly！读作 ju-LY 不是 JU-ly"},
+  august:    {collocations:["in August","late August","August vacation"],related:"summer, month, sunflower, camping",pitfall:"Au<b>g</b>ust - 别忘了中间的 g！Au 读作 /ɔː/"},
+  september: {collocations:["in September","early September","last September"],related:"autumn, month, school, teacher",pitfall:"Sep<b>t</b>ember - Sept=7！p 后面是 t 不是 d"},
+  october:   {collocations:["in October","October 31st","mid-October"],related:"autumn, month, Halloween, pumpkin",pitfall:"Oc<b>t</b>ober - Oct=8！像 octopus。O 读作 /ɑːk/"},
+  november:  {collocations:["in November","late November","every November"],related:"autumn, month, Thanksgiving, turkey",pitfall:"No<b>v</b>ember - Nov=9！ve 不是 va"},
+  december:  {collocations:["in December","December 25th","last December"],related:"winter, month, Christmas, Santa, gift",pitfall:"De<b>c</b>ember - Dec=10！De 读作 /dɪ/ 不是 /de/"},
+};
+
+// ============================================================
+// HELPERS
+// ============================================================
+function ws(wid) { return getWordStatus(state, wid); }
+function getSeasonColor(s) {
+  const m = { winter: 'var(--cat-winter)', spring: 'var(--cat-spring)', summer: 'var(--cat-summer)', autumn: 'var(--cat-autumn)' };
+  return m[s] || 'var(--cat-spring)';
+}
+
+// ============================================================
+// SIDEBAR
+// ============================================================
+function renderSidebar() {
+  const wl = document.getElementById('wordList');
+  const ft = (document.getElementById('searchBox')?.value || '').toLowerCase().trim();
+  const seasons = ['winter', 'spring', 'summer', 'autumn'];
+  const sLabels = { winter: '❄️ 冬季', spring: '🌸 春季', summer: '☀️ 夏季', autumn: '🍂 秋季' };
+  const sMonths = { winter: [11, 0, 1], spring: [2, 3, 4], summer: [5, 6, 7], autumn: [8, 9, 10] };
+  let html = '';
+  seasons.forEach(season => {
+    const seasonWords = sMonths[season].map(i => WORDS[i]).filter(w => w && (!ft || w.word.toLowerCase().includes(ft) || w.chinese.includes(ft)));
+    if (!seasonWords.length) return;
+    html += `<div class="cat-group"><div class="cat-label"><span class="dot" style="background:${getSeasonColor(season)}"></span>${sLabels[season]}<span class="count">${seasonWords.length}词</span></div>`;
+    seasonWords.forEach(w => {
+      const idx = WORDS.indexOf(w);
+      const st = ws(w.id);
+      const act = idx === currentIdx ? ' active' : '';
+      html += `<div class="word-card${act}" onclick="selectWord(${idx});if(window.innerWidth<901)toggleSidebar()"><span class="wc-emoji">${w.emoji}</span><span class="wc-info"><span class="wc-word">${w.word}</span><span class="wc-cn">${w.chinese}</span></span><span class="wc-status ${st}"></span></div>`;
+    });
+    html += `</div>`;
+  });
+  if (!html) html = `<div style="text-align:center;padding:20px;color:var(--text-muted)">🔍 没找到</div>`;
+  wl.innerHTML = html;
+}
+
+// ============================================================
+// CONTENT
+// ============================================================
+function renderContent() {
+  if (currentMode === 'browse') renderBrowse();
+  else if (currentMode === 'flashcard') renderFlashcard();
+  else if (currentMode === 'quiz') renderQuiz();
+  else if (currentMode === 'spell') renderSpell();
+}
+
+// ---- BROWSE ----
+function renderBrowse() {
+  const w = WORDS[currentIdx]; if (!w) return;
+  const sents = w.sentences;
+  const mastered = ws(w.id) === 'mastered';
+  const prevOk = currentIdx > 0, nextOk = currentIdx < WORDS.length - 1;
+  const body = document.getElementById('contentBody');
+
+  // Colorful syllable chips
+  const sylColors = ['#E8725A','#5B9EED','#7BAE7F','#9B7EC4','#F4A542'];
+  const syls = (w.syllables || []).map(function(s,i) {
+    var h = '<span class="syl-chip" style="background:' + sylColors[i % sylColors.length] + '">' + s.text;
+    if (s.hint) h += '<span class="syl-hint">' + s.hint + '</span>';
+    h += '</span>';
+    return h;
+  }).join('<span class="syl-sep">·</span>');
+
+  // Simplify memory text: strip HTML and take first sentence
+  function simplify(text) {
+    var clean = text.replace(/<[^>]*>/g, '');
+    // Take ~100 chars, breaking at sentence end when possible
+    if (clean.length <= 100) return clean;
+    var cut = clean.substring(0, 97);
+    var lastPeriod = Math.max(cut.lastIndexOf('。'), cut.lastIndexOf('！'), cut.lastIndexOf('？'));
+    if (lastPeriod > 60) return cut.substring(0, lastPeriod + 1);
+    return cut + '...';
+  }
+
+  body.innerHTML = ''
+    + '<div class="browse-slide">'
+    + '<div class="browse-left">'
+    // Line 1: emoji + word
+    + '<div class="word-title-bar">'
+    + '<span class="wt-emoji">' + w.emoji + '</span>'
+    + '<span class="wt-word">' + w.word + '</span>'
+    + '</div>'
+    // Line 2: pos + chinese
+    + '<div class="word-meta">'
+    + '<span>' + w.pos + ' · ' + w.chinese + '</span>'
+    + '</div>'
+    // Line 3: syllables + phonetic + pronounce icon
+    + '<div class="syllable-bar">'
+    + syls
+    + '  <span style="color:var(--text-muted);margin:0 6px;font-family:var(--font-word)">' + w.phonetic + '</span>'
+    + '<button class="pronounce-btn" onclick="pronounce(\'' + w.word + '\')" title="听发音">🔊</button>'
+    + '</div>'
+    // Sentences
+    + '<div class="slide-sentence">'
+    + sents.map(function(s,i) {
+        return '<div><div class="sen-en">' + s.en + '</div><div class="sen-zh">' + s.zh + '</div></div>'
+          + (i < sents.length - 1 ? '<div class="sen-divider"></div>' : '');
+      }).join('')
+    + '</div>'
+    // Memory — simplified, single column
+    // 📖 Story + ✨ Magic
+    + '<div class="slide-memory">'
+    + (function(){
+        var story = w.memory.find(function(m){return m.icon==='📖'});
+        var tricks = w.memory.filter(function(m){return m.icon!=='📖'});
+        var html = '';
+        if (story) html += '<div class="sm-section"><div class="sm-label">📖 Story</div><div class="sm-text">' + simplify(story.text) + '</div></div>';
+        if (tricks.length) {
+          html += '<div class="sm-section"><div class="sm-label">✨ Magic</div>';
+          tricks.forEach(function(m){
+            html += '<div class="sm-item"><span class="smi-icon">' + m.icon + '</span><span class="smi-text">' + simplify(m.text) + '</span></div>';
+          });
+          html += '</div>';
+        }
+        return html;
+      })()
+    + '</div>'
+    // Collocations, Related, Pitfall (from EXTRA lookup)
+    + (function(){
+        var x = EXTRA[w.id] || {};
+        var h = '';
+        if (x.collocations) h += '<div class="slide-extra"><span class="se-label">常用搭配</span><span class="se-text">' + x.collocations.join('  |  ') + '</span></div>';
+        if (x.related) h += '<div class="slide-extra"><span class="se-label">相关词汇</span><span class="se-text">' + x.related + '</span></div>';
+        if (x.pitfall) h += '<div class="slide-extra"><span class="se-label">易错提醒</span><span class="se-text">' + x.pitfall + '</span></div>';
+        return h;
+      })()
+    // Actions
+    + '<div class="slide-actions">'
+    + '<button class="btn btn-secondary" onclick="navWord(-1)"' + (prevOk ? '' : ' disabled') + '>⬅ 上一个</button>'
+    + (mastered
+        ? '<button class="btn btn-mastered">✅ 已掌握</button>'
+        : '<button class="btn btn-primary" onclick="markMastered(state,\'' + w.id + '\');saveState(state);renderBrowse();renderSidebar();showToast(\'🎉 太棒了\')">✅ 学会了</button>')
+    + '<button class="btn btn-secondary" onclick="switchMode(\'flashcard\')">🃏 闪卡复习</button>'
+    + '<button class="btn btn-secondary" onclick="navWord(1)"' + (nextOk ? '' : ' disabled') + '>下一个 ➡</button>'
+    + '</div>'
+    + '</div>'
+    // Right: AI Poster
+    + '<div class="browse-right">'
+    + '<div class="poster-card">'
+    + '<img src="images/posters/months.png" alt="月份单词海报" onerror="this.parentElement.style.display=\'none\'" loading="lazy">'
+    + '</div>'
+    + '</div>'
+    + '</div>';
+	  // Auto-read
+	  if (autoRead) pronounce(w.word);
+}
+// ---- FLASHCARD ----
+function renderFlashcard() {
+  if (flashcardState.queue.length === 0 || flashcardState.qIdx >= flashcardState.queue.length) {
+    const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    const l = WORDS.filter(w => ws(w.id) !== 'mastered');
+    const m = WORDS.filter(w => ws(w.id) === 'mastered');
+    flashcardState.queue = [...shuffle([...l]), ...shuffle([...m])];
+    flashcardState.qIdx = 0; flashcardState.flipped = false;
+  }
+  const w = flashcardState.queue[flashcardState.qIdx]; if (!w) return;
+  const body = document.getElementById('contentBody');
+  body.innerHTML = `
+  <div class="flashcard-view">
+    <div class="flip-container${flashcardState.flipped ? ' flipped' : ''}" onclick="${flashcardState.flipped ? '' : "this.classList.add('flipped');fs=flashcardState;fs.flipped=true;setTimeout(renderFlashcard,10)"}">
+      <div class="flip-inner">
+        <div class="flip-front"><span class="ff-emoji">${w.emoji}</span><span class="ff-word">${w.word}</span><span class="ff-hint">👆 点击翻转</span></div>
+        <div class="flip-back"><span class="fb-emoji">${w.emoji}</span><span class="fb-cn">${w.chinese}</span><span class="fb-word">${w.word} ${w.phonetic}</span><span class="fb-sentence">${w.sentences[0].en.replace(/<\/?span[^>]*>/g, '')}</span></div>
+      </div>
+    </div>
+    ${flashcardState.flipped ? `
+    <div class="fc-actions">
+      <button class="fc-btn forgot" onclick="flashcardResult('forgot')">😕</button>
+      <button class="fc-btn skip" onclick="flashcardResult('skip')">⏭</button>
+      <button class="fc-btn remember" onclick="flashcardResult('remember')">😊</button>
+    </div>` : '<div style="font-size:.85em;color:var(--text-muted)">先想想意思，再点击翻转</div>'}
+    <div class="fc-progress">📇 ${flashcardState.qIdx + 1}/${flashcardState.queue.length}</div>
+  </div>`;
+}
+
+function flashcardResult(r) {
+  const w = flashcardState.queue[flashcardState.qIdx]; if (!w) return;
+  if (r === 'remember') { addXP(state, w.id, 5); if (ws(w.id) === 'new') state.words[w.id].status = 'learning'; saveState(state); }
+  flashcardState.qIdx++; flashcardState.flipped = false; renderFlashcard(); renderSidebar();
+}
+
+// ---- QUIZ ----
+function renderQuiz() {
+  if (!quizState || quizState.roundWords.length === 0) {
+    const pool = [...WORDS].sort(() => Math.random() - 0.5);
+    quizState = { roundWords: pool.slice(0, Math.min(6, pool.length)), idx: 0, correct: 0, answered: false };
+  }
+  if (quizState.idx >= quizState.roundWords.length) {
+    const tot = quizState.roundWords.length, corr = quizState.correct, pct = Math.round((corr / tot) * 100);
+    document.getElementById('contentBody').innerHTML = `<div class="quiz-view"><div class="quiz-card"><div class="quiz-score"><div style="font-size:1.1em;color:var(--text-light)">测验完成！</div><div class="qs-big">${pct >= 80 ? '🎉' : pct >= 50 ? '👍' : '💪'}</div><div>答对 <span style="color:var(--correct)">${corr}</span>/${tot} 题（${pct}%）</div></div><button class="btn btn-primary" onclick="quizState=null;renderQuiz()">🔄 再来一轮</button></div></div>`;
+    return;
+  }
+  const w = quizState.roundWords[quizState.idx];
+  const others = WORDS.filter(x => x.id !== w.id).sort(() => Math.random() - 0.5);
+  const opts = [w, ...others.slice(0, 3)].sort(() => Math.random() - 0.5);
+  document.getElementById('contentBody').innerHTML = `
+  <div class="quiz-view"><div class="quiz-card">
+    <div class="q-progress"><span>第${quizState.idx + 1}/${quizState.roundWords.length}题</span><div class="q-progress-bar"><div class="q-progress-bar-fill" style="width:${(quizState.idx / quizState.roundWords.length) * 100}%"></div></div></div>
+    <div class="q-emoji">${w.emoji}</div><div class="q-prompt">"${w.chinese}" 的英文是？</div>
+    <div class="quiz-options" id="qzOpts">${opts.map(o => `<button class="quiz-option" data-wid="${o.id}" onclick="answerQuiz('${o.id}','${w.id}',this)">${o.word}</button>`).join('')}</div>
+  </div></div>`;
+}
+
+function answerQuiz(chosen, correct, btn) {
+  if (quizState.answered) return; quizState.answered = true;
+  document.querySelectorAll('#qzOpts .quiz-option').forEach(b => b.style.pointerEvents = 'none');
+  if (chosen === correct) {
+    btn.classList.add('correct'); quizState.correct++;
+    addXP(state, correct, 15); if (ws(correct) === 'new') state.words[correct].status = 'learning'; saveState(state);
+    showToast('✅ 正确！');
+  } else {
+    btn.classList.add('wrong'); document.querySelector(`#qzOpts [data-wid="${correct}"]`)?.classList.add('correct');
+  }
+  renderSidebar();
+  setTimeout(() => { quizState.idx++; quizState.answered = false; renderQuiz(); }, 1100);
+}
+
+// ---- SPELL ----
+function renderSpell() {
+  if (!spellState) spellState = { idx: currentIdx, attempts: 0 };
+  const w = WORDS[spellState.idx]; if (!w) return;
+  document.getElementById('contentBody').innerHTML = `
+  <div class="spell-view"><div class="spell-card">
+    <div class="sp-emoji">${w.emoji}</div>
+    <div class="sp-prompt">请拼写 "${w.chinese}" 的英文</div>
+    <div class="sp-hint">🔈 听发音后输入拼写</div>
+    <button class="btn btn-secondary" onclick="pronounce('${w.word}')" style="margin-bottom:14px">🔈 听发音</button><br>
+    <input class="spell-input" id="spellInput" type="text" placeholder="输入英文..." autocomplete="off" onkeydown="if(event.key==='Enter')checkSpell()">
+    <div class="spell-feedback" id="spellFB"></div>
+    <div style="margin-top:14px;display:flex;gap:10px;justify-content:center">
+      <button class="btn btn-primary" onclick="checkSpell()">✅ 检查</button>
+      <button class="btn btn-secondary" onclick="spellState.idx=(spellState.idx+1)%WORDS.length;spellState.attempts=0;renderSpell()">⏭ 跳过</button>
+    </div>
+  </div></div>`;
+  setTimeout(() => document.getElementById('spellInput')?.focus(), 100);
+}
+
+function checkSpell() {
+  const inp = document.getElementById('spellInput'), fb = document.getElementById('spellFB');
+  if (!inp) return;
+  const w = WORDS[spellState.idx], ans = inp.value.trim();
+  if (ans.toLowerCase() === w.word.toLowerCase()) {
+    inp.classList.add('correct'); fb.innerHTML = '🎉 完全正确！'; fb.style.color = 'var(--correct)';
+    addXP(state, w.id, 20); if (ws(w.id) === 'new') state.words[w.id].status = 'learning'; saveState(state);
+    renderSidebar();
+    setTimeout(() => { spellState.idx = (spellState.idx + 1) % WORDS.length; spellState.attempts = 0; renderSpell(); }, 1200);
+  } else {
+    spellState.attempts++; inp.classList.add('wrong');
+    if (spellState.attempts >= 3) {
+      fb.innerHTML = `答案是：<b style="color:var(--coral)">${w.word}</b>`; fb.style.color = 'var(--wrong)';
+      setTimeout(() => { spellState.idx = (spellState.idx + 1) % WORDS.length; spellState.attempts = 0; renderSpell(); }, 1800);
+    } else { fb.innerHTML = `❌ 不对哦（剩${3 - spellState.attempts}次）`; fb.style.color = 'var(--wrong)'; inp.value = ''; inp.focus(); }
+  }
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function selectWord(i) { currentIdx = i; spellState = null; quizState = null; flashcardState = { flipped: false, queue: [], qIdx: 0 }; renderContent(); renderSidebar(); }
+function navWord(d) { const n = currentIdx + d; if (n >= 0 && n < WORDS.length) selectWord(n); }
+function switchMode(m) {
+  currentMode = m; spellState = null; quizState = null; flashcardState = { flipped: false, queue: [], qIdx: 0 };
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.mode-tab[data-mode="${m}"]`)?.classList.add('active');
+  renderContent();
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.querySelector('.sidebar-overlay').classList.toggle('show'); }
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  if (currentMode === 'browse') { if (e.key === 'ArrowLeft') navWord(-1); if (e.key === 'ArrowRight') navWord(1); }
+  if (currentMode === 'flashcard' && e.key === ' ' && !flashcardState.flipped) { e.preventDefault(); document.querySelector('.flip-container')?.classList.add('flipped'); flashcardState.flipped = true; setTimeout(renderFlashcard, 10); }
+  if (e.key === '1') switchMode('browse'); if (e.key === '2') switchMode('flashcard');
+  if (e.key === '3') switchMode('quiz'); if (e.key === '4') switchMode('spell');
+});
+
+// Init
+if (window.location.hash) {
+  const wid = window.location.hash.slice(1);
+  const idx = WORDS.findIndex(w => w.id === wid);
+  if (idx >= 0) currentIdx = idx;
+}
+renderSidebar(); renderContent();
+</script>
+</body>
+</html>

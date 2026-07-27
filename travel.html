@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🚗 出行与交通 — 单词魔法学院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#E8725A;--gold:#F4C542;--teal:#3DA5A5;--sky:#5B9EED;
+  --lavender:#9B7EC4;--sage:#7BAE7F;--blush:#F0D5D0;--cream:#FEF9F0;
+  --cat-winter:#6B9AC4;--cat-spring:#7BAE7F;--cat-summer:#E8725A;--cat-autumn:#D4914A;
+  --bg:#FFF8F0;--card:#FFFDF7;--card-hover:#FFF9F2;
+  --text:#3D2C2C;--text-light:#7A6A6A;--text-muted:#B5A5A5;
+  --border:#F0E8E0;--border-light:#F8F2EC;
+  --mastered:#4ECB71;--learning-status:#F4C542;--new:#DDD;
+  --correct:#4ECB71;--wrong:#E8725A;
+  --radius-xs:8px;--radius-sm:14px;--radius:20px;
+  --shadow-xs:0 2px 8px rgba(61,44,44,.05);--shadow:0 4px 24px rgba(61,44,44,.08);--shadow-lg:0 12px 48px rgba(61,44,44,.12);
+  --sidebar-w:260px;
+  --font-display:'ZCOOL KuaiLe','PingFang SC','Microsoft YaHei',cursive;
+  --font-body:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-word:'Georgia','Times New Roman',serif;
+  --fast:.18s ease;--normal:.3s ease;--slow:.5s cubic-bezier(.25,.46,.45,.94);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);height:100vh;overflow:hidden;line-height:1.65}
+
+/* Layout */
+.app-layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;height:100vh;overflow:hidden}
+
+/* Topbar */
+.topbar{
+  grid-column:1/-1;position:sticky;top:0;z-index:90;
+  display:flex;align-items:center;gap:10px;padding:10px 20px;min-height:52px;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border-light);
+}
+.topbar a.back-btn{
+  text-decoration:none;color:var(--text-light);font-size:1.05em;
+  padding:6px 10px;border-radius:var(--radius-xs);transition:all var(--fast);
+}
+.topbar a.back-btn:hover{background:var(--cream);color:var(--coral)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;font-size:1.3em;padding:4px 8px;color:var(--text)}
+.topbar .tb-title{font-family:var(--font-display);font-size:1.05em;margin-right:auto;white-space:nowrap}
+.auto-read-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:50px;border:1.5px solid var(--border);background:var(--card);cursor:pointer;font-size:.8em;font-weight:600;color:var(--text-light);transition:all var(--fast);font-family:var(--font-body);white-space:nowrap}
+.auto-read-btn:hover{border-color:var(--teal);color:var(--teal)}
+.auto-read-btn.on{background:var(--teal);color:#FFF;border-color:var(--teal)}
+@media(max-width:700px){.auto-read-btn{padding:5px 10px;font-size:.75em}}
+.mode-tabs{display:flex;gap:3px;background:var(--cream);border-radius:var(--radius-sm);padding:3px}
+.mode-tab{padding:7px 15px;border-radius:11px;cursor:pointer;font-size:.82em;font-weight:600;color:var(--text-light);transition:all var(--fast);border:none;background:none;font-family:var(--font-body)}
+.mode-tab:hover{color:var(--coral)}.mode-tab.active{background:#FFF;color:var(--coral);box-shadow:var(--shadow-xs)}
+
+/* Sidebar */
+.sidebar{background:rgba(255,255,255,.85);backdrop-filter:blur(18px);border-right:1px solid var(--border);display:flex;flex-direction:column;height:calc(100vh - 52px);position:sticky;top:52px;overflow:hidden;z-index:80}
+.sidebar-header{padding:16px 18px 10px;flex-shrink:0}
+.search-box{width:100%;padding:8px 12px 8px 34px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.85em;font-family:var(--font-body);background:var(--cream);color:var(--text);outline:none;transition:border var(--fast)}
+.search-box:focus{border-color:var(--coral);box-shadow:0 0 0 3px rgba(232,114,90,.08)}
+.search-box::placeholder{color:var(--text-muted)}
+.word-list{flex:1;overflow-y:auto;padding:4px 10px 10px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.word-list::-webkit-scrollbar{width:4px}.word-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px}
+.cat-group{margin-bottom:4px}
+.cat-label{font-family:var(--font-display);font-size:.8em;font-weight:400;padding:8px 10px 4px;display:flex;align-items:center;gap:5px;color:var(--text-light)}
+.cat-label .dot{width:7px;height:7px;border-radius:50%}.cat-label .count{font-size:.78em;color:var(--text-muted);margin-left:auto}
+.word-card{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--radius-sm);cursor:pointer;transition:all var(--fast);margin-bottom:2px;border:1.5px solid transparent}
+.word-card:hover{background:var(--card-hover);transform:translateX(3px)}
+.word-card.active{background:#FFF;border-color:var(--coral);box-shadow:var(--shadow-xs)}
+.wc-emoji{font-size:1.3em;flex-shrink:0;width:30px;text-align:center}
+.wc-info{flex:1;min-width:0}
+.wc-word{font-family:var(--font-word);font-size:.88em;font-weight:700;line-height:1.3}
+.wc-cn{font-size:.75em;color:var(--text-light);line-height:1.3}
+.wc-status{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.wc-status.mastered{background:var(--mastered);box-shadow:0 0 5px rgba(78,203,113,.3)}
+.wc-status.learning{background:var(--learning-status);box-shadow:0 0 5px rgba(244,197,66,.3)}
+.wc-status.new{background:var(--new)}
+.sidebar-footer{padding:8px 18px;border-top:1px solid var(--border-light);display:flex;align-items:center;gap:5px;flex-shrink:0;font-size:.72em;color:var(--text-muted)}
+.sidebar-footer .sf-dot{width:6px;height:6px;border-radius:50%}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:70}
+
+/* Main Content */
+.main{display:flex;flex-direction:column;height:calc(100vh - 52px);overflow:hidden}
+.content-body{flex:1;display:flex;align-items:center;justify-content:center;padding:clamp(6px,1.5vh,16px) 32px;overflow:hidden}
+
+/* ---- BROWSE ---- */
+.browse-slide{
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(16px,2.5vw,36px);width:100%;max-width:100%;
+  animation:fadeIn .35s ease;height:100%;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* Left panel: word details */
+.browse-left{flex:0 0 55%;min-width:0;display:flex;flex-direction:column;gap:clamp(6px,1vh,12px);overflow-y:auto;max-height:100%}
+
+/* Right panel: AI poster */
+.browse-right{flex:0 0 45%;display:flex;align-items:center;justify-content:center;max-height:100%}
+.poster-card{max-width:100%;max-height:100%;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);background:var(--card);border:2px solid var(--border)}
+.poster-card img{width:100%;height:auto;max-height:calc(100vh - 100px);object-fit:contain;display:block}
+
+/* Word title */
+.word-title-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.wt-emoji{font-size:clamp(1.8em,3.5vw,2.6em)}
+.wt-word{font-family:var(--font-word);font-size:clamp(2.2em,5vw,3.6em);font-weight:700;letter-spacing:.02em}
+.word-meta{display:flex;align-items:center;gap:12px;font-size:clamp(1em,1.5vw,1.25em);color:var(--text-light);flex-wrap:wrap;margin-bottom:2px}
+.pronounce-btn{display:inline-flex;align-items:center;justify-content:center;width:2em;height:2em;padding:0;border-radius:50%;background:var(--coral);color:#FFF;border:none;cursor:pointer;font-family:var(--font-body);font-size:.85em;transition:all var(--fast)}
+.pronounce-btn:hover{background:#D0624A;transform:scale(1.04)}.pronounce-btn.playing{background:var(--teal)}
+
+/* Syllable breakdown */
+.syllable-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:4px 0;font-size:clamp(.95em,1.5vw,1.15em)}
+.syl-chip{padding:3px 8px;border-radius:6px;font-family:var(--font-word);font-size:1em;font-weight:600;color:#FFF;position:relative;cursor:default}
+.syl-chip:hover .syl-hint{display:block}
+.syl-hint{display:none;position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--text);color:#FFF;padding:3px 8px;border-radius:5px;font-size:.7em;font-weight:400;font-family:var(--font-body);pointer-events:none;z-index:5}
+.syl-sep{display:flex;align-items:center;font-size:.75em;color:var(--text-muted);font-weight:700}
+
+/* Sentences */
+.slide-sentence{padding:clamp(8px,1.5vh,14px) 20px;border-radius:var(--radius-sm);background:var(--card);border-left:4px solid var(--coral);box-shadow:var(--shadow-xs);text-align:left;display:flex;flex-direction:column;gap:clamp(2px,0.5vh,6px)}
+.sen-en{font-family:var(--font-word);font-size:clamp(1em,1.6vw,1.2em);color:var(--text);line-height:1.7}
+.sen-en .hl{color:var(--coral);font-weight:700;background:rgba(232,114,90,.08);padding:1px 4px;border-radius:3px}
+.sen-zh{font-size:1em;color:var(--text-light);margin-top:4px}
+.sen-divider{height:1px;background:var(--border);margin:2px 0}
+
+/* Memory */
+.slide-memory{background:linear-gradient(135deg,#FFF9E6,#FFFDF7);border:1.5px dashed var(--gold);border-radius:var(--radius-sm);padding:clamp(8px,1.5vh,14px) 20px;text-align:left}
+.slide-memory .sm-header{font-family:var(--font-display);font-size:.95em;font-weight:400;color:var(--gold);margin-bottom:6px;display:flex;align-items:center;gap:4px}
+.slide-memory .sm-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.slide-memory .sm-section{margin-bottom:8px}
+.slide-memory .sm-section:last-child{margin-bottom:0}
+.slide-memory .sm-label{font-size:.78em;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;padding-bottom:3px;border-bottom:1px dashed var(--gold);opacity:.8}
+.slide-memory .sm-text{font-size:clamp(.95em,1.3vw,1.05em);color:var(--text);line-height:1.7}
+.slide-memory .sm-item{display:flex;gap:6px;align-items:baseline;font-size:clamp(.95em,1.3vw,1.05em);color:var(--text);line-height:1.7;margin-top:3px}
+/* Extra: collocations, related, pitfall */
+.slide-extra{display:flex;gap:8px;align-items:baseline;padding:4px 0;font-size:clamp(.88em,1.2vw,.98em);line-height:1.6}
+.slide-extra .se-label{flex-shrink:0;font-size:.82em;font-weight:700;color:var(--coral);white-space:nowrap}
+.slide-extra .se-text{color:var(--text-light)}
+.slide-memory .smi-icon{font-size:1.1em;flex-shrink:0}
+.slide-memory .smi-text{font-size:inherit;color:var(--text);line-height:1.5}
+
+/* Actions */
+.slide-actions{display:flex;gap:8px;flex-wrap:wrap;padding-top:2px}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:11px 20px;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.95em;font-weight:600;cursor:pointer;border:none;transition:all var(--fast)}
+.btn-primary{background:var(--coral);color:#FFF}.btn-primary:hover{background:#D0624A;transform:translateY(-2px);box-shadow:0 6px 18px rgba(232,114,90,.3)}
+.btn-secondary{background:#FFF;color:var(--coral);border:1.5px solid var(--coral)}.btn-secondary:hover{background:rgba(232,114,90,.05);transform:translateY(-2px)}
+.btn-mastered{background:var(--mastered);color:#FFF}.btn-mastered:hover{background:#3CB860;transform:translateY(-2px);box-shadow:0 6px 18px rgba(78,203,113,.3)}
+.btn:active{transform:scale(.96)}.btn:disabled{opacity:.4;pointer-events:none}
+
+/* ---- FLASHCARD ---- */
+.flashcard-view{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:14px;padding:20px;animation:fadeIn .35s ease}
+.flip-container{width:clamp(200px,26vw,300px);aspect-ratio:3/4;perspective:1000px;cursor:pointer}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+.flip-container.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.flip-front{background:linear-gradient(135deg,#FFFDF7,#FFF8F0);border:2px solid var(--border);box-shadow:var(--shadow-lg)}
+.ff-emoji{font-size:4em;margin-bottom:12px}.ff-word{font-family:var(--font-word);font-size:2em;font-weight:700}
+.ff-hint{font-size:.8em;color:var(--text-muted);margin-top:8px}
+.flip-back{transform:rotateY(180deg);background:linear-gradient(135deg,#FFFDF7,#FFF9E6);border:2px solid var(--gold);box-shadow:var(--shadow-lg);padding:24px;text-align:center;gap:8px}
+.fb-emoji{font-size:2.5em}.fb-cn{font-family:var(--font-display);font-size:1.6em;color:var(--coral)}
+.fb-word{font-family:var(--font-word);font-size:1em;color:var(--text-light)}
+.fb-sentence{font-size:.85em;color:var(--text);line-height:1.5;margin-top:4px}
+.fb-sentence .hl{color:var(--coral);font-weight:700}
+.fc-actions{display:flex;gap:12px}
+.fc-btn{width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;font-size:1.2em;color:#FFF;transition:all var(--fast)}
+.fc-btn.forgot{background:var(--coral)}.fc-btn.remember{background:var(--mastered)}.fc-btn.skip{background:var(--text-muted)}
+.fc-btn:hover{transform:scale(1.1)}.fc-progress{font-size:.85em;color:var(--text-light)}
+
+/* ---- QUIZ ---- */
+.quiz-view{display:flex;align-items:center;justify-content:center;height:100%;padding:20px;animation:fadeIn .35s ease}
+.quiz-card{max-width:560px;width:100%;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:32px 28px;text-align:center}
+.q-progress{font-size:.82em;color:var(--text-muted);margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:8px}
+.q-progress-bar{flex:1;max-width:180px;height:5px;background:var(--border);border-radius:10px;overflow:hidden}
+.q-progress-bar-fill{height:100%;background:var(--coral);border-radius:10px;transition:width var(--normal)}
+.q-emoji{font-size:2.8em;margin-bottom:10px}.q-prompt{font-family:var(--font-display);font-size:1.6em;margin-bottom:8px}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.quiz-option{padding:14px 18px;border-radius:var(--radius-sm);border:2px solid var(--border);background:var(--card);cursor:pointer;font-family:var(--font-word);font-size:1.15em;font-weight:600;transition:all var(--fast)}
+.quiz-option:hover{border-color:var(--sky);background:#F5F9FF;transform:translateY(-2px)}
+.quiz-option.correct{border-color:var(--correct);background:#E8F9EE;color:var(--correct)}
+.quiz-option.wrong{border-color:var(--wrong);background:#FEF0ED;color:var(--wrong)}
+.quiz-score{text-align:center;padding:20px 0;font-family:var(--font-display);font-size:1.6em}
+.qs-big{font-size:2.2em;color:var(--coral)}
+
+/* ---- SPELL ---- */
+.spell-view{display:flex;align-items:center;justify-content:center;height:100%;padding:20px;animation:fadeIn .35s ease}
+.spell-card{max-width:500px;width:100%;text-align:center;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:30px 26px}
+.sp-emoji{font-size:2.5em;margin-bottom:6px}.sp-prompt{font-family:var(--font-display);font-size:1.4em;margin-bottom:4px}
+.sp-hint{font-size:.82em;color:var(--text-muted);margin-bottom:18px}
+.spell-input{width:100%;max-width:280px;padding:12px 16px;font-family:var(--font-word);font-size:1.8em;font-weight:600;text-align:center;letter-spacing:.06em;border:2px solid var(--border);border-radius:var(--radius-sm);background:var(--cream);color:var(--text);outline:none;transition:border var(--fast)}
+.spell-input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(91,158,237,.08)}
+.spell-input.correct{border-color:var(--correct);background:#E8F9EE}
+.spell-input.wrong{border-color:var(--wrong);background:#FEF0ED}
+.spell-feedback{margin-top:10px;font-size:.88em;font-weight:600;min-height:22px}
+
+/* Responsive */
+@media(max-width:900px){
+  .app-layout{grid-template-columns:0px 1fr}
+  .sidebar{position:fixed;left:0;top:52px;z-index:200;transform:translateX(-100%);transition:transform var(--slow);box-shadow:var(--shadow-lg);width:var(--sidebar-w);pointer-events:none}
+  .sidebar.open{transform:translateX(0);pointer-events:auto}
+  .sidebar-overlay.show{display:block}.menu-toggle{display:inline-flex}
+  .content-body{padding:18px}
+}
+/* Responsive: stack vertically on medium screens */
+@media(max-width:1199px){
+  .browse-slide{flex-direction:column;align-items:center;gap:16px}
+  .browse-left{flex:1 1 auto;width:100%}
+  .browse-right{flex:0 0 auto;width:100%;max-width:420px}
+}
+@media(max-width:900px){
+  .browse-right{display:none}
+}
+@media(max-width:600px){
+  html{font-size:15px}
+  .content-body{padding:10px}
+  .browse-slide{gap:10px}
+  .slide-sentence{padding:14px 16px}
+  .slide-memory{padding:14px 16px}
+  .slide-memory .sm-grid{display:flex;flex-direction:column;gap:6px}
+  .quiz-options{grid-template-columns:1fr}
+  .topbar{padding:8px 12px;gap:6px}
+  .mode-tab{padding:5px 10px;font-size:.76em}
+  .flip-container{width:180px}
+  .slide-actions .btn{padding:10px 16px;font-size:.88em}
+}
+
+/* ============================================================
+   4K / Large Screen Optimization
+   ============================================================ */
+@media(min-width:1800px){
+  html{font-size:20px}
+  :root{--sidebar-w:300px}
+  .quiz-card{max-width:640px}
+  .spell-card{max-width:580px}
+  .content-body{padding:32px 48px}
+}
+@media(min-width:2500px){
+  html{font-size:22px}
+  :root{--sidebar-w:320px}
+  .quiz-card{max-width:700px}
+  .spell-card{max-width:640px}
+  .content-body{padding:40px 64px}
+}
+@media(min-width:3500px){
+  html{font-size:25px}
+  :root{--sidebar-w:360px}
+  .content-body{padding:48px 80px}
+}
+</style>
+</head>
+<body>
+
+<div class="app-layout">
+  <!-- Topbar -->
+  <div class="topbar">
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+    <a href="index.html" class="back-btn">← 返回主页</a>
+    <span class="tb-title">🚗 出行与交通</span>
+    <button class="auto-read-btn on" id="autoReadBtn" onclick="toggleAutoRead()" title="切换自动朗读">🔊 自动朗读</button>
+    <div class="mode-tabs">
+      <button class="mode-tab active" data-mode="browse" onclick="switchMode('browse')">📖 浏览</button>
+      <button class="mode-tab" data-mode="flashcard" onclick="switchMode('flashcard')">🃏 闪卡</button>
+      <button class="mode-tab" data-mode="quiz" onclick="switchMode('quiz')">📝 测验</button>
+      <button class="mode-tab" data-mode="spell" onclick="switchMode('spell')">✍️ 拼写</button>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header"><input class="search-box" id="searchBox" type="text" placeholder="搜索单词..." oninput="renderSidebar()"></div>
+    <nav class="word-list" id="wordList"></nav>
+    <div class="sidebar-footer">
+      <span class="sf-dot" style="background:var(--mastered)"></span>已掌握
+      <span class="sf-dot" style="background:var(--learning-status);margin-left:8px"></span>学习中
+      <span class="sf-dot" style="background:var(--new);margin-left:8px"></span>未开始
+    </div>
+  </aside>
+  <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <!-- Main -->
+  <main class="main"><div class="content-body" id="contentBody"></div></main>
+</div>
+
+<script src="shared.js"></script>
+<script>
+// ============================================================
+// WORD DATA — 10 Travel & Transportation words
+// ============================================================
+const WORDS = [
+  {
+    id:'space',word:'space',phonetic:'/speɪs/',chinese:'太空；空间',emoji:'🚀',pos:'名词',category:'sky',syllables:[{text:'sp',hint:'s后浊化'},{text:'a',hint:'长音/ei/'},{text:'ce',hint:'和face一样'}],
+    heroGradient:['#D5E0F0','#E8EFF8'],
+    sentences:[
+      {en:"There are many stars in <span class='hl'>space</span>.",zh:'太空中有很多星星。'},
+      {en:"Please give me some <span class='hl'>space</span> to sit down.",zh:'请给我一点空间坐下。'}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>sp+ace</b> → "sp"像"四破"，"ace"是王牌♠️。太空广阔无垠，像一张王牌！5个字母，ace结尾和face、place一样。'},
+      {icon:'🔊',text:'<b>/speɪs/</b> → "斯贝斯"。s后p浊化读/b/！长音/eɪ/嘴巴张大。和face、race押韵。'},
+      {icon:'📖',text:'来自拉丁语<b>spatium</b>(空间)。宇航员叫<b>astronaut</b>——astro(星星)+naut(航行者)=在太空航行的人🚀！space既是"太空"也是"空间"。'}
+    ]
+  },
+  {
+    id:'plant',word:'plant',phonetic:'/plænt/',chinese:'植物',emoji:'🌱',pos:'名词',category:'nature',syllables:[{text:'pl',hint:'漂亮'},{text:'a',hint:'æ短音'},{text:'nt',hint:'蚂蚁ant'}],
+    heroGradient:['#E0F0D8','#EFF8EC'],
+    sentences:[
+      {en:"I water the <span class='hl'>plant</span> every day.",zh:'我每天给植物浇水。'},
+      {en:"<span class='hl'>Plants</span> need sunlight and water to grow.",zh:'植物需要阳光和水才能生长。'}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>pl+ant</b> → "pl"像"漂亮"🌸，"ant"是小蚂蚁🐜。漂亮蚂蚁在植物上爬！planet(星球)也是pl开头——植物和星球都是生命🌍。'},
+      {icon:'🔊',text:'<b>/plænt/</b> → "普兰特"。æ像"哎"短音，嘴巴微张。p后面是l，不要读成pant！'},
+      {icon:'📖',text:'来自拉丁语<b>planta</b>(嫩芽🌱)。<b>planet</b>(星球)和plant是亲戚！古代人认为星球有生命。plant也可当动词"种植"——I plant a tree🌳。'}
+    ]
+  },
+  {
+    id:'wood',word:'wood',phonetic:'/wʊd/',chinese:'木头；树林',emoji:'🪵',pos:'名词',category:'nature',syllables:[{text:'w',hint:''},{text:'oo',hint:'两棵树🌳'},{text:'d',hint:''}],
+    heroGradient:['#E8D5C0','#F5EAE0'],
+    sentences:[
+      {en:"The table is made of <span class='hl'>wood</span>.",zh:'这张桌子是木头做的。'},
+      {en:"Let's go for a walk in the <span class='hl'>woods</span>.",zh:'我们去树林里散步吧。'}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>w+o+o+d</b> → 只有4个字母！两个o并排像两棵树🌳🌳。w是树根，d是树冠。wool(羊毛)也两个o——羊在树林里🐑。'},
+      {icon:'🔊',text:'<b>/wʊd/</b> → "悟德"。ʊ短元音像"呜"。和<b>would</b>(愿意)发音一模一样！I would like some wood. 🪵'},
+      {icon:'📖',text:'古英语<b>wudu</b>。三只小猪🐷——一只盖<b>wood house</b>木屋！wood加s变<b>woods</b>(树林)——小红帽走进woods🌲。wood也指"木制材料"。'}
+    ]
+  },
+  {
+    id:'outdoor',word:'outdoor',phonetic:"/'aʊt.dɔːr/",chinese:'户外的',emoji:'🏕️',pos:'形容词',category:'nature',syllables:[{text:'out',hint:'外面'},{text:'door',hint:'门'}],
+    heroGradient:['#D5F0D5','#E8F8E8'],
+    sentences:[
+      {en:"I love <span class='hl'>outdoor</span> activities like hiking.",zh:'我喜欢像徒步这样的户外活动。'},
+      {en:"Let's play some <span class='hl'>outdoor</span> games!",zh:'我们来玩一些户外游戏吧！'}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>out+door</b> → "out"(外面)+"door"(门)=门外=户外！一个拼起来的词，像两个好朋友牵手🤝。'},
+      {icon:'🔊',text:'<b>/ˈaʊt.dɔːr/</b> → "奥特-舵"。重音在<b>out</b>！door读/dɔːr/，or发长音像"哦——"。'},
+      {icon:'📖',text:'out(外面)+door(门)。反义词是<b>indoor</b>(室内的)🏠。outdoor activities是最常用搭配。英国人爱户外——不管刮风下雨都要去公园⛅。'}
+    ]
+  },
+  {
+    id:'airport',word:'airport',phonetic:"/'er.pɔːrt/",chinese:'机场',emoji:'✈️',pos:'名词',category:'ground',syllables:[{text:'air',hint:'天空/飞机'},{text:'port',hint:'港口'}],
+    heroGradient:['#D5E8F8','#E8F2FA'],
+    sentences:[
+      {en:"We arrived at the <span class='hl'>airport</span> two hours early.",zh:'我们提前两小时到达了机场。'},
+      {en:"The <span class='hl'>airport</span> is far from the city center.",zh:'机场离市中心很远。'}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>air+port</b> → "air"(天空/飞机)+"port"(港口)=飞机的港口=机场！air是天空✈️，port是船停靠的地方⚓。'},
+      {icon:'🔊',text:'<b>/ˈer.pɔːrt/</b> → "爱尔-破特"。重音在air！port中or发/ɔːr/长音。注意air不是are！'},
+      {icon:'📖',text:'<b>air</b>(航空)+<b>port</b>(拉丁语portus=港口)。飞机停泊的港口=机场！类似词：seaport海港🚢、passport护照📔。'}
+    ]
+  },
+  {
+    id:'plane',word:'plane',phonetic:'/pleɪn/',chinese:'飞机',emoji:'🛩️',pos:'名词',category:'sky',syllables:[{text:'pl',hint:'飘'},{text:'a',hint:'长音/ei/'},{text:'ne',hint:'lane小路'}],
+    heroGradient:['#F0E8F8','#F8F2FC'],
+    sentences:[
+      {en:"The <span class='hl'>plane</span> took off on time.",zh:'飞机准时起飞了。'},
+      {en:"We went to Shanghai by <span class='hl'>plane</span>.",zh:'我们坐飞机去了上海。'}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>pl+ane</b> → 只有5个字母！"pl"像"飘"，"ane"和lane(小路)、cane(拐杖)同族。飞机飘在天空✈️。'},
+      {icon:'🔊',text:'<b>/pleɪn/</b> → "普雷恩"。长音/eɪ/嘴巴张大！和<b>plain</b>(平原)发音一模一样——飞机在平原起飞🛫。'},
+      {icon:'📖',text:'<b>airplane</b>的缩写。莱特兄弟1903年发明第一架飞机✈️——只飞了12秒！plane也是数学的"平面"——一张纸是一个plane📄。'}
+    ]
+  },
+  {
+    id:'ambulance',word:'ambulance',phonetic:"/'æm.bjə.ləns/",chinese:'救护车',emoji:'🚑',pos:'名词',category:'ground',syllables:[{text:'am',hint:'重音在这'},{text:'bu',hint:'轻读/bjə/'},{text:'lance',hint:'弱读/ləns/'}],
+    heroGradient:['#FDE0E0','#FFF0F0'],
+    sentences:[
+      {en:"The <span class='hl'>ambulance</span> rushed to the hospital.",zh:'救护车飞快地开往医院。'},
+      {en:"Call an <span class='hl'>ambulance</span>! Someone is hurt!",zh:'快叫救护车！有人受伤了！'}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>am+bu+lance</b> → 3个音节！"am"是"我是"，"bu"像"不"，"lance"跳——我不是蹦蹦跳跳，我是救护车🚑！'},
+      {icon:'🔊',text:'<b>/ˈæm.bjə.ləns/</b> → "安姆-别-冷斯"。重音在<b>am</b>！bu读/bjə/很轻很快，lance的a发/ə/弱读。'},
+      {icon:'📖',text:'来自法语<b>hôpital ambulant</b>(移动医院)。拿破仑军队首创——用马车运伤员🏥。急救电话：中国120，美国911，英国999。'}
+    ]
+  },
+  {
+    id:'brake',word:'brake',phonetic:'/breɪk/',chinese:'刹车；制动器',emoji:'🛑',pos:'名词；动词',category:'ground',syllables:[{text:'br',hint:'不让'},{text:'a',hint:'长音/ei/'},{text:'ke',hint:''}],
+    heroGradient:['#FDE8E0','#FFF5F0'],
+    sentences:[
+      {en:"Press the <span class='hl'>brake</span> to stop the car.",zh:'踩刹车让车停下来。'},
+      {en:"The driver <span class='hl'>braked</span> suddenly at the red light.",zh:'司机在红灯前突然刹车。'}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>br+ake</b> → 只有5个字母！"br"像"不让"🖐️，"ake"像ache(痛)——不让车"痛"，快踩刹车！'},
+      {icon:'🔊',text:'<b>/breɪk/</b> → 和<b>break</b>(打破)发音一模一样！但拼写不同——brake是刹车🛑，break是打碎💥。'},
+      {icon:'📖',text:'来自古德语<b>brecan</b>(打破→停下)。自行车<b>hand brake</b>手刹🤚，汽车<b>foot brake</b>脚刹🦶。"Hit the brakes!"=紧急刹车！'}
+    ]
+  },
+  {
+    id:'flight',word:'flight',phonetic:'/flaɪt/',chinese:'航班；飞行',emoji:'✈️',pos:'名词',category:'sky',syllables:[{text:'fl',hint:'fly飞'},{text:'ight',hint:'gh不发音'}],
+    heroGradient:['#D5E8F8','#EDF5FC'],
+    sentences:[
+      {en:"Our <span class='hl'>flight</span> to London is at 3:00 PM.",zh:'我们去伦敦的航班是下午三点。'},
+      {en:"The bird's <span class='hl'>flight</span> was beautiful to watch.",zh:'鸟儿的飞行姿态美极了。'}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>fl+ight</b> → "fl"=fly(飞)，"ight"是名词后缀。飞的行为=航班✈️！light, night, right都是ight家族。'},
+      {icon:'🔊',text:'<b>/flaɪt/</b> → "弗莱特"。<b>gh不发音</b>！和light(光💡)、night(夜🌙)、right(对✓)读音模式一样。'},
+      {icon:'📖',text:'来自fly(飞)。记住<b>ight家族</b>：light💡、night🌙、right✓、flight✈️、bright🌟——gh都不发音！"flight attendant"=空乘人员🧑‍✈️。'}
+    ]
+  },
+  {
+    id:'garage',word:'garage',phonetic:"/ɡə'rɑːʒ/",chinese:'车库',emoji:'🏠',pos:'名词',category:'ground',syllables:[{text:'ga',hint:''},{text:'ra',hint:'重音在这'},{text:'ge',hint:'法语/ʒ/'}],
+    heroGradient:['#E8E0D8','#F5F0EB'],
+    sentences:[
+      {en:"Dad parks the car in the <span class='hl'>garage</span>.",zh:'爸爸把车停在车库里。'},
+      {en:"The <span class='hl'>garage</span> door needs to be fixed.",zh:'车库门需要修一下。'}
+    ],
+    memory:[
+      {icon:'🔤',text:'<b>ga+ra+ge</b> → 3个音节，法语借词！"ga"嘎，"ra"让，"ge"日——法国的车库带浪漫口音🇫🇷。'},
+      {icon:'🔊',text:'<b>/ɡəˈrɑːʒ/</b> → "格-让日"。重音在<b>ra</b>！ge读/ʒ/像中文"日"。法语词发音特殊！'},
+      {icon:'📖',text:'来自法语<b>garer</b>(停放)。1910年代汽车普及才有！法语尾音/ʒ/保留法国味🥐。massage💆、corsage🌺也是age结尾法语词。'}
+    ]
+  }
+];
+
+
+// ============================================================
+// STATE
+// ============================================================
+const state = loadState();
+WORDS.forEach(w => { if (!state.words[w.id]) state.words[w.id] = { status: 'new', xp: 0 }; });
+saveState(state);
+
+// UI State
+let currentIdx = 0, currentMode = 'browse';
+let quizState = null, spellState = null, flashcardState = { flipped: false, queue: [], qIdx: 0 };
+
+// Auto-read toggle (default: on)
+let autoRead = true;
+(function(){
+  try { var v = localStorage.getItem('word_academy_autoread'); if (v !== null) autoRead = v === 'true'; } catch(e) {}
+})();
+function toggleAutoRead() {
+  autoRead = !autoRead;
+  localStorage.setItem('word_academy_autoread', autoRead);
+  var btn = document.getElementById('autoReadBtn');
+  if (btn) {
+    btn.textContent = autoRead ? '🔊 自动朗读' : '🔇 朗读已关';
+    btn.classList.toggle('on', autoRead);
+  }
+  if (autoRead && currentMode === 'browse') { var w = WORDS[currentIdx]; if (w) pronounce(w.word); }
+}
+// Set initial button state
+setTimeout(function(){
+  var btn = document.getElementById('autoReadBtn');
+  if (btn && !autoRead) { btn.textContent = '🔇 朗读已关'; btn.classList.remove('on'); }
+}, 0);
+
+// ============================================================
+// EXTRA FIELDS (collocations, related, pitfall)
+// ============================================================
+const EXTRA = {
+  space:      {collocations:["in space","outer space","parking space","living space"],related:"universe, star, planet, astronaut, room",pitfall:"sp<b>a</b>ce - a 不是 e！和 face、race 一样以 ace 结尾"},
+  plant:      {collocations:["water the plant","plant a tree","grow plants","power plant(工厂)"],related:"tree, flower, garden, leaf, seed, grow",pitfall:"pl<b>a</b>nt - a 不是 e！不要和 planet(星球)搞混——planet 多一个 e"},
+  wood:       {collocations:["made of wood","wooden table","in the woods","piece of wood"],related:"tree, forest, timber, material, paper",pitfall:"w<b>oo</b>d - 两个 o！wood(木头) vs would(愿意)——发音一样拼写不同"},
+  outdoor:    {collocations:["outdoor activities","outdoor games","outdoor sports","outdoor life"],related:"outside, nature, camping, park, hiking",pitfall:"<b>out</b>door - 一个词！不是 out door。反义词 indoor 也是一个词"},
+  airport:    {collocations:["at the airport","international airport","airport terminal","go to the airport"],related:"plane, flight, passenger, runway, passport",pitfall:"air<b>port</b> - port 不是 pot！机场是飞机停泊的港口"},
+  plane:      {collocations:["by plane","take a plane","plane ticket","plane crash"],related:"airplane, airport, flight, pilot, jet, fly",pitfall:"pl<b>ane</b> - ane 不是 ain！和 plain(平原)同音但拼写不同"},
+  ambulance:  {collocations:["call an ambulance","ambulance driver","ambulance siren","rush by ambulance"],related:"hospital, paramedic, emergency, siren, patient",pitfall:"<b>am</b>bulance - am 开头不是 an！3个音节 am-bu-lance"},
+  brake:      {collocations:["hit the brakes","emergency brake","brake pedal","hand brake"],related:"stop, car, slow, pedal, safety, wheel",pitfall:"br<b>a</b>ke - a 不是 ea！brake(刹车) vs break(打破)——同音异义词"},
+  flight:     {collocations:["take a flight","flight number","flight attendant","direct flight"],related:"airplane, airport, fly, passenger, ticket, sky",pitfall:"fl<b>ight</b> - gh 不发音！和 light, night, right 一样的 ight 模式"},
+  garage:     {collocations:["in the garage","garage door","park in the garage","garage sale"],related:"car, parking, house, driveway, mechanic, repair",pitfall:"gar<b>a</b>ge - age 读 /ɑːʒ/ 法语口音！和 massage 一样 soft-g"},
+};
+
+// ============================================================
+// HELPERS
+// ============================================================
+function ws(wid) { return getWordStatus(state, wid); }
+function getSeasonColor(s) {
+  const m = { sky: 'var(--cat-spring)', ground: 'var(--cat-winter)', nature: 'var(--cat-summer)' };
+  return m[s] || 'var(--cat-spring)';
+}
+
+// ============================================================
+// SIDEBAR
+// ============================================================
+function renderSidebar() {
+  const wl = document.getElementById('wordList');
+  const ft = (document.getElementById('searchBox')?.value || '').toLowerCase().trim();
+  const categories = ['sky', 'ground', 'nature'];
+  const sLabels = { sky: '🚀 天空飞行', ground: '🚗 地面出行', nature: '🌿 自然户外' };
+  const catWords = categories.reduce((a, c) => { a[c] = []; return a; }, {});
+  WORDS.forEach((w, i) => { if (catWords[w.category]) catWords[w.category].push(i); });
+  let html = '';
+  categories.forEach(cat => {
+    const catWordList = catWords[cat].map(i => WORDS[i]).filter(w => w && (!ft || w.word.toLowerCase().includes(ft) || w.chinese.includes(ft)));
+    if (!catWordList.length) return;
+    html += `<div class="cat-group"><div class="cat-label"><span class="dot" style="background:${getSeasonColor(cat)}"></span>${sLabels[cat]}<span class="count">${catWordList.length}词</span></div>`;
+    catWordList.forEach(w => {
+      const idx = WORDS.indexOf(w);
+      const st = ws(w.id);
+      const act = idx === currentIdx ? ' active' : '';
+      html += `<div class="word-card${act}" onclick="selectWord(${idx});if(window.innerWidth<901)toggleSidebar()"><span class="wc-emoji">${w.emoji}</span><span class="wc-info"><span class="wc-word">${w.word}</span><span class="wc-cn">${w.chinese}</span></span><span class="wc-status ${st}"></span></div>`;
+    });
+    html += `</div>`;
+  });
+  if (!html) html = `<div style="text-align:center;padding:20px;color:var(--text-muted)">🔍 没找到</div>`;
+  wl.innerHTML = html;
+}
+
+// ============================================================
+// CONTENT
+// ============================================================
+function renderContent() {
+  if (currentMode === 'browse') renderBrowse();
+  else if (currentMode === 'flashcard') renderFlashcard();
+  else if (currentMode === 'quiz') renderQuiz();
+  else if (currentMode === 'spell') renderSpell();
+}
+
+// ---- BROWSE ----
+function renderBrowse() {
+  const w = WORDS[currentIdx]; if (!w) return;
+  const sents = w.sentences;
+  const mastered = ws(w.id) === 'mastered';
+  const prevOk = currentIdx > 0, nextOk = currentIdx < WORDS.length - 1;
+  const body = document.getElementById('contentBody');
+
+  // Colorful syllable chips
+  const sylColors = ['#E8725A','#5B9EED','#7BAE7F','#9B7EC4','#F4A542'];
+  const syls = (w.syllables || []).map(function(s,i) {
+    var h = '<span class="syl-chip" style="background:' + sylColors[i % sylColors.length] + '">' + s.text;
+    if (s.hint) h += '<span class="syl-hint">' + s.hint + '</span>';
+    h += '</span>';
+    return h;
+  }).join('<span class="syl-sep">·</span>');
+
+  // Simplify memory text: strip HTML and take first sentence
+  function simplify(text) {
+    var clean = text.replace(/<[^>]*>/g, '');
+    // Take ~100 chars, breaking at sentence end when possible
+    if (clean.length <= 100) return clean;
+    var cut = clean.substring(0, 97);
+    var lastPeriod = Math.max(cut.lastIndexOf('。'), cut.lastIndexOf('！'), cut.lastIndexOf('？'));
+    if (lastPeriod > 60) return cut.substring(0, lastPeriod + 1);
+    return cut + '...';
+  }
+
+  body.innerHTML = ''
+    + '<div class="browse-slide">'
+    + '<div class="browse-left">'
+    // Line 1: emoji + word
+    + '<div class="word-title-bar">'
+    + '<span class="wt-emoji">' + w.emoji + '</span>'
+    + '<span class="wt-word">' + w.word + '</span>'
+    + '</div>'
+    // Line 2: pos + chinese
+    + '<div class="word-meta">'
+    + '<span>' + w.pos + ' · ' + w.chinese + '</span>'
+    + '</div>'
+    // Line 3: syllables + phonetic + pronounce icon
+    + '<div class="syllable-bar">'
+    + syls
+    + '  <span style="color:var(--text-muted);margin:0 6px;font-family:var(--font-word)">' + w.phonetic + '</span>'
+    + '<button class="pronounce-btn" onclick="pronounce(\'' + w.word + '\')" title="听发音">🔊</button>'
+    + '</div>'
+    // Sentences
+    + '<div class="slide-sentence">'
+    + sents.map(function(s,i) {
+        return '<div><div class="sen-en">' + s.en + '</div><div class="sen-zh">' + s.zh + '</div></div>'
+          + (i < sents.length - 1 ? '<div class="sen-divider"></div>' : '');
+      }).join('')
+    + '</div>'
+    // Memory — simplified, single column
+    // 📖 Story + ✨ Magic
+    + '<div class="slide-memory">'
+    + (function(){
+        var story = w.memory.find(function(m){return m.icon==='📖'});
+        var tricks = w.memory.filter(function(m){return m.icon!=='📖'});
+        var html = '';
+        if (story) html += '<div class="sm-section"><div class="sm-label">📖 Story</div><div class="sm-text">' + simplify(story.text) + '</div></div>';
+        if (tricks.length) {
+          html += '<div class="sm-section"><div class="sm-label">✨ Magic</div>';
+          tricks.forEach(function(m){
+            html += '<div class="sm-item"><span class="smi-icon">' + m.icon + '</span><span class="smi-text">' + simplify(m.text) + '</span></div>';
+          });
+          html += '</div>';
+        }
+        return html;
+      })()
+    + '</div>'
+    // Collocations, Related, Pitfall (from EXTRA lookup)
+    + (function(){
+        var x = EXTRA[w.id] || {};
+        var h = '';
+        if (x.collocations) h += '<div class="slide-extra"><span class="se-label">常用搭配</span><span class="se-text">' + x.collocations.join('  |  ') + '</span></div>';
+        if (x.related) h += '<div class="slide-extra"><span class="se-label">相关词汇</span><span class="se-text">' + x.related + '</span></div>';
+        if (x.pitfall) h += '<div class="slide-extra"><span class="se-label">易错提醒</span><span class="se-text">' + x.pitfall + '</span></div>';
+        return h;
+      })()
+    // Actions
+    + '<div class="slide-actions">'
+    + '<button class="btn btn-secondary" onclick="navWord(-1)"' + (prevOk ? '' : ' disabled') + '>⬅ 上一个</button>'
+    + (mastered
+        ? '<button class="btn btn-mastered">✅ 已掌握</button>'
+        : '<button class="btn btn-primary" onclick="markMastered(state,\'' + w.id + '\');saveState(state);renderBrowse();renderSidebar();showToast(\'🎉 太棒了\')">✅ 学会了</button>')
+    + '<button class="btn btn-secondary" onclick="switchMode(\'flashcard\')">🃏 闪卡复习</button>'
+    + '<button class="btn btn-secondary" onclick="navWord(1)"' + (nextOk ? '' : ' disabled') + '>下一个 ➡</button>'
+    + '</div>'
+    + '</div>'
+    // Right: AI Poster
+    + '<div class="browse-right">'
+    + '<div class="poster-card">'
+    + '<img src="images/posters/travel.png" alt="出行与交通单词海报" onerror="this.parentElement.style.display=\'none\'" loading="lazy">'
+    + '</div>'
+    + '</div>'
+    + '</div>';
+	  // Auto-read
+	  if (autoRead) pronounce(w.word);
+}
+// ---- FLASHCARD ----
+function renderFlashcard() {
+  if (flashcardState.queue.length === 0 || flashcardState.qIdx >= flashcardState.queue.length) {
+    const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    const l = WORDS.filter(w => ws(w.id) !== 'mastered');
+    const m = WORDS.filter(w => ws(w.id) === 'mastered');
+    flashcardState.queue = [...shuffle([...l]), ...shuffle([...m])];
+    flashcardState.qIdx = 0; flashcardState.flipped = false;
+  }
+  const w = flashcardState.queue[flashcardState.qIdx]; if (!w) return;
+  const body = document.getElementById('contentBody');
+  body.innerHTML = `
+  <div class="flashcard-view">
+    <div class="flip-container${flashcardState.flipped ? ' flipped' : ''}" onclick="${flashcardState.flipped ? '' : "this.classList.add('flipped');fs=flashcardState;fs.flipped=true;setTimeout(renderFlashcard,10)"}">
+      <div class="flip-inner">
+        <div class="flip-front"><span class="ff-emoji">${w.emoji}</span><span class="ff-word">${w.word}</span><span class="ff-hint">👆 点击翻转</span></div>
+        <div class="flip-back"><span class="fb-emoji">${w.emoji}</span><span class="fb-cn">${w.chinese}</span><span class="fb-word">${w.word} ${w.phonetic}</span><span class="fb-sentence">${w.sentences[0].en.replace(/<\/?span[^>]*>/g, '')}</span></div>
+      </div>
+    </div>
+    ${flashcardState.flipped ? `
+    <div class="fc-actions">
+      <button class="fc-btn forgot" onclick="flashcardResult('forgot')">😕</button>
+      <button class="fc-btn skip" onclick="flashcardResult('skip')">⏭</button>
+      <button class="fc-btn remember" onclick="flashcardResult('remember')">😊</button>
+    </div>` : '<div style="font-size:.85em;color:var(--text-muted)">先想想意思，再点击翻转</div>'}
+    <div class="fc-progress">📇 ${flashcardState.qIdx + 1}/${flashcardState.queue.length}</div>
+  </div>`;
+}
+
+function flashcardResult(r) {
+  const w = flashcardState.queue[flashcardState.qIdx]; if (!w) return;
+  if (r === 'remember') { addXP(state, w.id, 5); if (ws(w.id) === 'new') state.words[w.id].status = 'learning'; saveState(state); }
+  flashcardState.qIdx++; flashcardState.flipped = false; renderFlashcard(); renderSidebar();
+}
+
+// ---- QUIZ ----
+function renderQuiz() {
+  if (!quizState || quizState.roundWords.length === 0) {
+    const pool = [...WORDS].sort(() => Math.random() - 0.5);
+    quizState = { roundWords: pool.slice(0, Math.min(6, pool.length)), idx: 0, correct: 0, answered: false };
+  }
+  if (quizState.idx >= quizState.roundWords.length) {
+    const tot = quizState.roundWords.length, corr = quizState.correct, pct = Math.round((corr / tot) * 100);
+    document.getElementById('contentBody').innerHTML = `<div class="quiz-view"><div class="quiz-card"><div class="quiz-score"><div style="font-size:1.1em;color:var(--text-light)">测验完成！</div><div class="qs-big">${pct >= 80 ? '🎉' : pct >= 50 ? '👍' : '💪'}</div><div>答对 <span style="color:var(--correct)">${corr}</span>/${tot} 题（${pct}%）</div></div><button class="btn btn-primary" onclick="quizState=null;renderQuiz()">🔄 再来一轮</button></div></div>`;
+    return;
+  }
+  const w = quizState.roundWords[quizState.idx];
+  const others = WORDS.filter(x => x.id !== w.id).sort(() => Math.random() - 0.5);
+  const opts = [w, ...others.slice(0, 3)].sort(() => Math.random() - 0.5);
+  document.getElementById('contentBody').innerHTML = `
+  <div class="quiz-view"><div class="quiz-card">
+    <div class="q-progress"><span>第${quizState.idx + 1}/${quizState.roundWords.length}题</span><div class="q-progress-bar"><div class="q-progress-bar-fill" style="width:${(quizState.idx / quizState.roundWords.length) * 100}%"></div></div></div>
+    <div class="q-emoji">${w.emoji}</div><div class="q-prompt">"${w.chinese}" 的英文是？</div>
+    <div class="quiz-options" id="qzOpts">${opts.map(o => `<button class="quiz-option" data-wid="${o.id}" onclick="answerQuiz('${o.id}','${w.id}',this)">${o.word}</button>`).join('')}</div>
+  </div></div>`;
+}
+
+function answerQuiz(chosen, correct, btn) {
+  if (quizState.answered) return; quizState.answered = true;
+  document.querySelectorAll('#qzOpts .quiz-option').forEach(b => b.style.pointerEvents = 'none');
+  if (chosen === correct) {
+    btn.classList.add('correct'); quizState.correct++;
+    addXP(state, correct, 15); if (ws(correct) === 'new') state.words[correct].status = 'learning'; saveState(state);
+    showToast('✅ 正确！');
+  } else {
+    btn.classList.add('wrong'); document.querySelector(`#qzOpts [data-wid="${correct}"]`)?.classList.add('correct');
+  }
+  renderSidebar();
+  setTimeout(() => { quizState.idx++; quizState.answered = false; renderQuiz(); }, 1100);
+}
+
+// ---- SPELL ----
+function renderSpell() {
+  if (!spellState) spellState = { idx: currentIdx, attempts: 0 };
+  const w = WORDS[spellState.idx]; if (!w) return;
+  document.getElementById('contentBody').innerHTML = `
+  <div class="spell-view"><div class="spell-card">
+    <div class="sp-emoji">${w.emoji}</div>
+    <div class="sp-prompt">请拼写 "${w.chinese}" 的英文</div>
+    <div class="sp-hint">🔈 听发音后输入拼写</div>
+    <button class="btn btn-secondary" onclick="pronounce('${w.word}')" style="margin-bottom:14px">🔈 听发音</button><br>
+    <input class="spell-input" id="spellInput" type="text" placeholder="输入英文..." autocomplete="off" onkeydown="if(event.key==='Enter')checkSpell()">
+    <div class="spell-feedback" id="spellFB"></div>
+    <div style="margin-top:14px;display:flex;gap:10px;justify-content:center">
+      <button class="btn btn-primary" onclick="checkSpell()">✅ 检查</button>
+      <button class="btn btn-secondary" onclick="spellState.idx=(spellState.idx+1)%WORDS.length;spellState.attempts=0;renderSpell()">⏭ 跳过</button>
+    </div>
+  </div></div>`;
+  setTimeout(() => document.getElementById('spellInput')?.focus(), 100);
+}
+
+function checkSpell() {
+  const inp = document.getElementById('spellInput'), fb = document.getElementById('spellFB');
+  if (!inp) return;
+  const w = WORDS[spellState.idx], ans = inp.value.trim();
+  if (ans.toLowerCase() === w.word.toLowerCase()) {
+    inp.classList.add('correct'); fb.innerHTML = '🎉 完全正确！'; fb.style.color = 'var(--correct)';
+    addXP(state, w.id, 20); if (ws(w.id) === 'new') state.words[w.id].status = 'learning'; saveState(state);
+    renderSidebar();
+    setTimeout(() => { spellState.idx = (spellState.idx + 1) % WORDS.length; spellState.attempts = 0; renderSpell(); }, 1200);
+  } else {
+    spellState.attempts++; inp.classList.add('wrong');
+    if (spellState.attempts >= 3) {
+      fb.innerHTML = `答案是：<b style="color:var(--coral)">${w.word}</b>`; fb.style.color = 'var(--wrong)';
+      setTimeout(() => { spellState.idx = (spellState.idx + 1) % WORDS.length; spellState.attempts = 0; renderSpell(); }, 1800);
+    } else { fb.innerHTML = `❌ 不对哦（剩${3 - spellState.attempts}次）`; fb.style.color = 'var(--wrong)'; inp.value = ''; inp.focus(); }
+  }
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function selectWord(i) { currentIdx = i; spellState = null; quizState = null; flashcardState = { flipped: false, queue: [], qIdx: 0 }; renderContent(); renderSidebar(); }
+function navWord(d) { const n = currentIdx + d; if (n >= 0 && n < WORDS.length) selectWord(n); }
+function switchMode(m) {
+  currentMode = m; spellState = null; quizState = null; flashcardState = { flipped: false, queue: [], qIdx: 0 };
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.mode-tab[data-mode="${m}"]`)?.classList.add('active');
+  renderContent();
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.querySelector('.sidebar-overlay').classList.toggle('show'); }
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  if (currentMode === 'browse') { if (e.key === 'ArrowLeft') navWord(-1); if (e.key === 'ArrowRight') navWord(1); }
+  if (currentMode === 'flashcard' && e.key === ' ' && !flashcardState.flipped) { e.preventDefault(); document.querySelector('.flip-container')?.classList.add('flipped'); flashcardState.flipped = true; setTimeout(renderFlashcard, 10); }
+  if (e.key === '1') switchMode('browse'); if (e.key === '2') switchMode('flashcard');
+  if (e.key === '3') switchMode('quiz'); if (e.key === '4') switchMode('spell');
+});
+
+// Init
+if (window.location.hash) {
+  const wid = window.location.hash.slice(1);
+  const idx = WORDS.findIndex(w => w.id === wid);
+  if (idx >= 0) currentIdx = idx;
+}
+renderSidebar(); renderContent();
+</script>
+</body>
+</html>
