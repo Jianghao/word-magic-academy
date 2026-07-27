@@ -282,138 +282,69 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 <script src="shared.js"></script>
 <script>
 // ============================================================
-// WORD DATA — 10 Travel & Transportation words
+// ============================================================
+// WORD DATA — 10 Journey words
 // ============================================================
 const WORDS = [
   {
-    id:'space',word:'space',phonetic:'/speɪs/',chinese:'太空；空间',emoji:'🚀',pos:'名词',category:'sky',syllables:[{text:'sp',hint:'s后浊化'},{text:'a',hint:'长音/ei/'},{text:'ce',hint:'和face一样'}],
-    heroGradient:['#D5E0F0','#E8EFF8'],
-    sentences:[
-      {en:"There are many stars in <span class='hl'>space</span>.",zh:'太空中有很多星星。'},
-      {en:"Please give me some <span class='hl'>space</span> to sit down.",zh:'请给我一点空间坐下。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>sp+ace</b> → "sp"像"四破"，"ace"是王牌♠️。太空广阔无垠，像一张王牌！5个字母，ace结尾和face、place一样。'},
-      {icon:'🔊',text:'<b>/speɪs/</b> → "斯贝斯"。s后p浊化读/b/！长音/eɪ/嘴巴张大。和face、race押韵。'},
-      {icon:'📖',text:'来自拉丁语<b>spatium</b>(空间)。宇航员叫<b>astronaut</b>——astro(星星)+naut(航行者)=在太空航行的人🚀！space既是"太空"也是"空间"。'}
-    ]
+    id:'pilot',word:'pilot',phonetic:'/ˈpaɪ.lət/',chinese:'飞行员；领航员',emoji:'👨‍✈️',pos:'名词',category:'basics',syllables:[{text:'pi',hint:'长音/aɪ/'},{text:'lot',hint:''}],
+    heroGradient:["#D5E0F0", "#E8EFF8"],
+    sentences:[{en:"The <span class='hl'>pilot</span> landed the plane safely.",zh:'飞行员安全降落了飞机。'},{en:"She wants to be a <span class='hl'>pilot</span> when she grows up.",zh:'她长大后想当飞行员。'}],
+    memory:[{icon:'🔤',text:"<b>pi+lot</b> → \"pi\"派，\"lot\"骆驼🐪——飞行员驾着\"骆驼\"飞上蓝天"},{icon:'🔊',text:"<b>/ˈpaɪ.lət/</b> → \"派-乐特\"。重音在<b>pi</b>！i发长音/aɪ/"},{icon:'📖',text:"来自希腊语<b>pedon</b>(舵⚓)。最初指船上的舵手→后来开飞机✈️。auto<b>pilot</b>=自动驾驶🤖"}]
   },
   {
-    id:'plant',word:'plant',phonetic:'/plænt/',chinese:'植物',emoji:'🌱',pos:'名词',category:'nature',syllables:[{text:'pl',hint:'漂亮'},{text:'a',hint:'æ短音'},{text:'nt',hint:'蚂蚁ant'}],
-    heroGradient:['#E0F0D8','#EFF8EC'],
-    sentences:[
-      {en:"I water the <span class='hl'>plant</span> every day.",zh:'我每天给植物浇水。'},
-      {en:"<span class='hl'>Plants</span> need sunlight and water to grow.",zh:'植物需要阳光和水才能生长。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>pl+ant</b> → "pl"像"漂亮"🌸，"ant"是小蚂蚁🐜。漂亮蚂蚁在植物上爬！planet(星球)也是pl开头——植物和星球都是生命🌍。'},
-      {icon:'🔊',text:'<b>/plænt/</b> → "普兰特"。æ像"哎"短音，嘴巴微张。p后面是l，不要读成pant！'},
-      {icon:'📖',text:'来自拉丁语<b>planta</b>(嫩芽🌱)。<b>planet</b>(星球)和plant是亲戚！古代人认为星球有生命。plant也可当动词"种植"——I plant a tree🌳。'}
-    ]
+    id:'mile',word:'mile',phonetic:'/maɪl/',chinese:'英里',emoji:'📏',pos:'名词',category:'basics',syllables:[{text:'mile',hint:'一千步'}],
+    heroGradient:["#E8F0D8", "#F4F8EC"],
+    sentences:[{en:"We walked five <span class='hl'>miles</span> today.",zh:'我们今天走了五英里。'},{en:"The airport is 20 <span class='hl'>miles</span> away.",zh:'机场在20英里外。'}],
+    memory:[{icon:'🔤',text:"<b>mi+le</b> → 只有4个字母！\"mi\"像\"迈\"——迈一步走向一英里🚶"},{icon:'🔊',text:"<b>/maɪl/</b> → \"麦尔\"。i发长音/aɪ/。mile和smile(微笑😊)押韵"},{icon:'📖',text:"来自拉丁语<b>mille</b>(一千)。古罗马一英里=士兵走1000步👣。1 mile≈1.6 km"}]
   },
   {
-    id:'wood',word:'wood',phonetic:'/wʊd/',chinese:'木头；树林',emoji:'🪵',pos:'名词',category:'nature',syllables:[{text:'w',hint:''},{text:'oo',hint:'两棵树🌳'},{text:'d',hint:''}],
-    heroGradient:['#E8D5C0','#F5EAE0'],
-    sentences:[
-      {en:"The table is made of <span class='hl'>wood</span>.",zh:'这张桌子是木头做的。'},
-      {en:"Let's go for a walk in the <span class='hl'>woods</span>.",zh:'我们去树林里散步吧。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>w+o+o+d</b> → 只有4个字母！两个o并排像两棵树🌳🌳。w是树根，d是树冠。wool(羊毛)也两个o——羊在树林里🐑。'},
-      {icon:'🔊',text:'<b>/wʊd/</b> → "悟德"。ʊ短元音像"呜"。和<b>would</b>(愿意)发音一模一样！I would like some wood. 🪵'},
-      {icon:'📖',text:'古英语<b>wudu</b>。三只小猪🐷——一只盖<b>wood house</b>木屋！wood加s变<b>woods</b>(树林)——小红帽走进woods🌲。wood也指"木制材料"。'}
-    ]
+    id:'wheel',word:'wheel',phonetic:'/wiːl/',chinese:'车轮；方向盘',emoji:'🛞',pos:'名词',category:'basics',syllables:[{text:'wh',hint:'读/w/'},{text:'ee',hint:'长音/iː/'},{text:'l',hint:''}],
+    heroGradient:["#E8E0D8", "#F5F0EB"],
+    sentences:[{en:"The car has four <span class='hl'>wheels</span>.",zh:'汽车有四个轮子。'},{en:"He held the <span class='hl'>wheel</span> tightly.",zh:'他紧紧地握着方向盘。'}],
+    memory:[{icon:'🔤',text:"<b>wh+ee+l</b> → ee两个e像两个车轮🛞🛞，l是车轴——轮子转起来"},{icon:'🔊',text:"<b>/wiːl/</b> → \"威欧\"。wh读/w/！ee发长音/iː/。wheel和feel押韵"},{icon:'📖',text:"人类最伟大发明之一——5000年前就有轮子！steering wheel=方向盘🎡。Ferris wheel=摩天轮🎡"}]
   },
   {
-    id:'outdoor',word:'outdoor',phonetic:"/'aʊt.dɔːr/",chinese:'户外的',emoji:'🏕️',pos:'形容词',category:'nature',syllables:[{text:'out',hint:'外面'},{text:'door',hint:'门'}],
-    heroGradient:['#D5F0D5','#E8F8E8'],
-    sentences:[
-      {en:"I love <span class='hl'>outdoor</span> activities like hiking.",zh:'我喜欢像徒步这样的户外活动。'},
-      {en:"Let's play some <span class='hl'>outdoor</span> games!",zh:'我们来玩一些户外游戏吧！'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>out+door</b> → "out"(外面)+"door"(门)=门外=户外！一个拼起来的词，像两个好朋友牵手🤝。'},
-      {icon:'🔊',text:'<b>/ˈaʊt.dɔːr/</b> → "奥特-舵"。重音在<b>out</b>！door读/dɔːr/，or发长音像"哦——"。'},
-      {icon:'📖',text:'out(外面)+door(门)。反义词是<b>indoor</b>(室内的)🏠。outdoor activities是最常用搭配。英国人爱户外——不管刮风下雨都要去公园⛅。'}
-    ]
+    id:'passenger',word:'passenger',phonetic:'/ˈpæs.ən.dʒər/',chinese:'乘客',emoji:'🧳',pos:'名词',category:'basics',syllables:[{text:'pas',hint:'通过'},{text:'sen',hint:'弱读'},{text:'ger',hint:'人'}],
+    heroGradient:["#F0E8F0", "#F8F4F8"],
+    sentences:[{en:"The bus holds 50 <span class='hl'>passengers</span>.",zh:'这辆公共汽车可载50名乘客。'},{en:"<span class='hl'>Passengers</span> should fasten their seat belts.",zh:'乘客应系好安全带。'}],
+    memory:[{icon:'🔤',text:"<b>pass+en+ger</b> → \"pass\"(通过)+\"enger\"(人)=路过的人=乘客🧳"},{icon:'🔊',text:"<b>/ˈpæs.ən.dʒər/</b> → \"派-森-杰\"。重音在<b>pas</b>！sen弱读/ən/"},{icon:'📖',text:"来自<b>passage</b>(通行)。passenger坐车/飞机但不驾驶。passenger seat=副驾驶座🚗"}]
   },
   {
-    id:'airport',word:'airport',phonetic:"/'er.pɔːrt/",chinese:'机场',emoji:'✈️',pos:'名词',category:'ground',syllables:[{text:'air',hint:'天空/飞机'},{text:'port',hint:'港口'}],
-    heroGradient:['#D5E8F8','#E8F2FA'],
-    sentences:[
-      {en:"We arrived at the <span class='hl'>airport</span> two hours early.",zh:'我们提前两小时到达了机场。'},
-      {en:"The <span class='hl'>airport</span> is far from the city center.",zh:'机场离市中心很远。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>air+port</b> → "air"(天空/飞机)+"port"(港口)=飞机的港口=机场！air是天空✈️，port是船停靠的地方⚓。'},
-      {icon:'🔊',text:'<b>/ˈer.pɔːrt/</b> → "爱尔-破特"。重音在air！port中or发/ɔːr/长音。注意air不是are！'},
-      {icon:'📖',text:'<b>air</b>(航空)+<b>port</b>(拉丁语portus=港口)。飞机停泊的港口=机场！类似词：seaport海港🚢、passport护照📔。'}
-    ]
+    id:'driving_licence',word:'driving licence',phonetic:'/ˈdraɪ.vɪŋ ˌlaɪ.səns/',chinese:'驾照',emoji:'🪪',pos:'名词',category:'driving',syllables:[{text:'dri',hint:''},{text:'ving',hint:''},{text:'li',hint:''},{text:'cence',hint:'许可证'}],
+    heroGradient:["#F0E8D8", "#F8F4EC"],
+    sentences:[{en:"I got my <span class='hl'>driving licence</span> last year.",zh:'我去年拿到了驾照。'},{en:"You need a <span class='hl'>driving licence</span> to drive a car.",zh:'开车需要有驾照。'}],
+    memory:[{icon:'🔤',text:"<b>driving+licence</b> → \"driving\"(开车)+\"licence\"(许可证)=开车许可证=驾照🪪"},{icon:'🔊',text:"<b>/ˈdraɪ.vɪŋ ˌlaɪ.səns/</b> → \"拽-ving 来-森斯\""},{icon:'📖',text:"licence来自拉丁语<b>licentia</b>(许可)。UK：driving licence，US：driver's license🚗"}]
   },
   {
-    id:'plane',word:'plane',phonetic:'/pleɪn/',chinese:'飞机',emoji:'🛩️',pos:'名词',category:'sky',syllables:[{text:'pl',hint:'飘'},{text:'a',hint:'长音/ei/'},{text:'ne',hint:'lane小路'}],
-    heroGradient:['#F0E8F8','#F8F2FC'],
-    sentences:[
-      {en:"The <span class='hl'>plane</span> took off on time.",zh:'飞机准时起飞了。'},
-      {en:"We went to Shanghai by <span class='hl'>plane</span>.",zh:'我们坐飞机去了上海。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>pl+ane</b> → 只有5个字母！"pl"像"飘"，"ane"和lane(小路)、cane(拐杖)同族。飞机飘在天空✈️。'},
-      {icon:'🔊',text:'<b>/pleɪn/</b> → "普雷恩"。长音/eɪ/嘴巴张大！和<b>plain</b>(平原)发音一模一样——飞机在平原起飞🛫。'},
-      {icon:'📖',text:'<b>airplane</b>的缩写。莱特兄弟1903年发明第一架飞机✈️——只飞了12秒！plane也是数学的"平面"——一张纸是一个plane📄。'}
-    ]
+    id:'motorway',word:'motorway',phonetic:'/ˈmoʊ.tər.weɪ/',chinese:'高速公路',emoji:'🛣️',pos:'名词',category:'driving',syllables:[{text:'mo',hint:'重音在这'},{text:'tor',hint:''},{text:'way',hint:'路'}],
+    heroGradient:["#D8E0E8", "#ECF0F4"],
+    sentences:[{en:"We drove on the <span class='hl'>motorway</span> to get there fast.",zh:'我们走高速公路快速到达。'},{en:"The <span class='hl'>motorway</span> has six lanes.",zh:'这条高速公路有六车道。'}],
+    memory:[{icon:'🔤',text:"<b>motor+way</b> → \"motor\"(汽车🏎️)+\"way\"(路)=汽车专用路=高速公路🛣️"},{icon:'🔊',text:"<b>/ˈmoʊ.tər.weɪ/</b> → \"摩-特-微\"。重音在<b>mo</b>！way和day押韵"},{icon:'📖',text:"UK：<b>motorway</b>🛣️，US：<b>freeway/highway</b>。德国Autobahn不限速🇩🇪🏎️"}]
   },
   {
-    id:'ambulance',word:'ambulance',phonetic:"/'æm.bjə.ləns/",chinese:'救护车',emoji:'🚑',pos:'名词',category:'ground',syllables:[{text:'am',hint:'重音在这'},{text:'bu',hint:'轻读/bjə/'},{text:'lance',hint:'弱读/ləns/'}],
-    heroGradient:['#FDE0E0','#FFF0F0'],
-    sentences:[
-      {en:"The <span class='hl'>ambulance</span> rushed to the hospital.",zh:'救护车飞快地开往医院。'},
-      {en:"Call an <span class='hl'>ambulance</span>! Someone is hurt!",zh:'快叫救护车！有人受伤了！'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>am+bu+lance</b> → 3个音节！"am"是"我是"，"bu"像"不"，"lance"跳——我不是蹦蹦跳跳，我是救护车🚑！'},
-      {icon:'🔊',text:'<b>/ˈæm.bjə.ləns/</b> → "安姆-别-冷斯"。重音在<b>am</b>！bu读/bjə/很轻很快，lance的a发/ə/弱读。'},
-      {icon:'📖',text:'来自法语<b>hôpital ambulant</b>(移动医院)。拿破仑军队首创——用马车运伤员🏥。急救电话：中国120，美国911，英国999。'}
-    ]
+    id:'crossroads',word:'crossroads',phonetic:'/ˈkrɔːs.roʊdz/',chinese:'十字路口',emoji:'🚦',pos:'名词',category:'driving',syllables:[{text:'cross',hint:'十字✚'},{text:'roads',hint:'路'}],
+    heroGradient:["#FDE8E0", "#FFF5F0"],
+    sentences:[{en:"Turn left at the <span class='hl'>crossroads</span>.",zh:'在十字路口左转。'},{en:"There is a traffic light at the <span class='hl'>crossroads</span>.",zh:'十字路口有一个红绿灯。'}],
+    memory:[{icon:'🔤',text:"<b>cross+roads</b> → \"cross\"(十字✚)+\"roads\"(路)=十字路口🚦"},{icon:'🔊',text:"<b>/ˈkrɔːs.roʊdz/</b> → \"克罗斯-肉兹\"。重音在cross"},{icon:'📖',text:"cross(交叉)+roads(路)。at the crossroads也比喻\"人生十字路口\"⏳。美国常说intersection"}]
   },
   {
-    id:'brake',word:'brake',phonetic:'/breɪk/',chinese:'刹车；制动器',emoji:'🛑',pos:'名词；动词',category:'ground',syllables:[{text:'br',hint:'不让'},{text:'a',hint:'长音/ei/'},{text:'ke',hint:''}],
-    heroGradient:['#FDE8E0','#FFF5F0'],
-    sentences:[
-      {en:"Press the <span class='hl'>brake</span> to stop the car.",zh:'踩刹车让车停下来。'},
-      {en:"The driver <span class='hl'>braked</span> suddenly at the red light.",zh:'司机在红灯前突然刹车。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>br+ake</b> → 只有5个字母！"br"像"不让"🖐️，"ake"像ache(痛)——不让车"痛"，快踩刹车！'},
-      {icon:'🔊',text:'<b>/breɪk/</b> → 和<b>break</b>(打破)发音一模一样！但拼写不同——brake是刹车🛑，break是打碎💥。'},
-      {icon:'📖',text:'来自古德语<b>brecan</b>(打破→停下)。自行车<b>hand brake</b>手刹🤚，汽车<b>foot brake</b>脚刹🦶。"Hit the brakes!"=紧急刹车！'}
-    ]
+    id:'roundabout',word:'roundabout',phonetic:'/ˈraʊnd.ə.baʊt/',chinese:'环岛',emoji:'🔄',pos:'名词',category:'driving',syllables:[{text:'round',hint:'圆的'},{text:'a',hint:''},{text:'bout',hint:'周围'}],
+    heroGradient:["#E8F0D8", "#F4F8EC"],
+    sentences:[{en:"Take the third exit at the <span class='hl'>roundabout</span>.",zh:'在环岛从第三个出口出去。'},{en:"The <span class='hl'>roundabout</span> helps traffic flow smoothly.",zh:'环岛帮助交通更顺畅。'}],
+    memory:[{icon:'🔤',text:"<b>round+about</b> → \"round\"(圆的)+\"about\"(周围)=围圆圈转=环岛🔄"},{icon:'🔊',text:"<b>/ˈraʊnd.ə.baʊt/</b> → \"让-得-包特\"。重音在round"},{icon:'📖',text:"英国到处都是roundabout！US：traffic circle。魔法旋转木马也叫roundabout🎠"}]
   },
   {
-    id:'flight',word:'flight',phonetic:'/flaɪt/',chinese:'航班；飞行',emoji:'✈️',pos:'名词',category:'sky',syllables:[{text:'fl',hint:'fly飞'},{text:'ight',hint:'gh不发音'}],
-    heroGradient:['#D5E8F8','#EDF5FC'],
-    sentences:[
-      {en:"Our <span class='hl'>flight</span> to London is at 3:00 PM.",zh:'我们去伦敦的航班是下午三点。'},
-      {en:"The bird's <span class='hl'>flight</span> was beautiful to watch.",zh:'鸟儿的飞行姿态美极了。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>fl+ight</b> → "fl"=fly(飞)，"ight"是名词后缀。飞的行为=航班✈️！light, night, right都是ight家族。'},
-      {icon:'🔊',text:'<b>/flaɪt/</b> → "弗莱特"。<b>gh不发音</b>！和light(光💡)、night(夜🌙)、right(对✓)读音模式一样。'},
-      {icon:'📖',text:'来自fly(飞)。记住<b>ight家族</b>：light💡、night🌙、right✓、flight✈️、bright🌟——gh都不发音！"flight attendant"=空乘人员🧑‍✈️。'}
-    ]
+    id:'park',word:'park',phonetic:'/pɑːrk/',chinese:'停车；公园',emoji:'🅿️',pos:'动词；名词',category:'driving',syllables:[{text:'p',hint:''},{text:'ar',hint:'长音/ɑːr/'},{text:'k',hint:''}],
+    heroGradient:["#E0F0D8", "#EFF8EC"],
+    sentences:[{en:"Can you <span class='hl'>park</span> the car here?",zh:'可以在这里停车吗？'},{en:"Let's go for a walk in the <span class='hl'>park</span>.",zh:'我们去公园散步吧。'}],
+    memory:[{icon:'🔤',text:"<b>p+ar+k</b> → 只有4个字母！park是\"公园\"🌳也是\"停车\"🅿️"},{icon:'🔊',text:"<b>/pɑːrk/</b> → \"帕克\"。ar发/ɑːr/长音。park和dark、bark押韵"},{icon:'📖',text:"来自古法语<b>parc</b>(围起来的场地)。No parking=禁止停车⚠️。National Park=国家公园🏞️"}]
   },
   {
-    id:'garage',word:'garage',phonetic:"/ɡə'rɑːʒ/",chinese:'车库',emoji:'🏠',pos:'名词',category:'ground',syllables:[{text:'ga',hint:''},{text:'ra',hint:'重音在这'},{text:'ge',hint:'法语/ʒ/'}],
-    heroGradient:['#E8E0D8','#F5F0EB'],
-    sentences:[
-      {en:"Dad parks the car in the <span class='hl'>garage</span>.",zh:'爸爸把车停在车库里。'},
-      {en:"The <span class='hl'>garage</span> door needs to be fixed.",zh:'车库门需要修一下。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>ga+ra+ge</b> → 3个音节，法语借词！"ga"嘎，"ra"让，"ge"日——法国的车库带浪漫口音🇫🇷。'},
-      {icon:'🔊',text:'<b>/ɡəˈrɑːʒ/</b> → "格-让日"。重音在<b>ra</b>！ge读/ʒ/像中文"日"。法语词发音特殊！'},
-      {icon:'📖',text:'来自法语<b>garer</b>(停放)。1910年代汽车普及才有！法语尾音/ʒ/保留法国味🥐。massage💆、corsage🌺也是age结尾法语词。'}
-    ]
+    id:'coach',word:'coach',phonetic:'/koʊtʃ/',chinese:'长途客车；教练',emoji:'🚌',pos:'名词',category:'driving',syllables:[{text:'c',hint:''},{text:'oa',hint:'长音/oʊ/'},{text:'ch',hint:''}],
+    heroGradient:["#FDF0D0", "#FFF9E8"],
+    sentences:[{en:"We took a <span class='hl'>coach</span> to the next city.",zh:'我们坐长途客车去下一个城市。'},{en:"The <span class='hl'>coach</span> seats are very comfortable.",zh:'长途客车的座位很舒服。'}],
+    memory:[{icon:'🔤',text:"<b>c+oa+ch</b> → \"co\"一起，\"ach\"像\"啊车\"——大家一起坐长途车🚌"},{icon:'🔊',text:"<b>/koʊtʃ/</b> → \"扣吃\"。oa发/oʊ/长音！ch读/tʃ/"},{icon:'📖',text:"来自匈牙利小镇<b>Kocs</b>——第一辆长途马车诞生地！coach也指\"教练\"🎯"}]
   }
 ];
 
@@ -451,18 +382,19 @@ setTimeout(function(){
 }, 0);
 
 // ============================================================
+// ============================================================
 // EXTRA FIELDS (collocations, related, pitfall)
 // ============================================================
 const EXTRA = {
-  pilot: {collocations:["airline pilot", "fighter pilot", "pilot a plane", "automatic pilot"],related:"airplane, fly, cockpit, co-pilot, captain, sky",pitfall:"<b>pi</b>lot - pi 不是 py！i 发长音 /aɪ/"},
-  mile: {collocations:["miles away", "miles per hour", "mile marker", "nautical mile"],related:"kilometer, distance, yard, foot, measure, marathon",pitfall:"m<b>i</b>le - i 发长音！和 smile 押韵。1mile≈1.6km"},
-  wheel: {collocations:["steering wheel", "Ferris wheel", "front wheel", "spare wheel"],related:"car, tire, drive, round, rotate, axle",pitfall:"<b>wh</b>eel - wh读/w/不读/hw/！两个e"},
-  passenger: {collocations:["passenger seat", "passenger plane", "fellow passenger", "passenger train"],related:"travel, driver, ticket, flight, airport, seat",pitfall:"passe<b>ng</b>er - ng 不是 n！pass-en-ger 三音节"},
-  driving_licence: {collocations:["get a driving licence", "full driving licence", "driving licence test"],related:"driving, car, test, drive, permit, ID",pitfall:"driving <b>licence</b> - cence 不是 sense！UK用licence，US用license"},
-  motorway: {collocations:["on the motorway", "motorway junction", "motorway services", "busy motorway"],related:"highway, freeway, road, lane, drive, speed",pitfall:"<b>motor</b>way - motor+way，不是 motoway"},
-  crossroads: {collocations:["at the crossroads", "busy crossroads", "dangerous crossroads", "reach a crossroads"],related:"intersection, traffic, road, turn, light, junction",pitfall:"cross<b>roads</b> - 有s！因为两条路交叉=多条路"},
-  roundabout: {collocations:["at the roundabout", "mini roundabout", "go around the roundabout"],related:"circle, traffic, exit, road, turn, island",pitfall:"round<b>about</b> - about不是abowt！round+about"},
-  park: {collocations:["park the car", "car park", "no parking", "national park"],related:"stop, leave, space, garden, playground, nature",pitfall:"<b>park</b> 两个意思：停车🅿️和公园🌳。no parking禁止停车"},
+  pilot: {collocations:["airline pilot", "fighter pilot", "pilot a plane", "automatic pilot"],related:"airplane, fly, cockpit, captain, sky",pitfall:"<b>pi</b>lot - pi 不是 py！i 发长音 /aɪ/"},
+  mile: {collocations:["miles away", "miles per hour", "mile marker", "nautical mile"],related:"kilometer, distance, yard, foot, measure",pitfall:"m<b>i</b>le - i 发长音！1mile≈1.6km"},
+  wheel: {collocations:["steering wheel", "Ferris wheel", "front wheel", "spare wheel"],related:"car, tire, drive, round, rotate, axle",pitfall:"<b>wh</b>eel - wh读/w/不读/hw/"},
+  passenger: {collocations:["passenger seat", "passenger plane", "fellow passenger"],related:"travel, driver, ticket, flight, airport, seat",pitfall:"passe<b>ng</b>er - ng 不是 n"},
+  driving_licence: {collocations:["get a driving licence", "full driving licence", "driving licence test"],related:"driving, car, test, drive, permit, ID",pitfall:"driving <b>licence</b> - cence 不是 sense"},
+  motorway: {collocations:["on the motorway", "motorway junction", "motorway services"],related:"highway, freeway, road, lane, drive, speed",pitfall:"<b>motor</b>way - motor+way 不是 motoway"},
+  crossroads: {collocations:["at the crossroads", "busy crossroads", "dangerous crossroads"],related:"intersection, traffic, road, turn, light, junction",pitfall:"cross<b>roads</b> - 有s！"},
+  roundabout: {collocations:["at the roundabout", "mini roundabout", "go around the roundabout"],related:"circle, traffic, exit, road, turn, island",pitfall:"round<b>about</b> - about不是abowt"},
+  park: {collocations:["park the car", "car park", "no parking", "national park"],related:"stop, leave, space, garden, playground, nature",pitfall:"<b>park</b> 两个意思：停车🅿️和公园🌳"},
   coach: {collocations:["by coach", "coach station", "coach trip", "head coach"],related:"bus, travel, seat, long-distance, driver, train",pitfall:"<b>coach</b>两个意思：长途客车🚌和教练🏅"}
 };
 
@@ -472,7 +404,7 @@ const EXTRA = {
 // ============================================================
 function ws(wid) { return getWordStatus(state, wid); }
 function getSeasonColor(s) {
-  const m = {'driving': 'var(--cat-spring)', 'basics': 'var(--cat-winter)'};
+  const m = { driving: 'var(--cat-spring)', basics: 'var(--cat-winter)' };
   return m[s] || 'var(--cat-spring)';
 }
 
@@ -482,13 +414,12 @@ function getSeasonColor(s) {
 function renderSidebar() {
   const wl = document.getElementById('wordList');
   const ft = (document.getElementById('searchBox')?.value || '').toLowerCase().trim();
-  const categories = ["driving", "basics"];
-  const sLabels = {"driving": "🚗 驾驶道路", "basics": "🔧 交通基础"};
-  const catWords = categories.reduce((a, c) => { a[c] = []; return a; }, {});
-  WORDS.forEach((w, i) => { if (catWords[w.category]) catWords[w.category].push(i); });
+  const seasons = ['winter', 'spring', 'summer', 'autumn'];
+  const sLabels = { winter: '❄️ 冬季', spring: '🌸 春季', summer: '☀️ 夏季', autumn: '🍂 秋季' };
+  const sMonths = { winter: [11, 0, 1], spring: [2, 3, 4], summer: [5, 6, 7], autumn: [8, 9, 10] };
   let html = '';
-  categories.forEach(cat => {
-    const catWordList = catWords[cat].map(i => WORDS[i]).filter(w => w && (!ft || w.word.toLowerCase().includes(ft) || w.chinese.includes(ft)));
+  seasons.forEach(season => {
+    const seasonWords = sMonths[season].map(i => WORDS[i]).filter(w => w && (!ft || w.word.toLowerCase().includes(ft) || w.chinese.includes(ft)));
     if (!catWordList.length) return;
     html += `<div class="cat-group"><div class="cat-label"><span class="dot" style="background:${getSeasonColor(cat)}"></span>${sLabels[cat]}<span class="count">${catWordList.length}词</span></div>`;
     catWordList.forEach(w => {

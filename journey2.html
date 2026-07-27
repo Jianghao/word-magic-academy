@@ -282,138 +282,69 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 <script src="shared.js"></script>
 <script>
 // ============================================================
-// WORD DATA — 10 Travel & Transportation words
+// ============================================================
+// WORD DATA — 10 Journey words
 // ============================================================
 const WORDS = [
   {
-    id:'space',word:'space',phonetic:'/speɪs/',chinese:'太空；空间',emoji:'🚀',pos:'名词',category:'sky',syllables:[{text:'sp',hint:'s后浊化'},{text:'a',hint:'长音/ei/'},{text:'ce',hint:'和face一样'}],
-    heroGradient:['#D5E0F0','#E8EFF8'],
-    sentences:[
-      {en:"There are many stars in <span class='hl'>space</span>.",zh:'太空中有很多星星。'},
-      {en:"Please give me some <span class='hl'>space</span> to sit down.",zh:'请给我一点空间坐下。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>sp+ace</b> → "sp"像"四破"，"ace"是王牌♠️。太空广阔无垠，像一张王牌！5个字母，ace结尾和face、place一样。'},
-      {icon:'🔊',text:'<b>/speɪs/</b> → "斯贝斯"。s后p浊化读/b/！长音/eɪ/嘴巴张大。和face、race押韵。'},
-      {icon:'📖',text:'来自拉丁语<b>spatium</b>(空间)。宇航员叫<b>astronaut</b>——astro(星星)+naut(航行者)=在太空航行的人🚀！space既是"太空"也是"空间"。'}
-    ]
+    id:'ticket',word:'ticket',phonetic:'/ˈtɪk.ɪt/',chinese:'票；入场券',emoji:'🎫',pos:'名词',category:'tourism',syllables:[{text:'tick',hint:'滴答'},{text:'et',hint:'小东西'}],
+    heroGradient:["#FDE8E0", "#FFF5F0"],
+    sentences:[{en:"I have a train <span class='hl'>ticket</span> to London.",zh:'我有一张去伦敦的火车票。'},{en:"How much is the <span class='hl'>ticket</span>?",zh:'票多少钱？'}],
+    memory:[{icon:'🔤',text:"<b>tick+et</b> → \"tick\"像钟表滴答⏰，\"et\"是小东西。一张小小的票"},{icon:'🔊',text:"<b>/ˈtɪk.ɪt/</b> → \"提-ki特\"。重音在tick。两个i都发/ɪ/短音"},{icon:'📖',text:"来自法语<b>etiquette</b>(小标签)。ticket office=售票处🎟️。return ticket=往返票"}]
   },
   {
-    id:'plant',word:'plant',phonetic:'/plænt/',chinese:'植物',emoji:'🌱',pos:'名词',category:'nature',syllables:[{text:'pl',hint:'漂亮'},{text:'a',hint:'æ短音'},{text:'nt',hint:'蚂蚁ant'}],
-    heroGradient:['#E0F0D8','#EFF8EC'],
-    sentences:[
-      {en:"I water the <span class='hl'>plant</span> every day.",zh:'我每天给植物浇水。'},
-      {en:"<span class='hl'>Plants</span> need sunlight and water to grow.",zh:'植物需要阳光和水才能生长。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>pl+ant</b> → "pl"像"漂亮"🌸，"ant"是小蚂蚁🐜。漂亮蚂蚁在植物上爬！planet(星球)也是pl开头——植物和星球都是生命🌍。'},
-      {icon:'🔊',text:'<b>/plænt/</b> → "普兰特"。æ像"哎"短音，嘴巴微张。p后面是l，不要读成pant！'},
-      {icon:'📖',text:'来自拉丁语<b>planta</b>(嫩芽🌱)。<b>planet</b>(星球)和plant是亲戚！古代人认为星球有生命。plant也可当动词"种植"——I plant a tree🌳。'}
-    ]
+    id:'tour',word:'tour',phonetic:'/tʊr/',chinese:'旅行；游览',emoji:'🗺️',pos:'名词；动词',category:'tourism',syllables:[{text:'tour',hint:'转一圈'}],
+    heroGradient:["#E8F0D8", "#F4F8EC"],
+    sentences:[{en:"We went on a <span class='hl'>tour</span> of the city.",zh:'我们参加了城市游览。'},{en:"The guide will <span class='hl'>tour</span> us around the museum.",zh:'导游会带我们参观博物馆。'}],
+    memory:[{icon:'🔤',text:"<b>t+o+u+r</b> → 只有4个字母！tour=围绕一圈的游玩。tourist=tour+ist=游客📸"},{icon:'🔊',text:"<b>/tʊr/</b> → \"图尔\"。ou发/ʊr/——和tourist的tour一样"},{icon:'📖',text:"来自拉丁语<b>tornare</b>(转圈)。tour就是绕一圈回来🔄。Tour de France=环法自行车赛🚴"}]
   },
   {
-    id:'wood',word:'wood',phonetic:'/wʊd/',chinese:'木头；树林',emoji:'🪵',pos:'名词',category:'nature',syllables:[{text:'w',hint:''},{text:'oo',hint:'两棵树🌳'},{text:'d',hint:''}],
-    heroGradient:['#E8D5C0','#F5EAE0'],
-    sentences:[
-      {en:"The table is made of <span class='hl'>wood</span>.",zh:'这张桌子是木头做的。'},
-      {en:"Let's go for a walk in the <span class='hl'>woods</span>.",zh:'我们去树林里散步吧。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>w+o+o+d</b> → 只有4个字母！两个o并排像两棵树🌳🌳。w是树根，d是树冠。wool(羊毛)也两个o——羊在树林里🐑。'},
-      {icon:'🔊',text:'<b>/wʊd/</b> → "悟德"。ʊ短元音像"呜"。和<b>would</b>(愿意)发音一模一样！I would like some wood. 🪵'},
-      {icon:'📖',text:'古英语<b>wudu</b>。三只小猪🐷——一只盖<b>wood house</b>木屋！wood加s变<b>woods</b>(树林)——小红帽走进woods🌲。wood也指"木制材料"。'}
-    ]
+    id:'tour_guide',word:'tour guide',phonetic:'/tʊr ɡaɪd/',chinese:'导游',emoji:'🧑‍🏫',pos:'名词',category:'tourism',syllables:[{text:'tour',hint:'游览'},{text:'guide',hint:'引导'}],
+    heroGradient:["#F0E8D8", "#F8F4EC"],
+    sentences:[{en:"The <span class='hl'>tour guide</span> showed us the castle.",zh:'导游带我们参观了城堡。'},{en:"She works as a <span class='hl'>tour guide</span> in Paris.",zh:'她在巴黎当导游。'}],
+    memory:[{icon:'🔤',text:"<b>tour+guide</b> → \"tour\"(游览)+\"guide\"(引导者)。带你游览的人=导游🧑‍🏫"},{icon:'🔊',text:"<b>/tʊr ɡaɪd/</b> → \"图尔 盖德\"。gui读/ɡaɪ/——guide中u不发音"},{icon:'📖',text:"guide来自古法语<b>guier</b>(引导)。好的导游让旅行更有趣🏰"}]
   },
   {
-    id:'outdoor',word:'outdoor',phonetic:"/'aʊt.dɔːr/",chinese:'户外的',emoji:'🏕️',pos:'形容词',category:'nature',syllables:[{text:'out',hint:'外面'},{text:'door',hint:'门'}],
-    heroGradient:['#D5F0D5','#E8F8E8'],
-    sentences:[
-      {en:"I love <span class='hl'>outdoor</span> activities like hiking.",zh:'我喜欢像徒步这样的户外活动。'},
-      {en:"Let's play some <span class='hl'>outdoor</span> games!",zh:'我们来玩一些户外游戏吧！'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>out+door</b> → "out"(外面)+"door"(门)=门外=户外！一个拼起来的词，像两个好朋友牵手🤝。'},
-      {icon:'🔊',text:'<b>/ˈaʊt.dɔːr/</b> → "奥特-舵"。重音在<b>out</b>！door读/dɔːr/，or发长音像"哦——"。'},
-      {icon:'📖',text:'out(外面)+door(门)。反义词是<b>indoor</b>(室内的)🏠。outdoor activities是最常用搭配。英国人爱户外——不管刮风下雨都要去公园⛅。'}
-    ]
+    id:'tourist',word:'tourist',phonetic:'/ˈtʊr.ɪst/',chinese:'游客',emoji:'📸',pos:'名词',category:'tourism',syllables:[{text:'tour',hint:'旅行'},{text:'ist',hint:'…的人'}],
+    heroGradient:["#F0E0F0", "#F8F0F8"],
+    sentences:[{en:"Many <span class='hl'>tourists</span> visit the Great Wall.",zh:'很多游客参观长城。'},{en:"I am a <span class='hl'>tourist</span> in this city.",zh:'我在这个城市是个游客。'}],
+    memory:[{icon:'🔤',text:"<b>tour+ist</b> → \"tour\"(旅行)+\"ist\"(表示人)=游客📸！scientist也是ist家族"},{icon:'🔊',text:"<b>/ˈtʊr.ɪst/</b> → \"图-瑞斯特\"。重音在tour"},{icon:'📖',text:"<b>ist家族</b>：scientist👩‍🔬、artist🎨、pianist🎹、tourist📸。tourist attraction=旅游景点🏯"}]
   },
   {
-    id:'airport',word:'airport',phonetic:"/'er.pɔːrt/",chinese:'机场',emoji:'✈️',pos:'名词',category:'ground',syllables:[{text:'air',hint:'天空/飞机'},{text:'port',hint:'港口'}],
-    heroGradient:['#D5E8F8','#E8F2FA'],
-    sentences:[
-      {en:"We arrived at the <span class='hl'>airport</span> two hours early.",zh:'我们提前两小时到达了机场。'},
-      {en:"The <span class='hl'>airport</span> is far from the city center.",zh:'机场离市中心很远。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>air+port</b> → "air"(天空/飞机)+"port"(港口)=飞机的港口=机场！air是天空✈️，port是船停靠的地方⚓。'},
-      {icon:'🔊',text:'<b>/ˈer.pɔːrt/</b> → "爱尔-破特"。重音在air！port中or发/ɔːr/长音。注意air不是are！'},
-      {icon:'📖',text:'<b>air</b>(航空)+<b>port</b>(拉丁语portus=港口)。飞机停泊的港口=机场！类似词：seaport海港🚢、passport护照📔。'}
-    ]
+    id:'canal',word:'canal',phonetic:'/kəˈnæl/',chinese:'运河',emoji:'🚢',pos:'名词',category:'tourism',syllables:[{text:'ca',hint:''},{text:'nal',hint:'重音在这'}],
+    heroGradient:["#D8E8F8", "#ECF2FC"],
+    sentences:[{en:"Boats travel along the <span class='hl'>canal</span>.",zh:'船只在运河上航行。'},{en:"The <span class='hl'>canal</span> connects two big cities.",zh:'这条运河连接了两座大城市。'}],
+    memory:[{icon:'🔤',text:"<b>ca+nal</b> → \"ca\"像\"开\"，\"nal\"像channel(水道)。人工开挖的水道=运河🚢"},{icon:'🔊',text:"<b>/kəˈnæl/</b> → \"可-奈尔\"。重音在<b>nal</b>！c读/k/不是/s/"},{icon:'📖',text:"来自拉丁语<b>canalis</b>(水道)。中国Grand Canal大运河！威尼斯有150条运河🛶"}]
   },
   {
-    id:'plane',word:'plane',phonetic:'/pleɪn/',chinese:'飞机',emoji:'🛩️',pos:'名词',category:'sky',syllables:[{text:'pl',hint:'飘'},{text:'a',hint:'长音/ei/'},{text:'ne',hint:'lane小路'}],
-    heroGradient:['#F0E8F8','#F8F2FC'],
-    sentences:[
-      {en:"The <span class='hl'>plane</span> took off on time.",zh:'飞机准时起飞了。'},
-      {en:"We went to Shanghai by <span class='hl'>plane</span>.",zh:'我们坐飞机去了上海。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>pl+ane</b> → 只有5个字母！"pl"像"飘"，"ane"和lane(小路)、cane(拐杖)同族。飞机飘在天空✈️。'},
-      {icon:'🔊',text:'<b>/pleɪn/</b> → "普雷恩"。长音/eɪ/嘴巴张大！和<b>plain</b>(平原)发音一模一样——飞机在平原起飞🛫。'},
-      {icon:'📖',text:'<b>airplane</b>的缩写。莱特兄弟1903年发明第一架飞机✈️——只飞了12秒！plane也是数学的"平面"——一张纸是一个plane📄。'}
-    ]
+    id:'delay',word:'delay',phonetic:'/dɪˈleɪ/',chinese:'延误；推迟',emoji:'⏰',pos:'名词；动词',category:'vehicle',syllables:[{text:'de',hint:'离开'},{text:'lay',hint:'重音在这'}],
+    heroGradient:["#FDE8E8", "#FFF5F5"],
+    sentences:[{en:"There was a <span class='hl'>delay</span> at the airport.",zh:'机场发生了延误。'},{en:"The train was <span class='hl'>delayed</span> by snow.",zh:'火车因大雪晚点了。'}],
+    memory:[{icon:'🔤',text:"<b>de+lay</b> → \"de\"(离开/放下)+\"lay\"(放)=放一边去=推迟⏰"},{icon:'🔊',text:"<b>/dɪˈleɪ/</b> → \"迪-雷\"。重音在<b>lay</b>！de弱读/dɪ/。和play押韵"},{icon:'📖',text:"de(离开)+古法语<b>laier</b>(留下)。机场常说\"The flight is delayed.\"✈️。反义词：on time✅"}]
   },
   {
-    id:'ambulance',word:'ambulance',phonetic:"/'æm.bjə.ləns/",chinese:'救护车',emoji:'🚑',pos:'名词',category:'ground',syllables:[{text:'am',hint:'重音在这'},{text:'bu',hint:'轻读/bjə/'},{text:'lance',hint:'弱读/ləns/'}],
-    heroGradient:['#FDE0E0','#FFF0F0'],
-    sentences:[
-      {en:"The <span class='hl'>ambulance</span> rushed to the hospital.",zh:'救护车飞快地开往医院。'},
-      {en:"Call an <span class='hl'>ambulance</span>! Someone is hurt!",zh:'快叫救护车！有人受伤了！'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>am+bu+lance</b> → 3个音节！"am"是"我是"，"bu"像"不"，"lance"跳——我不是蹦蹦跳跳，我是救护车🚑！'},
-      {icon:'🔊',text:'<b>/ˈæm.bjə.ləns/</b> → "安姆-别-冷斯"。重音在<b>am</b>！bu读/bjə/很轻很快，lance的a发/ə/弱读。'},
-      {icon:'📖',text:'来自法语<b>hôpital ambulant</b>(移动医院)。拿破仑军队首创——用马车运伤员🏥。急救电话：中国120，美国911，英国999。'}
-    ]
+    id:'engine',word:'engine',phonetic:'/ˈen.dʒɪn/',chinese:'引擎；发动机',emoji:'🔧',pos:'名词',category:'vehicle',syllables:[{text:'en',hint:'重音在这'},{text:'gine',hint:'读/dʒɪn/'}],
+    heroGradient:["#E8E0D8", "#F5F0EB"],
+    sentences:[{en:"The car <span class='hl'>engine</span> makes a loud noise.",zh:'汽车引擎发出很大的噪音。'},{en:"Steam <span class='hl'>engines</span> powered old trains.",zh:'蒸汽机为老式火车提供动力。'}],
+    memory:[{icon:'🔤',text:"<b>en+gine</b> → \"en\"在里面，\"gine\"像\"金\"——引擎是车里最重要的部分🔧"},{icon:'🔊',text:"<b>/ˈen.dʒɪn/</b> → \"恩-金\"。重音在<b>en</b>！g读/dʒ/，ine读/ɪn/短音"},{icon:'📖',text:"来自拉丁语<b>ingenium</b>(聪明才智)。search engine=搜索引擎🔍。fire engine=消防车🚒"}]
   },
   {
-    id:'brake',word:'brake',phonetic:'/breɪk/',chinese:'刹车；制动器',emoji:'🛑',pos:'名词；动词',category:'ground',syllables:[{text:'br',hint:'不让'},{text:'a',hint:'长音/ei/'},{text:'ke',hint:''}],
-    heroGradient:['#FDE8E0','#FFF5F0'],
-    sentences:[
-      {en:"Press the <span class='hl'>brake</span> to stop the car.",zh:'踩刹车让车停下来。'},
-      {en:"The driver <span class='hl'>braked</span> suddenly at the red light.",zh:'司机在红灯前突然刹车。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>br+ake</b> → 只有5个字母！"br"像"不让"🖐️，"ake"像ache(痛)——不让车"痛"，快踩刹车！'},
-      {icon:'🔊',text:'<b>/breɪk/</b> → 和<b>break</b>(打破)发音一模一样！但拼写不同——brake是刹车🛑，break是打碎💥。'},
-      {icon:'📖',text:'来自古德语<b>brecan</b>(打破→停下)。自行车<b>hand brake</b>手刹🤚，汽车<b>foot brake</b>脚刹🦶。"Hit the brakes!"=紧急刹车！'}
-    ]
+    id:'mechanic',word:'mechanic',phonetic:'/məˈkæn.ɪk/',chinese:'机械师；技工',emoji:'🔧',pos:'名词',category:'vehicle',syllables:[{text:'me',hint:''},{text:'chan',hint:'重音在这'},{text:'ic',hint:''}],
+    heroGradient:["#E8E8E0", "#F5F5F0"],
+    sentences:[{en:"The <span class='hl'>mechanic</span> fixed my car.",zh:'机械师修好了我的车。'},{en:"He works as a <span class='hl'>mechanic</span> at a garage.",zh:'他在车库当机械师。'}],
+    memory:[{icon:'🔤',text:"<b>me+chan+ic</b> → machine(机器)+ic(人)=修理机器的人=机械师🔧"},{icon:'🔊',text:"<b>/məˈkæn.ɪk/</b> → \"莫-看-尼克\"。重音在<b>chan</b>！ch读/k/"},{icon:'📖',text:"来自希腊语<b>mekhane</b>(机器)。machine、mechanical都是同家族。car mechanic=汽车修理工🔧"}]
   },
   {
-    id:'flight',word:'flight',phonetic:'/flaɪt/',chinese:'航班；飞行',emoji:'✈️',pos:'名词',category:'sky',syllables:[{text:'fl',hint:'fly飞'},{text:'ight',hint:'gh不发音'}],
-    heroGradient:['#D5E8F8','#EDF5FC'],
-    sentences:[
-      {en:"Our <span class='hl'>flight</span> to London is at 3:00 PM.",zh:'我们去伦敦的航班是下午三点。'},
-      {en:"The bird's <span class='hl'>flight</span> was beautiful to watch.",zh:'鸟儿的飞行姿态美极了。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>fl+ight</b> → "fl"=fly(飞)，"ight"是名词后缀。飞的行为=航班✈️！light, night, right都是ight家族。'},
-      {icon:'🔊',text:'<b>/flaɪt/</b> → "弗莱特"。<b>gh不发音</b>！和light(光💡)、night(夜🌙)、right(对✓)读音模式一样。'},
-      {icon:'📖',text:'来自fly(飞)。记住<b>ight家族</b>：light💡、night🌙、right✓、flight✈️、bright🌟——gh都不发音！"flight attendant"=空乘人员🧑‍✈️。'}
-    ]
+    id:'petrol',word:'petrol',phonetic:'/ˈpe.trəl/',chinese:'汽油',emoji:'⛽',pos:'名词',category:'vehicle',syllables:[{text:'pet',hint:'石头/石油'},{text:'rol',hint:'滚动'}],
+    heroGradient:["#FDE8D0", "#FFF5E8"],
+    sentences:[{en:"We need to fill up with <span class='hl'>petrol</span>.",zh:'我们需要加油了。'},{en:"<span class='hl'>Petrol</span> prices are going up.",zh:'汽油价格在上涨。'}],
+    memory:[{icon:'🔤',text:"<b>pet+rol</b> → \"pet\"=石油(petro)，\"rol\"=roll(滚动)。石油让车轮滚动⛽"},{icon:'🔊',text:"<b>/ˈpe.trəl/</b> → \"派-戳\"。重音在<b>pet</b>！t在r前略变"},{icon:'📖',text:"来自<b>petroleum</b>(石油)=petro(石头)+leum(油)。UK：petrol⛽，US：gas"}]
   },
   {
-    id:'garage',word:'garage',phonetic:"/ɡə'rɑːʒ/",chinese:'车库',emoji:'🏠',pos:'名词',category:'ground',syllables:[{text:'ga',hint:''},{text:'ra',hint:'重音在这'},{text:'ge',hint:'法语/ʒ/'}],
-    heroGradient:['#E8E0D8','#F5F0EB'],
-    sentences:[
-      {en:"Dad parks the car in the <span class='hl'>garage</span>.",zh:'爸爸把车停在车库里。'},
-      {en:"The <span class='hl'>garage</span> door needs to be fixed.",zh:'车库门需要修一下。'}
-    ],
-    memory:[
-      {icon:'🔤',text:'<b>ga+ra+ge</b> → 3个音节，法语借词！"ga"嘎，"ra"让，"ge"日——法国的车库带浪漫口音🇫🇷。'},
-      {icon:'🔊',text:'<b>/ɡəˈrɑːʒ/</b> → "格-让日"。重音在<b>ra</b>！ge读/ʒ/像中文"日"。法语词发音特殊！'},
-      {icon:'📖',text:'来自法语<b>garer</b>(停放)。1910年代汽车普及才有！法语尾音/ʒ/保留法国味🥐。massage💆、corsage🌺也是age结尾法语词。'}
-    ]
+    id:'petrol_station',word:'petrol station',phonetic:'/ˈpe.trəl ˌsteɪ.ʃən/',chinese:'加油站',emoji:'⛽',pos:'名词',category:'vehicle',syllables:[{text:'pet',hint:''},{text:'rol',hint:''},{text:'sta',hint:''},{text:'tion',hint:''}],
+    heroGradient:["#FDF0D0", "#FFF9E8"],
+    sentences:[{en:"Let's stop at the <span class='hl'>petrol station</span>.",zh:'我们在加油站停一下吧。'},{en:"There is a <span class='hl'>petrol station</span> near the motorway.",zh:'高速公路附近有一个加油站。'}],
+    memory:[{icon:'🔤',text:"<b>petrol+station</b> → \"petrol\"(汽油)+\"station\"(站点)=加油站⛽"},{icon:'🔊',text:"<b>/ˈpe.trəl ˌsteɪ.ʃən/</b> → \"派-戳 斯得-深\"。两个词分开读"},{icon:'📖',text:"UK：<b>petrol station</b>⛽，US：<b>gas station</b>。很多加油站还有便利店🏪"}]
   }
 ];
 
@@ -451,19 +382,20 @@ setTimeout(function(){
 }, 0);
 
 // ============================================================
+// ============================================================
 // EXTRA FIELDS (collocations, related, pitfall)
 // ============================================================
 const EXTRA = {
-  ticket: {collocations:["train ticket", "plane ticket", "return ticket", "ticket office"],related:"travel, boarding, price, single, return, reservation",pitfall:"<b>tick</b>et - tick 不是 tiket！两个t中间是ck"},
-  tour: {collocations:["go on a tour", "city tour", "guided tour", "bus tour"],related:"travel, guide, visit, sightseeing, trip, vacation",pitfall:"t<b>our</b> - our 不是 ure！4个字母最简单"},
-  tour_guide: {collocations:["hire a tour guide", "tour guide book", "local tour guide", "ask the tour guide"],related:"tourist, tour, guide, sightseeing, information, museum",pitfall:"tour <b>guide</b> - guide 中 u 不发音！gui 读 /ɡaɪ/"},
-  tourist: {collocations:["tourist attraction", "tourist information", "tourist season", "tourist visa"],related:"travel, tour, guide, sightseeing, visitor, camera",pitfall:"<b>tour</b>ist - tour 不要写成 ture！ist 是人的后缀"},
+  ticket: {collocations:["train ticket", "plane ticket", "return ticket", "ticket office"],related:"travel, boarding, price, reservation",pitfall:"<b>tick</b>et - tick 不是 tiket！两个t中间是ck"},
+  tour: {collocations:["go on a tour", "city tour", "guided tour", "bus tour"],related:"travel, guide, visit, sightseeing, trip",pitfall:"t<b>our</b> - our 不是 ure"},
+  tour_guide: {collocations:["hire a tour guide", "tour guide book", "local tour guide"],related:"tourist, tour, guide, sightseeing, museum",pitfall:"tour <b>guide</b> - guide 中 u 不发音"},
+  tourist: {collocations:["tourist attraction", "tourist information", "tourist season"],related:"travel, tour, guide, sightseeing, visitor, camera",pitfall:"<b>tour</b>ist - tour 不要写成 ture"},
   canal: {collocations:["along the canal", "canal boat", "canal system", "Panama Canal"],related:"water, river, boat, channel, lock, Venice",pitfall:"c<b>a</b>nal - a 不是 o！c 读 /k/ 不是 /s/"},
-  delay: {collocations:["flight delay", "long delay", "without delay", "cause a delay"],related:"late, wait, postpone, traffic, cancel, apology",pitfall:"de<b>lay</b> - lay 不是 lei！和 play 押韵"},
-  engine: {collocations:["car engine", "start the engine", "engine trouble", "search engine"],related:"motor, machine, power, mechanic, petrol, steam",pitfall:"en<b>gine</b> - gine 不是 gin！g读/dʒ/"},
-  mechanic: {collocations:["car mechanic", "ask a mechanic", "trained mechanic", "mechanic shop"],related:"engineer, repair, fix, garage, car, tool",pitfall:"me<b>chan</b>ic - chan 不是 chan！ch读/k/如school"},
-  petrol: {collocations:["fill up with petrol", "petrol tank", "petrol price", "unleaded petrol"],related:"gas, fuel, oil, diesel, car, station",pitfall:"<b>pet</b>rol - pet 不是 pat！和 patrol(巡逻)不一样"},
-  petrol_station: {collocations:["stop at a petrol station", "petrol station attendant", "nearest petrol station"],related:"petrol, gas station, fuel, pump, car, garage",pitfall:"petrol <b>station</b> - station 中 tio 读/ʃən/"}
+  delay: {collocations:["flight delay", "long delay", "without delay", "cause a delay"],related:"late, wait, postpone, traffic, cancel",pitfall:"de<b>lay</b> - lay 不是 lei"},
+  engine: {collocations:["car engine", "start the engine", "engine trouble", "search engine"],related:"motor, machine, power, mechanic, petrol, steam",pitfall:"en<b>gine</b> - gine 不是 gin"},
+  mechanic: {collocations:["car mechanic", "ask a mechanic", "trained mechanic"],related:"engineer, repair, fix, garage, car, tool",pitfall:"me<b>chan</b>ic - ch读/k/如school"},
+  petrol: {collocations:["fill up with petrol", "petrol tank", "petrol price", "unleaded petrol"],related:"gas, fuel, oil, diesel, car, station",pitfall:"<b>pet</b>rol - pet 不是 pat"},
+  petrol_station: {collocations:["stop at a petrol station", "petrol station attendant", "nearest petrol station"],related:"petrol, gas station, fuel, pump, car, garage",pitfall:"petrol <b>station</b> - station 中 tio读/ʃən/"}
 };
 
 
@@ -472,7 +404,7 @@ const EXTRA = {
 // ============================================================
 function ws(wid) { return getWordStatus(state, wid); }
 function getSeasonColor(s) {
-  const m = {'tourism': 'var(--cat-spring)', 'vehicle': 'var(--cat-winter)'};
+  const m = { tourism: 'var(--cat-spring)', vehicle: 'var(--cat-winter)' };
   return m[s] || 'var(--cat-spring)';
 }
 
@@ -482,13 +414,12 @@ function getSeasonColor(s) {
 function renderSidebar() {
   const wl = document.getElementById('wordList');
   const ft = (document.getElementById('searchBox')?.value || '').toLowerCase().trim();
-  const categories = ["tourism", "vehicle"];
-  const sLabels = {"tourism": "🎫 旅游服务", "vehicle": "🔧 车辆与维修"};
-  const catWords = categories.reduce((a, c) => { a[c] = []; return a; }, {});
-  WORDS.forEach((w, i) => { if (catWords[w.category]) catWords[w.category].push(i); });
+  const seasons = ['winter', 'spring', 'summer', 'autumn'];
+  const sLabels = { winter: '❄️ 冬季', spring: '🌸 春季', summer: '☀️ 夏季', autumn: '🍂 秋季' };
+  const sMonths = { winter: [11, 0, 1], spring: [2, 3, 4], summer: [5, 6, 7], autumn: [8, 9, 10] };
   let html = '';
-  categories.forEach(cat => {
-    const catWordList = catWords[cat].map(i => WORDS[i]).filter(w => w && (!ft || w.word.toLowerCase().includes(ft) || w.chinese.includes(ft)));
+  seasons.forEach(season => {
+    const seasonWords = sMonths[season].map(i => WORDS[i]).filter(w => w && (!ft || w.word.toLowerCase().includes(ft) || w.chinese.includes(ft)));
     if (!catWordList.length) return;
     html += `<div class="cat-group"><div class="cat-label"><span class="dot" style="background:${getSeasonColor(cat)}"></span>${sLabels[cat]}<span class="count">${catWordList.length}词</span></div>`;
     catWordList.forEach(w => {
