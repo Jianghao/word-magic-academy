@@ -104,7 +104,8 @@ const ACHIEVEMENTS = [
 // COLLECTIONS META (for dashboard / vocabulary)
 // ============================================================
 const COLLECTIONS_META = [
-  { id: 'months', name: '月份单词', emoji: '📅', desc: 'January ~ December，12个月份', dateAdded: '2026-07-25', color: '#6B9AC4', page: 'months.html', wordCount: 12 }
+  { id: 'months', name: '月份单词', emoji: '📅', desc: 'January ~ December，12个月份', dateAdded: '2026-07-25', color: '#6B9AC4', page: 'months.html', wordCount: 12 },
+  { id: 'travel', name: '出行与交通', emoji: '🚗', desc: '10个出行与交通单词：机场、飞机、救护车等', dateAdded: '2026-07-27', color: '#5B9EED', page: 'travel.html', wordCount: 10 }
 ];
 
 // ============================================================
